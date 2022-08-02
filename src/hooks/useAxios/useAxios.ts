@@ -7,17 +7,13 @@ import { ApiClientContextValue } from 'context/apiClient/apiClientContext/ApiCli
 import { MutationFn } from 'hooks/useMutation/useMutation.types';
 import { InfiniteQueryFn, UseInfiniteQueryOptions } from 'hooks/useInfiniteQuery/useInfiniteQuery.types';
 
+import { getAxiosConfig } from './axiosConfig/axiosConfig';
 import { responseFailureInterceptor, responseSuccessInterceptor } from './interceptors/responseInterceptors';
 // import { requestSuccessInterceptor } from './interceptors/requestInterceptors';
 
 export const useAxios = (): ApiClientContextValue => {
   const client = useMemo(() => {
-    const axios = Axios.create({
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      baseURL: `${process.env.REACT_APP_API_URL}`,
-    });
+    const axios = Axios.create(getAxiosConfig());
 
     // axios.interceptors.request.use(requestSuccessInterceptor);
     axios.interceptors.response.use(responseSuccessInterceptor, responseFailureInterceptor);
