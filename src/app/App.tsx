@@ -1,7 +1,11 @@
-import './App.css';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-function App() {
-  return <div className={'App'}></div>;
-}
+import { AppProviders } from '@/providers/AppProviders';
+import { AppRoutes } from '@/routing/AppRoutes';
 
-export default App;
+export const App = () => (
+  <AppProviders>
+    <AppRoutes />
+    {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+  </AppProviders>
+);
