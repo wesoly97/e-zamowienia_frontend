@@ -28,7 +28,6 @@
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
 
-    "import/no-default-export": "error",
     "import/order": [
       "error",
       {
