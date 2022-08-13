@@ -1,10 +1,12 @@
+import { createTheme } from '@mui/material/styles';
+
 const xsMinWidth = 360;
 const smMinWidth = 768;
 const mdMinWidth = 992;
 const lgMinWidth = 1200;
 const xlMinWidth = 1400;
 
-export const theme = {
+export const theme = createTheme({
   colors: {
     DARK_BLUE: {
       125: '#063553',
@@ -24,7 +26,7 @@ export const theme = {
     BLACK: '#000000',
     GREY: '#3D3D54',
   },
-  breakpoints: {
+  extraBreakpoints: {
     values: {
       min: {
         xs: xsMinWidth,
@@ -58,4 +60,4 @@ export const theme = {
       },
     },
   },
-};
+});

@@ -1,5 +1,5 @@
 import { themes } from '@storybook/theming';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme/theme';
 
 export const parameters = {

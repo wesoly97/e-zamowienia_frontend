@@ -9,7 +9,6 @@ export const StyledButton = styled(ButtonBase)`
   border-radius: 4px;
   text-transform: uppercase;
   outline: ${({ theme }) => theme.colors.DARK_BLUE[100]} solid 1px;
-
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   background-color: ${({ theme }) => theme.colors.WHITE};
 `;

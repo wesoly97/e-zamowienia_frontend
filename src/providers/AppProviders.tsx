@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
+import { StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider } from 'styled-components';
 
 import { AppProvidersProps } from './AppProviders.types';
 
