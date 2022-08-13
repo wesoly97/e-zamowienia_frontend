@@ -1,4 +1,6 @@
 import { themes } from '@storybook/theming';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../src/theme/theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,3 +17,11 @@ export const parameters = {
     theme: themes.dark,
   },
 };
+
+export const decorators = [
+  (Story, context) => (
+    <ThemeProvider theme={theme}>
+      <Story {...context} />
+    </ThemeProvider>
+  ),
+];

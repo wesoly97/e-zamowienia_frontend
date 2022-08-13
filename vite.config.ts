@@ -19,4 +19,9 @@ export default defineConfig({
   test: {
     exclude: [...configDefaults.exclude, 'test/e2e/**/*'],
   },
+  resolve: {
+    alias: {
+      '@mui/styled-engine': '@mui/styled-engine-sc',
+    },
+  },
 });
