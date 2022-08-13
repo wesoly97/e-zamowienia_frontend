@@ -6,7 +6,20 @@ const mdMinWidth = 992;
 const lgMinWidth = 1200;
 const xlMinWidth = 1400;
 
+const defaultTheme = {
+  breakpoints: {
+    values: {
+      xl: xlMinWidth,
+      lg: lgMinWidth,
+      md: mdMinWidth,
+      sm: smMinWidth,
+      xs: xsMinWidth,
+    },
+  },
+};
+
 export const theme = createTheme({
+  ...defaultTheme,
   colors: {
     DARK_BLUE: {
       125: '#063553',
@@ -26,38 +39,20 @@ export const theme = createTheme({
     BLACK: '#000000',
     GREY: '#3D3D54',
   },
-  extraBreakpoints: {
-    values: {
-      min: {
-        xs: xsMinWidth,
-        sm: smMinWidth,
-        md: mdMinWidth,
-        lg: lgMinWidth,
-        xl: xlMinWidth,
-      },
-      max: {
-        xs: xsMinWidth - 1,
-        sm: smMinWidth - 1,
-        md: mdMinWidth - 1,
-        lg: lgMinWidth - 1,
-        xl: xlMinWidth - 1,
-      },
+  mediaQuery: {
+    min: {
+      xs: `@media (min-width: ${xsMinWidth}px)`,
+      sm: `@media (min-width: ${smMinWidth}px)`,
+      md: `@media (min-width: ${mdMinWidth}px)`,
+      lg: `@media (min-width: ${lgMinWidth}px)`,
+      xl: `@media (min-width: ${xlMinWidth}px)`,
     },
-    mq: {
-      min: {
-        xs: `@media (min-width: ${xsMinWidth}px)`,
-        sm: `@media (min-width: ${xsMinWidth}px)`,
-        md: `@media (min-width: ${xsMinWidth}px)`,
-        lg: `@media (min-width: ${xsMinWidth}px)`,
-        xl: `@media (min-width: ${xsMinWidth}px)`,
-      },
-      max: {
-        xs: `@media (max-width: ${xsMinWidth - 1}px)`,
-        sm: `@media (max-width: ${xsMinWidth - 1}px)`,
-        md: `@media (max-width: ${xsMinWidth - 1}px)`,
-        lg: `@media (max-width: ${xsMinWidth - 1}px)`,
-        xl: `@media (max-width: ${xsMinWidth - 1}px)`,
-      },
+    max: {
+      xs: `@media (max-width: ${xsMinWidth - 1}px)`,
+      sm: `@media (max-width: ${smMinWidth - 1}px)`,
+      md: `@media (max-width: ${mdMinWidth - 1}px)`,
+      lg: `@media (max-width: ${lgMinWidth - 1}px)`,
+      xl: `@media (max-width: ${xlMinWidth - 1}px)`,
     },
   },
 });

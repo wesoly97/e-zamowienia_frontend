@@ -1,19 +1,15 @@
 interface BreakpointValues {
-  xs: number | string;
-  sm: number | string;
-  md: number | string;
-  lg: number | string;
-  xl: number | string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
 }
 interface BreakpointMaxValueOptions {
   max: BreakpointValues;
 }
 interface BreakpointMinValueOptions {
   min: BreakpointValues;
-}
-interface BreakpointValueOptions {
-  values: BreakpointMinValueOptions & BreakpointMaxValueOptions;
-  mq: BreakpointMinValueOptions & BreakpointMaxValueOptions;
 }
 interface ShadeOptions {
   125: string;
@@ -31,5 +27,5 @@ interface ColorOptions {
 }
 export interface CustomTheme {
   colors: ColorOptions;
-  extraBreakpoints: BreakpointValueOptions;
+  mediaQuery: BreakpointMinValueOptions & BreakpointMaxValueOptions;
 }
