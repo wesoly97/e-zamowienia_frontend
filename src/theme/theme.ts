@@ -6,7 +6,7 @@ const mdMinWidth = 992;
 const lgMinWidth = 1200;
 const xlMinWidth = 1400;
 
-const defaultTheme = {
+const defaultMuiTheme = {
   breakpoints: {
     values: {
       xl: xlMinWidth,
@@ -19,7 +19,7 @@ const defaultTheme = {
 };
 
 export const theme = createTheme({
-  ...defaultTheme,
+  ...defaultMuiTheme,
   colors: {
     DARK_BLUE: {
       125: '#063553',
