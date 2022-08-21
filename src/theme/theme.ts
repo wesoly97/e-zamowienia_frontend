@@ -15,6 +15,7 @@ const defaultMuiTheme = {
       sm: smMinWidth,
       xs: xsMinWidth,
     },
+    step: 100,
   },
 };
 
@@ -38,6 +39,11 @@ export const theme = createTheme({
     WHITE: '#FFFFFF',
     BLACK: '#000000',
     GREY: '#3D3D54',
+  },
+  borderRadius: {
+    small: '4px',
+    medium: '10px',
+    large: '20px',
   },
   mediaQuery: {
     min: {

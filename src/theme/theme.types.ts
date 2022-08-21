@@ -11,6 +11,11 @@ interface BreakpointMaxValueOptions {
 interface BreakpointMinValueOptions {
   min: BreakpointValues;
 }
+interface ShapeOptions {
+  small: string;
+  medium: string;
+  large: string;
+}
 interface ShadeOptions {
   125: string;
   100: string;
@@ -27,5 +32,6 @@ interface ColorOptions {
 }
 export interface CustomTheme {
   colors: ColorOptions;
+  borderRadius: ShapeOptions;
   mediaQuery: BreakpointMinValueOptions & BreakpointMaxValueOptions;
 }
