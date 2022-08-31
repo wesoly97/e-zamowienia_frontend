@@ -13,6 +13,9 @@ export const parameters = {
   darkMode: {
     current: 'light',
   },
+  backgrounds: {
+    default: 'light',
+  },
   docs: {
     theme: themes.dark,
   },

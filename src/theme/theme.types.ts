@@ -17,11 +17,12 @@ interface ShapeOptions {
   large: string;
 }
 interface ShadeOptions {
-  125: string;
-  100: string;
-  75: string;
-  50: string;
-  25: string;
+  125?: string;
+  100?: string;
+  75?: string;
+  50?: string;
+  25?: string;
+  0?: string;
 }
 interface ColorOptions {
   DARK_BLUE: ShadeOptions;

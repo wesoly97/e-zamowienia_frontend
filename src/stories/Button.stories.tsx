@@ -34,8 +34,8 @@ const Template: Story<ButtonProps> = ({ children, ...props }: ButtonProps) => (
   </>
 );
 
-export const Example = Template.bind({});
-Example.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: 'Default',
 };
 
