@@ -1,7 +1,7 @@
 import { AutocompleteProps as MuiAutocompleteProps } from '@mui/material';
 
 export type AutocompleteProps = Pick<
-  MuiAutocompleteProps<unknown, undefined, undefined, undefined>,
+  MuiAutocompleteProps<unknown, false, undefined, true>,
   | 'renderInput'
   | 'options'
   | 'id'

@@ -2,7 +2,7 @@ import { HTMLAttributes, useState } from 'react';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 
-import { StyledAutocomplete } from './Autocomplete.styles';
+import { StyledAutocomplete, Option } from './Autocomplete.styles';
 import { AutocompleteProps } from './Autocomplete.types';
 
 export const Autocomplete = ({
@@ -30,21 +30,16 @@ export const Autocomplete = ({
   }) => {
     const optionStringified = String(getOptionLabel);
     const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
-    const matches = match(option[parameter], stateValue);
+    const matches = match(option[parameter], stateValue, { insideWords: true });
     const parts = parse(option[parameter], matches);
 
     return (
       <li {...props}>
         <div>
           {parts.map((part, index) => (
-            <span
-              key={index}
-              style={{
-                fontWeight: part.highlight ? 700 : 400,
-              }}
-            >
+            <Option key={index + part.text} $isHighlighted={part.highlight}>
               {part.text}
-            </span>
+            </Option>
           ))}
         </div>
       </li>
@@ -68,6 +63,9 @@ export const Autocomplete = ({
       renderInput={renderInput}
       getOptionLabel={getOptionLabel}
       renderOption={(props, option, { inputValue: stateValue }) => renderOption({ props, option, stateValue })}
+      clearOnEscape={false}
+      clearOnBlur={false}
+      freeSolo={true}
     />
   );
 };
