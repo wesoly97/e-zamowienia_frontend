@@ -15,9 +15,8 @@ type Book = {
   title: string;
   price: number;
 };
-type Books = Book[];
 
-const books: Books = [
+const books: Book[] = [
   {
     title: 'asdd asd',
     price: 12,
@@ -37,29 +36,29 @@ const books: Books = [
 ];
 
 const Template: Story<AutocompleteProps> = ({ ...props }: AutocompleteProps) => {
-  const [value, setValue] = useState(books[0].title);
-  const renderInput = (params: AutocompleteRenderInputParams) => <Input {...params} label="Example" />;
+  const [value, setValue] = useState(books[0]);
 
+  const renderInput = (params: AutocompleteRenderInputParams) => (
+    <Input
+      {...params}
+      label="Example"
+      inputProps={{
+        ...params.inputProps,
+      }}
+    />
+  );
   return (
     <>
       <Autocomplete
         {...props}
         options={books}
-        renderInput={(params) => (
-          <Input
-            {...params}
-            label="Example"
-            inputProps={{
-              ...params.inputProps,
-            }}
-          />
-        )}
-        getOptionLabel={(book: unknown) => (book as Book).title}
-        // value={value}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        // onChange={(event: unknown, newValue: any) => {
-        //   setValue(newValue);
-        // }}
+        renderInput={renderInput}
+        getOptionLabel={(book) => (book as Book).title}
+        isOptionEqualToValue={(option, value) => (option as Book).title === (value as Book).title}
+        value={value}
+        onChange={(_, newValue) => {
+          setValue(newValue as Book);
+        }}
       />
     </>
   );

@@ -13,53 +13,61 @@ export const Autocomplete = ({
   renderInput,
   onChange,
   value,
+  isOptionEqualToValue,
   getOptionDisabled,
-  multiple,
-  limitTags,
 }: AutocompleteProps) => {
   const [inputValue, setInputValue] = useState('');
 
-  // const renderOption = ({ props, stateValue }: { props: HTMLAttributes<HTMLLIElement>; stateValue: string }) => {
-  //   const matches = match(optionProp, stateValue);
-  //   const parts = parse(optionProp, matches);
+  const renderOption = ({
+    props,
+    option,
+    stateValue,
+  }: {
+    props: HTMLAttributes<HTMLLIElement>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    option: any;
+    stateValue: string;
+  }) => {
+    const optionStringified = String(getOptionLabel);
+    const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
+    const matches = match(option[parameter], stateValue);
+    const parts = parse(option[parameter], matches);
 
-  //   return (
-  //     <li {...props}>
-  //       <div>
-  //         {parts.map((part, index) => (
-  //           <span
-  //             key={index}
-  //             style={{
-  //               fontWeight: part.highlight ? 700 : 400,
-  //             }}
-  //           >
-  //             {part.text}
-  //           </span>
-  //         ))}
-  //       </div>
-  //     </li>
-  //   );
-  // };
+    return (
+      <li {...props}>
+        <div>
+          {parts.map((part, index) => (
+            <span
+              key={index}
+              style={{
+                fontWeight: part.highlight ? 700 : 400,
+              }}
+            >
+              {part.text}
+            </span>
+          ))}
+        </div>
+      </li>
+    );
+  };
 
   return (
     <StyledAutocomplete
-      // value={value}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      // onChange={onChange as any}
-      // inputValue={inputValue}
-      // onInputChange={(_, newValue) => {
-      //   setInputValue(newValue);
-      // }}
+      value={value}
+      onChange={onChange}
+      inputValue={inputValue}
+      onInputChange={(_, newValue) => {
+        setInputValue(newValue);
+      }}
       id={id}
       options={options}
-      // groupBy={groupBy}
-      // getOptionDisabled={getOptionDisabled}
-      // openOnFocus={true}
+      groupBy={groupBy}
+      getOptionDisabled={getOptionDisabled}
+      isOptionEqualToValue={isOptionEqualToValue}
+      openOnFocus={true}
       renderInput={renderInput}
       getOptionLabel={getOptionLabel}
-      // multiple={multiple}
-      // limitTags={limitTags}
-      // renderOption={(props, _, { inputValue: stateValue }) => renderOption({ props, stateValue })}
+      renderOption={(props, option, { inputValue: stateValue }) => renderOption({ props, option, stateValue })}
     />
   );
 };
