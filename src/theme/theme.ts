@@ -1,61 +1,66 @@
+import { createTheme } from '@mui/material/styles';
+
 const xsMinWidth = 360;
 const smMinWidth = 768;
 const mdMinWidth = 992;
 const lgMinWidth = 1200;
 const xlMinWidth = 1400;
 
-export const theme = {
+const defaultMuiTheme = {
+  breakpoints: {
+    values: {
+      xl: xlMinWidth,
+      lg: lgMinWidth,
+      md: mdMinWidth,
+      sm: smMinWidth,
+      xs: xsMinWidth,
+    },
+    step: 100,
+  },
+};
+
+export const theme = createTheme({
+  ...defaultMuiTheme,
   colors: {
     DARK_BLUE: {
-      '125': '#063553',
-      '100': '#074268',
-      '75': '#396886',
-      '50': '#6A8EA4',
-      '25': '#9CB3C3',
+      125: '#063553',
+      100: '#074268',
+      75: '#396886',
+      50: '#6A8EA4',
+      25: '#9CB3C3',
+      0: '#CDD9E1',
     },
     LIGHT_BLUE: {
-      '125': '#236F9C',
-      '100': '#2C8BC3',
-      '75': '#56A2CF',
-      '50': '#80B9DB',
-      '25': '#C0DCED',
+      125: '#236F9C',
+      100: '#2C8BC3',
+      75: '#56A2CF',
+      50: '#80B9DB',
+      25: '#ABD1E7',
+      0: '#D5E8F3',
     },
     WHITE: '#FFFFFF',
     BLACK: '#000000',
     GREY: '#3D3D54',
   },
-  breakpoints: {
-    values: {
-      min: {
-        xs: xsMinWidth,
-        sm: smMinWidth,
-        md: mdMinWidth,
-        lg: lgMinWidth,
-        xl: xlMinWidth,
-      },
-      max: {
-        xs: xsMinWidth - 1,
-        sm: smMinWidth - 1,
-        md: mdMinWidth - 1,
-        lg: lgMinWidth - 1,
-        xl: xlMinWidth - 1,
-      },
+  borderRadius: {
+    small: '4px',
+    medium: '10px',
+    large: '20px',
+  },
+  mediaQuery: {
+    min: {
+      xs: `@media (min-width: ${xsMinWidth}px)`,
+      sm: `@media (min-width: ${smMinWidth}px)`,
+      md: `@media (min-width: ${mdMinWidth}px)`,
+      lg: `@media (min-width: ${lgMinWidth}px)`,
+      xl: `@media (min-width: ${xlMinWidth}px)`,
     },
-    mq: {
-      min: {
-        xs: `@media (min-width: ${xsMinWidth}px)`,
-        sm: `@media (min-width: ${xsMinWidth}px)`,
-        md: `@media (min-width: ${xsMinWidth}px)`,
-        lg: `@media (min-width: ${xsMinWidth}px)`,
-        xl: `@media (min-width: ${xsMinWidth}px)`,
-      },
-      max: {
-        xs: `@media (max-width: ${xsMinWidth - 1}px)`,
-        sm: `@media (max-width: ${xsMinWidth - 1}px)`,
-        md: `@media (max-width: ${xsMinWidth - 1}px)`,
-        lg: `@media (max-width: ${xsMinWidth - 1}px)`,
-        xl: `@media (max-width: ${xsMinWidth - 1}px)`,
-      },
+    max: {
+      xs: `@media (max-width: ${xsMinWidth - 1}px)`,
+      sm: `@media (max-width: ${smMinWidth - 1}px)`,
+      md: `@media (max-width: ${mdMinWidth - 1}px)`,
+      lg: `@media (max-width: ${lgMinWidth - 1}px)`,
+      xl: `@media (max-width: ${xlMinWidth - 1}px)`,
     },
   },
-};
+});

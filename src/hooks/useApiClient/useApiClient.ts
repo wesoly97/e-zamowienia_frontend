@@ -5,8 +5,8 @@ import { ApiClientContext } from '@/context/apiClient/apiClientContext/ApiClient
 export const useApiClient = () => {
   const ctx = useContext(ApiClientContext);
 
-  if (typeof ctx === 'undefined') {
-    throw new Error('useApiClient hook is not wrapped by ApiClient provider');
+  if (!ctx) {
+    throw new Error('useApiClient hook is not wrapped by ApiClient provider or Context value is not provided');
   }
 
   return ctx;
