@@ -1,16 +1,22 @@
 export type MutationHTTPMethod = 'DELETE' | 'POST' | 'PUT' | 'PATCH';
 
-export type BadRequestError = {
-  error: {
-    path: string;
-    message: string;
-    details: string;
-    code: string;
-  };
+type Error = {
+  message: string;
 };
 
-export type UnauthorizedError = {
-  message: string;
-  details: string;
-  code: string;
+//500
+export type InternalServerError = Error;
+
+//409
+export type ConflictError = Error;
+
+//404
+export type NotFoundError = Error;
+
+//401
+export type UnauthorizedError = Error;
+
+//400
+export type BadRequestError = {
+  error: Error[];
 };
