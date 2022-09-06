@@ -1,3 +1,7 @@
 export const Main = () => {
-  return <h1>asd</h1>;
+  return (
+    <>
+      <h1>WIP Main</h1>
+    </>
+  );
 };

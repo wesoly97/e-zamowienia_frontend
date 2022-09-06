@@ -1,8 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 
-import { UploadButton } from '../ui/uploadButton/UploadButton';
-
 import { UploadButtonProps } from '@/ui/uploadButton/UploadButton.types';
+import { UploadButton } from '@/ui/uploadButton/UploadButton';
 
 export default {
   title: 'UploadButton',

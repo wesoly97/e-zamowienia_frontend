@@ -2,11 +2,10 @@ import { Meta, Story } from '@storybook/react';
 import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
 import styled from 'styled-components';
 
-import { Button } from '../ui/button/Button';
-import { PrimaryButton } from '../ui/button/PrimaryButton';
-import { SecondaryButton } from '../ui/button/SecondaryButton';
-
 import { ButtonProps } from '@/ui/button/Button.types';
+import { Button } from '@/ui/button/Button';
+import { PrimaryButton } from '@/ui/button/PrimaryButton';
+import { SecondaryButton } from '@/ui/button/SecondaryButton';
 
 const Container = styled.div`
   & > button {
