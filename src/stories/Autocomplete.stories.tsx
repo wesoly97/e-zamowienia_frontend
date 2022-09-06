@@ -1,10 +1,10 @@
-import { AutocompleteRenderInputParams, AutocompleteValue, TextField } from '@mui/material';
+import { AutocompleteRenderInputParams } from '@mui/material';
 import { Meta, Story } from '@storybook/react';
 import { useState } from 'react';
 
-import { Autocomplete } from '../ui/autocomplete/Autocomplete';
-import { AutocompleteProps } from '../ui/autocomplete/Autocomplete.types';
-import { Input } from '../ui/input/Input';
+import { AutocompleteProps } from '@/ui/autocomplete/Autocomplete.types';
+import { Autocomplete } from '@/ui/autocomplete/Autocomplete';
+import { Input } from '@/ui/input/Input';
 
 export default {
   title: 'Autocomplete',

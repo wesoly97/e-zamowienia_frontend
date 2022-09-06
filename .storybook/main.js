@@ -1,6 +1,6 @@
 const { mergeConfig } = require('vite');
-const path = require('path');
 const tsconfigPaths = require('vite-tsconfig-paths');
+const svgr = require('vite-plugin-svgr');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -15,19 +15,18 @@ module.exports = {
   },
 
   async viteFinal(config, { configType }) {
-    // return {
-    //   ...config,
-    //   plugins: [...config.plugins, tsconfigPaths.default()],
-    // };
+    config.plugins = [
+      ...config.plugins,
+      svgr(),
+      tsconfigPaths.default()
+    ];
 
-    // config.resolve.modules = [resolve(__dirname, '@', '../src'), 'node_modules'];
     config.resolve.alias = {
       ...config.resolve.alias,
       '@mui/styled-engine': '@mui/styled-engine-sc',
     };
 
     return mergeConfig(config, {
-      // resolve: path.resolve(__dirname, '../vite.config.ts'),
       optimizeDeps: {
         include: ['storybook-dark-mode'],
       },

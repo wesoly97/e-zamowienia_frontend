@@ -3,15 +3,16 @@ import styled, { css } from 'styled-components';
 
 export const baseButtonStyles = css`
   min-width: 160px;
-  height: 45px;
+  height: 40px;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   box-sizing: border-box;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
-    height: 40px;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    height: 45px;
   }
 `;
 

@@ -1,9 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Input } from '../ui/input/Input';
-
 import { InputProps } from '@/ui/input/Input.types';
+import { Input } from '@/ui/input/Input';
 
 const Container = styled.div`
   & > div {
@@ -25,9 +24,9 @@ export default {
 
 const Template: Story<InputProps> = ({ ...props }: InputProps) => (
   <>
-    <Input variant="standard" {...props} />
-    <Input variant="outlined" {...props} />
-    <Input variant="filled" {...props} />
+    <Input {...props} variant="standard" />
+    <Input {...props} variant="outlined" />
+    <Input {...props} variant="filled" />
   </>
 );
 
