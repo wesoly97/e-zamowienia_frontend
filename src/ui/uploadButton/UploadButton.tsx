@@ -7,9 +7,9 @@ export const UploadButton = ({ accept, multiple, children }: UploadButtonProps) 
       {children}
       <input hidden accept={accept} multiple={multiple} type="file" />
       <Box>
-        <Blob></Blob>
-        <Blob></Blob>
-        <Blob></Blob>
+        <Blob />
+        <Blob />
+        <Blob />
       </Box>
     </StyledUploadButton>
   );

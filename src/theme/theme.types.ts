@@ -1,16 +1,5 @@
-interface BreakpointValues {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-}
-interface BreakpointMaxValueOptions {
-  max: BreakpointValues;
-}
-interface BreakpointMinValueOptions {
-  min: BreakpointValues;
-}
+import { FlattenSimpleInterpolation } from 'styled-components';
+
 interface ShapeOptions {
   small: string;
   medium: string;
@@ -31,8 +20,19 @@ interface ColorOptions {
   BLACK: string;
   GREY: string;
 }
+
+interface FontTypeOptions {
+  h1: FlattenSimpleInterpolation;
+  h2: FlattenSimpleInterpolation;
+  h3: FlattenSimpleInterpolation;
+  h4: FlattenSimpleInterpolation;
+  body1: FlattenSimpleInterpolation;
+  body2: FlattenSimpleInterpolation;
+  subtitle1: FlattenSimpleInterpolation;
+  subtitle2: FlattenSimpleInterpolation;
+}
 export interface CustomTheme {
   colors: ColorOptions;
   borderRadius: ShapeOptions;
-  mediaQuery: BreakpointMinValueOptions & BreakpointMaxValueOptions;
+  fontType: FontTypeOptions;
 }

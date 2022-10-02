@@ -33,8 +33,6 @@ const StyledListItem = styled(ListItem)`
   }
 `;
 
-const navItems = ['Home', 'About', 'Contact'];
-
 const Template: Story<NavbarProps> = ({ children, ...props }: NavbarProps) => <Navbar {...props}>{children}</Navbar>;
 
 export const Default = Template.bind({});
@@ -43,13 +41,11 @@ Default.args = {
     <>
       <StyledLogo />
       <StyledList>
-        {navItems.map((item) => (
-          <StyledListItem key={item}>
-            <ListItemButton>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </StyledListItem>
-        ))}
+        <StyledListItem>
+          <ListItemButton>
+            <ListItemText primary={'Home'} />
+          </ListItemButton>
+        </StyledListItem>
       </StyledList>
     </>
   ),

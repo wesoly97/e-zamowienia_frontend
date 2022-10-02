@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { Drawer } from '@mui/material';
+import { AppBar } from '@mui/material';
+
+export const StyledAppBar = styled(AppBar)`
+  background-color: ${({ theme }) => theme.colors.WHITE};
+  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  box-shadow: none;
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -34,31 +40,16 @@ export const Container = styled.div`
   }
 `;
 
+export const ActionBox = styled.div`
+  display: flex;
+  gap: 40px;
+  margin-left: 40px;
+`;
+
 export const List = styled.div`
   display: flex;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     padding-left: 20px;
-  }
-`;
-
-export const Utils = styled.div`
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    flex-grow: 1;
-    justify-content: flex-end;
-    display: flex;
-  }
-`;
-
-export const StyledDrawer = styled(Drawer)`
-  display: block;
-
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    display: none;
-  }
-
-  & .MuiDrawer-paper {
-    padding: 20px 0;
-    background-color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   }
 `;

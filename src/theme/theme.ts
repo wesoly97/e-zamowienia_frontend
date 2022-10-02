@@ -1,3 +1,4 @@
+import { css } from 'styled-components';
 import { createTheme } from '@mui/material/styles';
 
 const xsMinWidth = 360;
@@ -16,6 +17,9 @@ const defaultMuiTheme = {
       xs: xsMinWidth,
     },
     step: 100,
+  },
+  typography: {
+    fontFamily: '"Open-Sans", sans-serif',
   },
 };
 
@@ -47,20 +51,49 @@ export const theme = createTheme({
     medium: '10px',
     large: '20px',
   },
-  mediaQuery: {
-    min: {
-      xs: `@media (min-width: ${xsMinWidth}px)`,
-      sm: `@media (min-width: ${smMinWidth}px)`,
-      md: `@media (min-width: ${mdMinWidth}px)`,
-      lg: `@media (min-width: ${lgMinWidth}px)`,
-      xl: `@media (min-width: ${xlMinWidth}px)`,
-    },
-    max: {
-      xs: `@media (max-width: ${xsMinWidth - 1}px)`,
-      sm: `@media (max-width: ${smMinWidth - 1}px)`,
-      md: `@media (max-width: ${mdMinWidth - 1}px)`,
-      lg: `@media (max-width: ${lgMinWidth - 1}px)`,
-      xl: `@media (max-width: ${xlMinWidth - 1}px)`,
-    },
+  fontType: {
+    h1: css`
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1.167;
+      text-transform: uppercase;
+    `,
+    h2: css`
+      font-size: 37.5px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+    `,
+    h3: css`
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.167;
+      text-transform: uppercase;
+    `,
+    h4: css`
+      font-size: 21.2px;
+      font-weight: 300;
+      line-height: 1.235;
+    `,
+    body1: css`
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+    `,
+    body2: css`
+      font-size: 8.75px;
+      font-weight: 400;
+      line-height: 1.43;
+    `,
+    subtitle1: css`
+      font-size: 8.75px;
+      font-weight: 400;
+      line-height: 1.75;
+    `,
+    subtitle2: css`
+      font-size: 8.75px;
+      font-weight: 400;
+      line-height: 1.57;
+    `,
   },
 });
