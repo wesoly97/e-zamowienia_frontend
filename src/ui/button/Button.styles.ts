@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const baseButtonStyles = css`
   min-width: 160px;
+  width: 160px;
   height: 40px;
   font-size: 16px;
   font-weight: 600;

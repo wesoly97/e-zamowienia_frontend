@@ -6,9 +6,10 @@
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest-dom/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
+    "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["prettier", "import"],
+  "plugins": ["prettier", "import" , "jsx-a11y"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -74,7 +75,8 @@
         "testing-library/prefer-screen-queries": "off",
         "react/react-in-jsx-scope": "off",
         "testing-library/no-container": "off",
-        "jest/no-conditional-expect": "warn"
+        "jest/no-conditional-expect": "warn",
+        "jsx-a11y/rule-name": 2
       }
     }
   ]
