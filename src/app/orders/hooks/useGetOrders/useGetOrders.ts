@@ -5,9 +5,9 @@ import { GetOrdersError, GetOrdersResponse } from '@/api/actions/orders/orders.t
 import { getOrdersQueryKey } from '@/api/actions/orders/orders';
 import { getInfiniteRefetchOptions } from '@/utils/api/getInfiniteRefetchOptions';
 
-export const useGetOrders = (opts?: UseQueryOptions<GetOrdersResponse, GetOrdersError>) => {
+export const useGetOrders = (options?: UseQueryOptions<GetOrdersResponse, GetOrdersError>) => {
   return useQuery<GetOrdersResponse, GetOrdersError>([getOrdersQueryKey], {
     ...getInfiniteRefetchOptions(),
-    ...opts,
+    ...options,
   });
 };

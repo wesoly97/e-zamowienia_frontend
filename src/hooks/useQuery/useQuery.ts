@@ -10,5 +10,8 @@ export const useQuery = <TData = unknown, TError = unknown>(
   const { queryFn: clientQueryFn } = useApiClient();
   const queryFn = useMemo(() => clientQueryFn<TData>(), [clientQueryFn]);
 
-  return useTanstackQuery<TData, TError, TData, QueryKey>(queryKey, queryFn, options);
+  return useTanstackQuery<TData, TError, TData, QueryKey>(queryKey, queryFn, {
+    ...options,
+    refetchOnWindowFocus: false,
+  });
 };

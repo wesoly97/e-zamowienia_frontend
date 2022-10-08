@@ -1,21 +1,32 @@
 import { Avatar, IconButton, Tooltip, useMediaQuery } from '@mui/material';
 import { useMemo, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useNavigate } from 'react-router-dom';
 
 import { PrimaryButton } from '../button/PrimaryButton';
 import { SecondaryButton } from '../button/SecondaryButton';
 
 import { NavbarProps } from './Navbar.types';
-import { ActionBox, Container, List, StyledAppBar, Wrapper } from './Navbar.styles';
+import { ActionBox, Container, List, StyledAppBar, StyledLogo, Wrapper } from './Navbar.styles';
 import { Drawer } from './drawer/Drawer';
 
 import { theme } from '@/theme/theme';
+import { AppRoute } from '@/routing/AppRoutes.types';
 
-export const Navbar = ({ children, enableColorOnDark }: NavbarProps) => {
+export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setOpen((prevState) => !prevState);
+  };
+
+  const handleLoginPage = () => {
+    navigate(AppRoute.Login);
+  };
+
+  const handleRegisterPage = () => {
+    navigate(AppRoute.Register);
   };
 
   const matches = useMediaQuery(theme.breakpoints.up('md'));
@@ -40,15 +51,16 @@ export const Navbar = ({ children, enableColorOnDark }: NavbarProps) => {
 
   return (
     <>
-      <StyledAppBar position={'static'} enableColorOnDark={enableColorOnDark}>
+      <StyledAppBar position={position} enableColorOnDark={enableColorOnDark}>
         <Wrapper>
           <Container>
             {matches ? (
               <>
+                <StyledLogo />
                 {children}
                 <ActionBox>
-                  <PrimaryButton handleClick={() => null}>Logowanie</PrimaryButton>
-                  <SecondaryButton handleClick={() => null}>Rejestracja</SecondaryButton>
+                  <PrimaryButton handleClick={handleLoginPage}>Logowanie</PrimaryButton>
+                  <SecondaryButton handleClick={handleRegisterPage}>Rejestracja</SecondaryButton>
                 </ActionBox>
               </>
             ) : (

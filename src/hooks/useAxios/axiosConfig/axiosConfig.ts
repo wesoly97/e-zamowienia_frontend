@@ -1,6 +1,9 @@
 export const getAxiosConfig = () => {
   return {
-    timeout: 500,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    timeout: 2500,
     baseURL: import.meta.env.VITE_API_URL,
   };
 };

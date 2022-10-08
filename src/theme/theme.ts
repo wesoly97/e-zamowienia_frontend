@@ -44,7 +44,7 @@ export const theme = createTheme({
     },
     WHITE: '#FFFFFF',
     BLACK: '#000000',
-    GREY: '#3D3D54',
+    GREY: '#EDF7F5',
   },
   borderRadius: {
     small: '4px',

@@ -9,13 +9,11 @@ import { InfiniteQueryFn, UseInfiniteQueryOptions } from 'hooks/useInfiniteQuery
 
 import { getAxiosConfig } from './axiosConfig/axiosConfig';
 import { responseFailureInterceptor, responseSuccessInterceptor } from './interceptors/responseInterceptors';
-// import { requestSuccessInterceptor } from './interceptors/requestInterceptors';
 
 export const useAxios = (): ApiClientContextValue => {
   const client = useMemo(() => {
     const axios = Axios.create(getAxiosConfig());
 
-    // axios.interceptors.request.use(requestSuccessInterceptor);
     axios.interceptors.response.use(responseSuccessInterceptor, responseFailureInterceptor);
 
     return axios;
@@ -25,8 +23,8 @@ export const useAxios = (): ApiClientContextValue => {
     <TData>(): QueryFunction<TData> =>
       async ({ queryKey: [url] }) => {
         if (typeof url === 'string') {
-          const lowerCaseUrl = url.toLowerCase();
-          const { data } = await client.get(`/${lowerCaseUrl}`);
+          const { data } = await client.get<TData>(url);
+
           return data;
         }
         throw new Error('Invalid QueryKey');
@@ -41,10 +39,13 @@ export const useAxios = (): ApiClientContextValue => {
       ): QueryFunction<TParams> =>
       async ({ pageParam = options?.startPage ?? 0 }) => {
         const { endpoint, args } = query(options?.args);
+
         const cursorKey = options?.cursorKey;
-        const { data } = await client.get(
+
+        const { data } = await client.get<TParams>(
           `/${endpoint}?${cursorKey}=${pageParam}&${stringify(args, { addQueryPrefix: false })}`,
         );
+
         return data;
       },
     [client],
@@ -53,14 +54,18 @@ export const useAxios = (): ApiClientContextValue => {
   const mutationFn = useCallback(
     <TParams = unknown, TData = unknown>(mutation: MutationFn<TParams, TData>): MutationFunction<TData, TParams> =>
       async (variables) => {
-        const { endpoint, params, method } = mutation(variables);
+        const { endpoint, params, method, headers, timeout } = mutation(variables);
 
         const axiosConfig: AxiosRequestConfig = {
           url: `/${endpoint}`,
           data: params ? JSON.stringify(params) : undefined,
           method: method || 'POST',
+          headers,
+          timeout,
         };
+
         const { data } = await client.request(axiosConfig);
+
         return data;
       },
     [client],

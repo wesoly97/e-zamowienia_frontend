@@ -40,7 +40,6 @@ export const StyledSecondaryButton = styled(Button)`
   border: ${({ theme }) => theme.colors.DARK_BLUE[100]} solid 2px;
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   border-radius: ${({ theme }) => theme.borderRadius.small};
-  letter-spacing: 2px;
 
   &:hover,
   &:focus {
