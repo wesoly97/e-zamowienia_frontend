@@ -17,6 +17,7 @@ export const Heading = styled.h1`
   left: 520px;
   width: 650px;
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  margin: 0;
 
   ${({ theme }) => theme.fontType.h1};
 `;

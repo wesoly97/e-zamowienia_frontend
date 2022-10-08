@@ -44,7 +44,6 @@ export const StyledUploadButton = styled(Button)`
   border: ${({ theme }) => theme.colors.DARK_BLUE[100]} solid ${({ theme }) => theme.borderRadius.small};
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   background-color: transparent;
-  letter-spacing: 2px;
 
   &:hover,
   &:focus {

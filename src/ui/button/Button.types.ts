@@ -2,7 +2,7 @@ import { ButtonTypeMap } from '@mui/material';
 import { ReactNode } from 'react';
 
 type ActionProps = {
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 export type ButtonProps = {

@@ -16,4 +16,6 @@ export type InputProps = Pick<
   | 'inputProps'
   | 'InputProps'
   | 'InputLabelProps'
+  | 'classes'
+  | 'className'
 >;

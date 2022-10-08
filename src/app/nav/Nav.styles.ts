@@ -20,6 +20,7 @@ export const StyledListItem = styled.li`
   color: ${({ theme }) => theme.colors.WHITE};
 
   ${({ theme }) => theme.breakpoints.up('md')} {
+    color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
     padding: 8px 16px;
   }
 `;

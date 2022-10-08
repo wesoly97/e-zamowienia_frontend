@@ -1,3 +1,11 @@
+export enum HTTPMethods {
+  Delete = 'DELETE',
+  Post = 'POST',
+  Put = 'PUT',
+  Patch = 'PATCH',
+  Get = 'GET',
+}
+
 export type MutationHTTPMethod = 'DELETE' | 'POST' | 'PUT' | 'PATCH';
 
 type Error = {

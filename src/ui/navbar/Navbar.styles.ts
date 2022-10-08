@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { AppBar } from '@mui/material';
 
+import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
+
 export const StyledAppBar = styled(AppBar)`
   background-color: ${({ theme }) => theme.colors.WHITE};
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
@@ -38,6 +40,12 @@ export const Container = styled.div`
   ${({ theme }) => theme.breakpoints.up('md')} {
     justify-content: left;
   }
+`;
+
+export const StyledLogo = styled(Logo)`
+  width: 190px;
+  height: 30px;
+  padding-bottom: 7px;
 `;
 
 export const ActionBox = styled.div`

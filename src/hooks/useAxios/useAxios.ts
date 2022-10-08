@@ -9,13 +9,11 @@ import { InfiniteQueryFn, UseInfiniteQueryOptions } from 'hooks/useInfiniteQuery
 
 import { getAxiosConfig } from './axiosConfig/axiosConfig';
 import { responseFailureInterceptor, responseSuccessInterceptor } from './interceptors/responseInterceptors';
-// import { requestSuccessInterceptor } from './interceptors/requestInterceptors';
 
 export const useAxios = (): ApiClientContextValue => {
   const client = useMemo(() => {
     const axios = Axios.create(getAxiosConfig());
 
-    // axios.interceptors.request.use(requestSuccessInterceptor);
     axios.interceptors.response.use(responseSuccessInterceptor, responseFailureInterceptor);
 
     return axios;
