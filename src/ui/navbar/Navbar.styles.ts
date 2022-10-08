@@ -46,6 +46,7 @@ export const StyledLogo = styled(Logo)`
   width: 190px;
   height: 30px;
   padding-bottom: 7px;
+  cursor: pointer;
 `;
 
 export const ActionBox = styled.div`

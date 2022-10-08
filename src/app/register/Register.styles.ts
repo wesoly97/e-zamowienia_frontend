@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { ReactComponent as LoginIcon } from '@/assets/icons/login/login.svg';
-import { ReactComponent as WaveIcon } from '@/assets/icons/login/wave.svg';
+import { ReactComponent as RegisterIcon } from '@/assets/icons/register/register.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +12,7 @@ export const IconWrapper = styled.div`
   align-items: center;
 `;
 
-export const StyledLoginIcon = styled(LoginIcon)`
+export const StyledRegisterIcon = styled(RegisterIcon)`
   width: 664px;
   height: 400px;
 `;
@@ -33,8 +32,9 @@ export const Header = styled.h1`
   ${({ theme }) => theme.fontType.h4};
 `;
 
-export const StyledWaveIcon = styled(WaveIcon)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
+export const SubHeader = styled.h2`
+  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  text-align: center;
+
+  ${({ theme }) => theme.fontType.h4};
 `;

@@ -7,6 +7,7 @@ import { OrdersContainer } from '@/app/orders/OrdersContainers';
 import { Nav } from '@/app/nav/Nav';
 import { Footer } from '@/app/footer/Footer';
 import { Login } from '@/app/login/Login';
+import { Register } from '@/app/register/Register';
 
 export const AppRoutes = () => (
   <Routes>
@@ -26,6 +27,15 @@ export const AppRoutes = () => (
         <>
           <Nav position={'absolute'} />
           <Login />
+        </>
+      }
+    />
+    <Route
+      path={AppRoute.Register}
+      element={
+        <>
+          <Nav position={'absolute'} />
+          <Register />
         </>
       }
     />

@@ -33,6 +33,7 @@ export const StyledLogo = styled(Logo)`
   width: 190px;
   height: 30px;
   padding-bottom: 7px;
+  cursor: pointer;
 
   & path {
     fill: ${({ theme }) => theme.colors.WHITE};

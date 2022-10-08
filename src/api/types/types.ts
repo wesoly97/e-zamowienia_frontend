@@ -28,3 +28,9 @@ export type UnauthorizedError = Error;
 export type BadRequestError = {
   error: Error[];
 };
+
+export enum RoleTypes {
+  Administrator = 'administrator',
+  orderer = 'orderer',
+  regular = 'regular',
+}

@@ -1,1 +1,1 @@
-export const getSessionQueryKey = 'session';
+export const getSessionQueryKey = 'users/session';

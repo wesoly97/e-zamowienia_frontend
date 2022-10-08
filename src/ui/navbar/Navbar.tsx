@@ -1,7 +1,6 @@
 import { Avatar, IconButton, Tooltip, useMediaQuery } from '@mui/material';
 import { useMemo, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useNavigate } from 'react-router-dom';
 
 import { PrimaryButton } from '../button/PrimaryButton';
 import { SecondaryButton } from '../button/SecondaryButton';
@@ -12,6 +11,7 @@ import { Drawer } from './drawer/Drawer';
 
 import { theme } from '@/theme/theme';
 import { AppRoute } from '@/routing/AppRoutes.types';
+import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) => {
   const [open, setOpen] = useState(false);
@@ -21,11 +21,15 @@ export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) =
     setOpen((prevState) => !prevState);
   };
 
-  const handleLoginPage = () => {
+  const handleRedirectMainPage = () => {
+    navigate(AppRoute.Main);
+  };
+
+  const handleRedirectLoginPage = () => {
     navigate(AppRoute.Login);
   };
 
-  const handleRegisterPage = () => {
+  const handleRedirectRegisterPage = () => {
     navigate(AppRoute.Register);
   };
 
@@ -56,11 +60,11 @@ export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) =
           <Container>
             {matches ? (
               <>
-                <StyledLogo />
+                <StyledLogo onClick={handleRedirectMainPage} />
                 {children}
                 <ActionBox>
-                  <PrimaryButton handleClick={handleLoginPage}>Logowanie</PrimaryButton>
-                  <SecondaryButton handleClick={handleRegisterPage}>Rejestracja</SecondaryButton>
+                  <PrimaryButton handleClick={handleRedirectLoginPage}>Logowanie</PrimaryButton>
+                  <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
                 </ActionBox>
               </>
             ) : (

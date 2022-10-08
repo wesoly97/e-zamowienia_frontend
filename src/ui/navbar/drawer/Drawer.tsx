@@ -3,8 +3,24 @@ import { DrawerProps } from './Drawer.types';
 
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
+import { AppRoute } from '@/routing/AppRoutes.types';
+import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const Drawer = ({ onToggle, isOpened, children }: DrawerProps) => {
+  const navigate = useNavigate();
+
+  const handleRedirectMainPage = () => {
+    navigate(AppRoute.Main);
+  };
+
+  const handleRedirectLoginPage = () => {
+    navigate(AppRoute.Login);
+  };
+
+  const handleRedirectRegisterPage = () => {
+    navigate(AppRoute.Register);
+  };
+
   return (
     <StyledDrawer
       open={isOpened}
@@ -16,12 +32,12 @@ export const Drawer = ({ onToggle, isOpened, children }: DrawerProps) => {
     >
       <Container>
         <div>
-          <StyledLogo />
+          <StyledLogo onClick={handleRedirectMainPage} />
           {children}
         </div>
         <ButtonBox>
-          <PrimaryButton handleClick={() => null}>Logowanie</PrimaryButton>
-          <SecondaryButton handleClick={() => null}>Rejestracja</SecondaryButton>
+          <PrimaryButton handleClick={handleRedirectLoginPage}>Logowanie</PrimaryButton>
+          <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
         </ButtonBox>
       </Container>
     </StyledDrawer>
