@@ -5,7 +5,6 @@ import { Statistics } from './Statistics';
 export const StatisticsContainer = () => {
   const { data, isLoading } = useGetStatistics({
     retry: 3,
-    refetchOnWindowFocus: false,
   });
 
   return (
