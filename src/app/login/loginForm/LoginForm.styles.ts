@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FormInput } from '@/ui/input/formInput/FormInput';
+import { FormInput } from '@/ui/formInput/FormInput';
 
 export const Form = styled.form`
   display: flex;

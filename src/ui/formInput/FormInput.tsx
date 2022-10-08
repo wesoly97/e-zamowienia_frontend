@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { StyledInput } from '../Input.styles';
+import { StyledInput } from '../input/Input.styles';
 
 import { FormInputProps } from './FormInput.types';
 
