@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Drawer } from '@mui/material';
 
-import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
-
 export const StyledDrawer = styled(Drawer)`
   display: block;
 
@@ -27,17 +25,6 @@ export const Container = styled.div`
   align-items: center;
   height: 100%;
   padding: 20px 0;
-`;
-
-export const StyledLogo = styled(Logo)`
-  width: 190px;
-  height: 30px;
-  padding-bottom: 7px;
-  cursor: pointer;
-
-  & path {
-    fill: ${({ theme }) => theme.colors.WHITE};
-  }
 `;
 
 export const ButtonBox = styled.div`

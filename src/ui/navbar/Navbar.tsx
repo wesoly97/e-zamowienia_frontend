@@ -1,39 +1,25 @@
-import { Avatar, IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import { IconButton, useMediaQuery } from '@mui/material';
 import { useMemo, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { PrimaryButton } from '../button/PrimaryButton';
-import { SecondaryButton } from '../button/SecondaryButton';
-
 import { NavbarProps } from './Navbar.types';
-import { ActionBox, Container, List, StyledAppBar, StyledLogo, Wrapper } from './Navbar.styles';
+import { ActionBox, Container, List, StyledAppBar, Wrapper } from './Navbar.styles';
 import { Drawer } from './drawer/Drawer';
+import { UserMenu } from './userMenu/UserMenu';
 
 import { theme } from '@/theme/theme';
-import { AppRoute } from '@/routing/AppRoutes.types';
-import { useNavigate } from '@/hooks/useNavigate/useNavigate';
+import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 
-export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) => {
+export const Navbar = ({ children, buttons, enableColorOnDark, position, userPanel }: NavbarProps) => {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+
+  const { isAuthenticated } = useAuthContext();
 
   const handleMenuToggle = () => {
     setOpen((prevState) => !prevState);
   };
 
-  const handleRedirectMainPage = () => {
-    navigate(AppRoute.Main);
-  };
-
-  const handleRedirectLoginPage = () => {
-    navigate(AppRoute.Login);
-  };
-
-  const handleRedirectRegisterPage = () => {
-    navigate(AppRoute.Register);
-  };
-
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   const hamburger = useMemo(
     () => (
@@ -58,28 +44,19 @@ export const Navbar = ({ children, enableColorOnDark, position }: NavbarProps) =
       <StyledAppBar position={position} enableColorOnDark={enableColorOnDark}>
         <Wrapper>
           <Container>
-            {matches ? (
+            {isDesktop ? (
               <>
-                <StyledLogo onClick={handleRedirectMainPage} />
                 {children}
-                <ActionBox>
-                  <PrimaryButton handleClick={handleRedirectLoginPage}>Logowanie</PrimaryButton>
-                  <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
-                </ActionBox>
+                <ActionBox>{buttons}</ActionBox>
               </>
             ) : (
               hamburger
             )}
-            {/* TODO Logged*/}
-            {/* <Tooltip title="Panel użytkownika">
-              <IconButton>
-                <Avatar></Avatar>
-              </IconButton>
-            </Tooltip> */}
+            {isAuthenticated && isDesktop && <UserMenu userPanel={userPanel} />}
           </Container>
         </Wrapper>
       </StyledAppBar>
-      <Drawer onToggle={handleMenuToggle} isOpened={open}>
+      <Drawer onToggle={handleMenuToggle} isOpened={open} buttons={buttons}>
         {children}
       </Drawer>
     </>
