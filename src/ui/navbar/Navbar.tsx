@@ -56,7 +56,13 @@ export const Navbar = ({ children, buttons, enableColorOnDark, position, userPan
           </Container>
         </Wrapper>
       </StyledAppBar>
-      <Drawer onToggle={handleMenuToggle} isOpened={open} buttons={buttons}>
+      <Drawer
+        onToggle={handleMenuToggle}
+        isOpened={open}
+        buttons={buttons}
+        userPanel={userPanel}
+        isAuthenticated={isAuthenticated}
+      >
         {children}
       </Drawer>
     </>
