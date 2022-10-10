@@ -7,6 +7,8 @@ import { OrdersContainer } from '@/app/orders/OrdersContainers';
 import { Nav } from '@/app/nav/Nav';
 import { Footer } from '@/app/footer/Footer';
 import { Login } from '@/app/login/Login';
+import { Register } from '@/app/register/Register';
+import { UnauthenticatedLayout } from '@/layouts/unauthenticatedLayout/UnauthenticatedLayout';
 
 export const AppRoutes = () => (
   <Routes>
@@ -23,10 +25,19 @@ export const AppRoutes = () => (
     <Route
       path={AppRoute.Login}
       element={
-        <>
+        <UnauthenticatedLayout>
           <Nav position={'absolute'} />
           <Login />
-        </>
+        </UnauthenticatedLayout>
+      }
+    />
+    <Route
+      path={AppRoute.Register}
+      element={
+        <UnauthenticatedLayout>
+          <Nav position={'absolute'} />
+          <Register />
+        </UnauthenticatedLayout>
       }
     />
     <Route

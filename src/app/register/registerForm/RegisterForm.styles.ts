@@ -7,6 +7,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: flex-end;
   gap: 32px;
+  padding: 0 200px;
 `;
 
 export const StyledInput = styled(FormInput)`

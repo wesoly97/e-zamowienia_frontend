@@ -1,10 +1,9 @@
-import { StyledDrawer, Container, StyledLogo, ButtonBox } from './Drawer.styles';
+import { StyledDrawer, Container, ButtonBox } from './Drawer.styles';
 import { DrawerProps } from './Drawer.types';
 
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
-import { SecondaryButton } from '@/ui/button/SecondaryButton';
 
-export const Drawer = ({ onToggle, isOpened, children }: DrawerProps) => {
+export const Drawer = ({ onToggle, isOpened, children, buttons, userPanel, isAuthenticated }: DrawerProps) => {
   return (
     <StyledDrawer
       open={isOpened}
@@ -15,13 +14,17 @@ export const Drawer = ({ onToggle, isOpened, children }: DrawerProps) => {
       }}
     >
       <Container>
-        <div>
-          <StyledLogo />
-          {children}
-        </div>
+        <div>{children}</div>
         <ButtonBox>
-          <PrimaryButton handleClick={() => null}>Logowanie</PrimaryButton>
-          <SecondaryButton handleClick={() => null}>Rejestracja</SecondaryButton>
+          {isAuthenticated &&
+            userPanel.map(({ label, action }, index) => {
+              return (
+                <PrimaryButton key={index} handleClick={action}>
+                  {label}
+                </PrimaryButton>
+              );
+            })}
+          {buttons}
         </ButtonBox>
       </Container>
     </StyledDrawer>

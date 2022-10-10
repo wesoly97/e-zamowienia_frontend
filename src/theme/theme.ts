@@ -51,6 +51,7 @@ export const theme = createTheme({
     medium: '10px',
     large: '20px',
   },
+  //TODO change fontSize px->rem
   fontType: {
     h1: css`
       font-size: 60px;

@@ -1,10 +1,4 @@
-import { BadRequestError, UnauthorizedError } from '../../types/types';
-
-export enum RoleTypes {
-  Administrator = 'administrator',
-  orderer = 'orderer',
-  regular = 'regular',
-}
+import { BadRequestError, RoleTypes, UnauthorizedError } from '@/api/types/types';
 
 export type GetSessionResponse = {
   _id: string;

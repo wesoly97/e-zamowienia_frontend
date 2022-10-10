@@ -1,15 +1,30 @@
-import { Container, Icon, FormWrapper, Header, StyledLoginIcon, StyledWaveIcon } from './Login.styles';
+import {
+  Container,
+  IconWrapper,
+  FormWrapper,
+  Header,
+  StyledLoginIcon,
+  StyledWaveIcon,
+  FormBox,
+  RegisterPrompt,
+  StyledLink,
+} from './Login.styles';
 import { LoginForm } from './loginForm/LoginForm';
 
 export const Login = () => {
   return (
     <Container>
-      <Icon>
+      <IconWrapper>
         <StyledLoginIcon />
-      </Icon>
+      </IconWrapper>
       <FormWrapper>
-        <Header>Zaloguj się</Header>
-        <LoginForm />
+        <FormBox>
+          <Header>Zaloguj się</Header>
+          <LoginForm />
+          <RegisterPrompt>
+            Nie możesz się zalogować?<StyledLink to={'/'}>&nbsp;Zresetuj hasło</StyledLink>
+          </RegisterPrompt>
+        </FormBox>
       </FormWrapper>
       <StyledWaveIcon />
     </Container>
