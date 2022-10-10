@@ -10,7 +10,7 @@ export const useLoginEffect = (form: UseFormReturn<LoginFormData>) => {
 
   return useLogin({
     onSuccess: (data) => {
-      // navigate(0);
+      navigate(0);
     },
     onError: (error) => {
       //errory form uzywany

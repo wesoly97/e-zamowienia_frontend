@@ -7,10 +7,8 @@ export const useLogoutEffect = () => {
 
   return useLogout({
     onSuccess: (data) => {
-      // navigate(0);
+      navigate(0);
     },
-    onError: (error) => {
-      //errory form uzywany
-    },
+    onError: (error) => {},
   });
 };
