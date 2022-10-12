@@ -19,6 +19,7 @@ const defaultMuiTheme = {
     step: 100,
   },
   typography: {
+    htmlFontSize: 10,
     fontFamily: '"Open-Sans", sans-serif',
   },
 };
@@ -58,23 +59,27 @@ export const theme = createTheme({
       font-weight: 700;
       line-height: 1.167;
       text-transform: uppercase;
+      user-select: none;
     `,
     h2: css`
       font-size: 37.5px;
       font-weight: 700;
       line-height: 1.2;
       text-transform: uppercase;
+      user-select: none;
     `,
     h3: css`
       font-size: 30px;
       font-weight: 500;
       line-height: 1.167;
       text-transform: uppercase;
+      user-select: none;
     `,
     h4: css`
       font-size: 21.2px;
       font-weight: 300;
       line-height: 1.235;
+      user-select: none;
     `,
     body1: css`
       font-size: 10px;

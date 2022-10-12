@@ -44,8 +44,9 @@ export const AppRoutes = () => (
       path={AppRoute.Orders}
       element={
         <>
-          <Nav />
+          <Nav position={'static'} />
           <OrdersContainer />
+          <Footer />
         </>
       }
     />
