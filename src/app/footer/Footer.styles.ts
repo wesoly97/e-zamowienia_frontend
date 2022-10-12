@@ -1,6 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
+import { containerStyles } from '@/theme/shared';
 
 export const Container = styled.footer`
   display: flex;
@@ -11,11 +12,15 @@ export const Container = styled.footer`
   color: ${({ theme }) => theme.colors.WHITE};
 `;
 
+export const Content = styled.div`
+  ${containerStyles}
+
+  margin-top: 40px;
+`;
+
 export const StyledLogo = styled(Logo)`
   width: 190px;
   height: 30px;
-  margin-left: 60px;
-  margin-top: 50px;
 
   & path {
     fill: ${({ theme }) => theme.colors.WHITE};
@@ -25,7 +30,6 @@ export const StyledLogo = styled(Logo)`
 export const Menu = styled.div`
   display: flex;
   gap: 80px;
-  margin-left: 80px;
 `;
 
 export const Column = styled.div`

@@ -8,9 +8,5 @@ export const OrdersContainer = () => {
     return null;
   }
 
-  return (
-    <>
-      <Orders data={data} />
-    </>
-  );
+  return <Orders data={data} />;
 };

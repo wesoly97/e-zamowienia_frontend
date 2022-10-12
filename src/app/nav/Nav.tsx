@@ -22,6 +22,10 @@ export const Nav = ({ position }: NavProps) => {
     navigate(AppRoute.Main);
   };
 
+  const handleRedirectOrdersPage = () => {
+    navigate(AppRoute.Orders);
+  };
+
   const buttons = useMemo(() => {
     const handleRedirectLoginPage = () => {
       navigate(AppRoute.Login);
@@ -56,7 +60,7 @@ export const Nav = ({ position }: NavProps) => {
         <StyledLogo onClick={handleRedirectMainPage} />
         <StyledList>
           <StyledListItem>
-            <ListItemButton>
+            <ListItemButton onClick={handleRedirectOrdersPage}>
               <span>Zamówienia</span>
             </ListItemButton>
           </StyledListItem>
