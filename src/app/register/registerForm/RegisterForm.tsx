@@ -5,8 +5,9 @@ import { useRegisterEffect } from '../hooks/useRegister/useRegisterEffect';
 
 import { RegisterFormData } from './RegisterForm.types';
 import { registerFormInitialData } from './RegisterForm.utlis';
-import { Form, StyledInput } from './RegisterForm.styles';
+import { Form } from './RegisterForm.styles';
 
+import { FormInput } from '@/ui/formInput/FormInput';
 import { registerKey } from '@/api/actions/register/register';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 
@@ -23,17 +24,17 @@ export const RegisterForm = () => {
   };
 
   return (
-    <FormProvider {...form}>
-      <Form>
-        <StyledInput label={'Imię'} name={'name'} />
-        <StyledInput label={'Nazwisko'} name={'surname'} />
-        <StyledInput label={'Email'} name={'email'} />
-        <StyledInput label={'Hasło'} name={'password'} />
-        <StyledInput label={'Powtórz hasło'} name={'repeatPassword'} />
-        <PrimaryButton disabled={isSubmitting} handleClick={form.handleSubmit(submit)}>
+    <Form onSubmit={form.handleSubmit(submit)}>
+      <FormProvider {...form}>
+        <FormInput label={'Imię'} name={'name'} />
+        <FormInput label={'Nazwisko'} name={'surname'} />
+        <FormInput label={'Email'} name={'email'} type={'email'} />
+        <FormInput label={'Hasło'} name={'password'} type={'password'} />
+        <FormInput label={'Powtórz hasło'} name={'repeatPassword'} type={'password'} />
+        <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? '...' : 'Załóż konto'}
         </PrimaryButton>
-      </Form>
-    </FormProvider>
+      </FormProvider>
+    </Form>
   );
 };

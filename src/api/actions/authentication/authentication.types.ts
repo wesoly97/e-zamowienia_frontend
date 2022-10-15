@@ -1,4 +1,7 @@
+import { AxiosError } from 'axios';
+
 import { UnauthorizedError, InternalServerError, RoleTypes } from '@/api/types/types';
+import { MutationFn } from '@/hooks/useMutation/useMutation.types';
 
 export type LoginRequestBody = {
   email: string;
@@ -11,3 +14,5 @@ export type LoginResponse = {
 };
 
 export type LoginError = UnauthorizedError | InternalServerError;
+
+export type LoginMutationFn = MutationFn<LoginRequestBody, LoginResponse, AxiosError<LoginError>>;

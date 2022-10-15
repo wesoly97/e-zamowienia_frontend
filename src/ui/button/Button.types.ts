@@ -7,5 +7,6 @@ type ActionProps = {
 
 export type ButtonProps = {
   children: ReactNode;
+  type?: 'button' | 'reset' | 'submit';
 } & Pick<ButtonTypeMap['props'], 'disabled' | 'endIcon' | 'startIcon'> &
   ActionProps;

@@ -2,6 +2,7 @@ import {
   Container,
   IconWrapper,
   FormWrapper,
+  FormContainer,
   Header,
   StyledLoginIcon,
   StyledWaveIcon,
@@ -9,7 +10,7 @@ import {
   RegisterPrompt,
   StyledLink,
 } from './Login.styles';
-import { LoginForm } from './loginForm/LoginForm';
+import { LoginFormWrapper } from './loginForm/LoginFormWrapper';
 
 export const Login = () => {
   return (
@@ -18,13 +19,16 @@ export const Login = () => {
         <StyledLoginIcon />
       </IconWrapper>
       <FormWrapper>
-        <FormBox>
-          <Header>Zaloguj się</Header>
-          <LoginForm />
-          <RegisterPrompt>
-            Nie możesz się zalogować?<StyledLink to={'/'}>&nbsp;Zresetuj hasło</StyledLink>
-          </RegisterPrompt>
-        </FormBox>
+        <FormContainer>
+          <FormBox>
+            <Header>Zaloguj się</Header>
+            <LoginFormWrapper />
+            <RegisterPrompt>
+              <span>Nie możesz się zalogować?</span>
+              <StyledLink to={'/'}>&nbsp;Zresetuj hasło</StyledLink>
+            </RegisterPrompt>
+          </FormBox>
+        </FormContainer>
       </FormWrapper>
       <StyledWaveIcon />
     </Container>

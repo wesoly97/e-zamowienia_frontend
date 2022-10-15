@@ -7,6 +7,6 @@ export type RegisterRequestBody = {
   password: string;
 };
 
-export type RegisterResponse = {};
+export type RegisterResponse = undefined;
 
 export type RegisterError = BadRequestError | ConflictError | InternalServerError;

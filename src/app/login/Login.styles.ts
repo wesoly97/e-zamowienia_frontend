@@ -27,8 +27,15 @@ export const FormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.GREY};
 `;
 
-export const FormBox = styled.div`
+export const FormContainer = styled.div`
+  display: flex;
+  justify-content: center;
   padding: 0 200px;
+`;
+
+export const FormBox = styled.div`
+  width: 100%;
+  max-width: 400px;
 `;
 
 export const Header = styled.h1`
@@ -41,6 +48,8 @@ export const Header = styled.h1`
 export const RegisterPrompt = styled.div`
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  text-align: right;
   padding-top: 20px;
   font-weight: 700;
   font-size: 16px;
