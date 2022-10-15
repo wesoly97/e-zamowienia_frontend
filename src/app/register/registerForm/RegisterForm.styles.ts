@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-import { FormInput } from '@/ui/formInput/FormInput';
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 32px;
   padding: 0 200px;
-`;
+  align-items: center;
 
-export const StyledInput = styled(FormInput)`
-  width: 100%;
+  & .MuiFormControl-root {
+    width: 100%;
+    max-width: 400px;
+  }
 `;

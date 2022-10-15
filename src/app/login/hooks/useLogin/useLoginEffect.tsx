@@ -5,15 +5,21 @@ import { LoginFormData } from '../../loginForm/LoginForm.types';
 
 import { useLogin } from './useLogin';
 
+import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
+
 export const useLoginEffect = (form: UseFormReturn<LoginFormData>) => {
   const navigate = useNavigate();
 
   return useLogin({
-    onSuccess: (data) => {
+    onSuccess: () => {
       navigate(0);
     },
     onError: (error) => {
-      //errory form uzywany
+      setFieldsError({
+        form,
+        error: error.response?.data,
+        fieldToPick: 'password',
+      });
     },
   });
 };

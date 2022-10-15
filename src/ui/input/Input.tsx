@@ -18,6 +18,7 @@ export const Input = ({
   InputLabelProps,
   classes,
   className,
+  onChange,
 }: InputProps) => {
   return (
     <StyledInput
@@ -37,6 +38,7 @@ export const Input = ({
       InputLabelProps={InputLabelProps}
       classes={classes}
       className={className}
+      onChange={onChange}
     />
   );
 };

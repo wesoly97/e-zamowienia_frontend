@@ -1,36 +1,21 @@
-import { FormProvider, useForm } from 'react-hook-form';
-import { useIsMutating } from '@tanstack/react-query';
+import { FormProvider } from 'react-hook-form';
 
-import { useLoginEffect } from '../hooks/useLogin/useLoginEffect';
+import { Form } from './LoginForm.styles';
+import { LoginFormProps } from './LoginForm.types';
 
-import { Form, StyledInput } from './LoginForm.styles';
-import { LoginFormData } from './LoginForm.types';
-import { loginFormInitialData } from './LoginForm.utils';
-
+import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
-import { loginKey } from '@/api/actions/authentication/authentication';
 
-export const LoginForm = () => {
-  const form = useForm<LoginFormData>({
-    defaultValues: loginFormInitialData,
-  });
-
-  const isSubmitting = !!useIsMutating({ mutationKey: [loginKey] });
-
-  const { mutate } = useLoginEffect(form);
-  const submit = (data: LoginFormData) => {
-    mutate(data);
-  };
-
+export const LoginForm = ({ isSubmitting, onSubmit, form }: LoginFormProps) => {
   return (
-    <FormProvider {...form}>
-      <Form>
-        <StyledInput label={'Email'} name={'email'} />
-        <StyledInput label={'Hasło'} name={'password'} />
-        <PrimaryButton disabled={isSubmitting} handleClick={form.handleSubmit(submit)}>
+    <Form onSubmit={form.handleSubmit(onSubmit)}>
+      <FormProvider {...form}>
+        <FormInput label={'Email'} name={'email'} type={'email'} />
+        <FormInput label={'Hasło'} name={'password'} type={'password'} />
+        <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? '...' : 'Logowanie'}
         </PrimaryButton>
-      </Form>
-    </FormProvider>
+      </FormProvider>
+    </Form>
   );
 };

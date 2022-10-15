@@ -2,6 +2,10 @@ import { TextField } from '@mui/material';
 import styled, { css } from 'styled-components';
 
 export const StyledInput = styled(TextField)`
+  & .MuiFormHelperText-root {
+    min-height: 20px;
+  }
+
   .Mui-focused:not(.Mui-error) {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
     border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};

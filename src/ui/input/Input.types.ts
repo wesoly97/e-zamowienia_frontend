@@ -18,4 +18,5 @@ export type InputProps = Pick<
   | 'InputLabelProps'
   | 'classes'
   | 'className'
+  | 'onChange'
 >;
