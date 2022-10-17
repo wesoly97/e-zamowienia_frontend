@@ -1,5 +1,8 @@
-import { GetOrdersResponse } from '@/api/actions/orders/orders.types';
+import { Order } from '@/api/actions/orders/orders.types';
 
 export type OrdersProps = {
-  data: GetOrdersResponse;
+  data: Order[];
+  hasNextPage?: boolean;
+  onLoadMore: VoidFunction;
+  onRefetch: VoidFunction;
 };

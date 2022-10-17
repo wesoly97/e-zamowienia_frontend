@@ -1,4 +1,4 @@
-import { QueryKey, UseInfiniteQueryOptions as UseRQInfiniteQueryOptions } from '@tanstack/react-query';
+import { QueryKey, UseInfiniteQueryOptions as UseTanstackInfiniteQueryOptions } from '@tanstack/react-query';
 
 export type InfiniteQuery<TArgs> = {
   endpoint: string;
@@ -13,8 +13,6 @@ export type InfiniteQueryFn<TArgs = unknown, TParams = unknown, TResponse = TPar
 ) => InfiniteQuery<TArgs>;
 
 export type UseInfiniteQueryConfigParameters<TArgs = unknown> = {
-  cursorKey: string;
-  startPage?: number;
   args?: TArgs;
 };
 
@@ -25,4 +23,8 @@ export type UseInfiniteQueryOptions<
   TData = TParams,
   TQueryKey extends QueryKey = QueryKey,
 > = UseInfiniteQueryConfigParameters<TArgs> &
-  Omit<UseRQInfiniteQueryOptions<TParams, TError, TData, TParams, TQueryKey>, 'queryKey' | 'queryFn'>;
+  Omit<UseTanstackInfiniteQueryOptions<TParams, TError, TData, TParams, TQueryKey>, 'queryKey' | 'queryFn'>;
+
+export type InfiniteQueryClientOptions = {
+  timeout?: number;
+};

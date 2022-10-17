@@ -1,18 +1,19 @@
 import { MutationFunction, QueryFunction } from '@tanstack/react-query';
 
-import { MutationFn } from 'hooks/useMutation/useMutation.types';
-import { InfiniteQueryFn, UseInfiniteQueryOptions } from 'hooks/useInfiniteQuery/useInfiniteQuery.types';
-
-export type ApiResponse<TData = unknown, TConfig = unknown> = {
-  data: TData;
-  config: TConfig | null;
-};
+import { QueryClientOptions } from '@/hooks/useQuery/useQuery.types';
+import { MutationFn } from '@/hooks/useMutation/useMutation.types';
+import {
+  InfiniteQueryClientOptions,
+  InfiniteQueryFn,
+  UseInfiniteQueryOptions,
+} from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
 
 export type ApiClientContextValue = {
-  queryFn: <TData>() => QueryFunction<TData>;
+  queryFn: <TData>(options?: QueryClientOptions) => QueryFunction<TData>;
   mutationFn: <TParams, TData>(mutation: MutationFn<TParams, TData>) => MutationFunction<TData, TParams>;
   infiniteQueryFn: <TArgs, TParams, TResponse, TError>(
     query: InfiniteQueryFn<TArgs, TParams, TResponse>,
-    options?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+    useInfiniteQueryOptions?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+    clientOptions?: InfiniteQueryClientOptions,
   ) => QueryFunction<TParams>;
 };
