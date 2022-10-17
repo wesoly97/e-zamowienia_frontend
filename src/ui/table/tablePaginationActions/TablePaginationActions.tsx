@@ -8,9 +8,14 @@ import Box from '@mui/material/Box';
 
 import { TablePaginationActionsProps } from './TablePaginationActions.types';
 
-export const TablePaginationActions = (props: TablePaginationActionsProps) => {
+export const TablePaginationActions = ({
+  count,
+  page,
+  rowsPerPage,
+  onPageChange,
+  showLastButton,
+}: TablePaginationActionsProps) => {
   const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
 
   const handleFirstPageButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onPageChange(event, 0);
@@ -36,11 +41,7 @@ export const TablePaginationActions = (props: TablePaginationActionsProps) => {
       <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
         {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
       </IconButton>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
+      <IconButton onClick={handleNextButtonClick} disabled={showLastButton} aria-label="next page">
         {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
       </IconButton>
       <IconButton

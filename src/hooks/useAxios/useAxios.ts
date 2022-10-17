@@ -3,12 +3,14 @@ import Axios, { AxiosRequestConfig } from 'axios';
 import { MutationFunction, QueryFunction } from '@tanstack/react-query';
 import { stringify } from 'qs';
 
-import { ApiClientContextValue } from 'context/apiClient/apiClientContext/ApiClientContext.types';
-import { MutationFn } from 'hooks/useMutation/useMutation.types';
-import { InfiniteQueryFn, UseInfiniteQueryOptions } from 'hooks/useInfiniteQuery/useInfiniteQuery.types';
+import { InfiniteQueryFn, UseInfiniteQueryOptions } from '../useInfiniteQuery/useInfiniteQuery.types';
+import { MutationFn } from '../useMutation/useMutation.types';
 
 import { getAxiosConfig } from './axiosConfig/axiosConfig';
 import { responseFailureInterceptor, responseSuccessInterceptor } from './interceptors/responseInterceptors';
+
+import { InfiniteQueryClientOptions } from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
+import { ApiClientContextValue } from '@/context/apiClient/apiClientContext/ApiClientContext.types';
 
 export const useAxios = (): ApiClientContextValue => {
   const client = useMemo(() => {
@@ -35,16 +37,24 @@ export const useAxios = (): ApiClientContextValue => {
   const infiniteQueryFn = useCallback(
     <TArgs, TParams, TResponse, TError>(
         query: InfiniteQueryFn<TArgs, TParams, TResponse>,
-        options?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+        infiniteQueryOptions?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+        clientOptions?: InfiniteQueryClientOptions,
       ): QueryFunction<TParams> =>
-      async ({ pageParam = options?.startPage ?? 0 }) => {
-        const { endpoint, args } = query(options?.args);
+      async ({ pageParam, signal }) => {
+        const { endpoint, args } = query(infiniteQueryOptions?.args);
 
-        const cursorKey = options?.cursorKey;
-
-        const { data } = await client.get<TParams>(
-          `/${endpoint}?${cursorKey}=${pageParam}&${stringify(args, { addQueryPrefix: false })}`,
+        const queryParams = stringify(
+          {
+            ...args,
+            ...pageParam,
+          },
+          { arrayFormat: 'brackets' },
         );
+
+        const { data } = await client.get<TParams>(`${endpoint}?${queryParams}`, {
+          signal,
+          timeout: clientOptions?.timeout,
+        });
 
         return data;
       },

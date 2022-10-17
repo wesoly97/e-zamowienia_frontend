@@ -13,8 +13,6 @@ import { useAxios } from '@/hooks/useAxios/useAxios';
 
 export const ApiClientContextController = ({ children }: ApiClientControllerProps) => {
   const { queryFn, mutationFn, infiniteQueryFn } = useAxios();
-  /** example of usage of different strategy **/
-  // const { queryFn, mutationFn, infiniteQueryFn } = useKyStrategy();
 
   const queryClient = useMemo(() => {
     return new QueryClient({

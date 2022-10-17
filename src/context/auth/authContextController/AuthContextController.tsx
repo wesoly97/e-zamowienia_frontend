@@ -1,10 +1,12 @@
-import { ReactNode, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { AuthContext } from '../authContext/AuthContext';
 import { AuthContextValue } from '../authContext/AuthContext.types';
 import { useGetAccount } from '../hooks/useGetAccount';
 
-export const AuthContextController = ({ children }: { children: ReactNode }) => {
+import { AuthContextControllerProps } from './AuthContextController.types';
+
+export const AuthContextController = ({ children }: AuthContextControllerProps) => {
   const { data: session, isLoading: isLoadingAccount, isError: isAccountError } = useGetAccount({ retry: false });
   const isAuthenticated = !!session && !isLoadingAccount;
   const isUnauthenticated = isAccountError && !isLoadingAccount;

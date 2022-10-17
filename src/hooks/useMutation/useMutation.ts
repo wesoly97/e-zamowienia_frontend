@@ -21,8 +21,8 @@ export const useMutation = <TData = unknown, TError = unknown, TParams = unknown
   mutation: MutationFn<TParams, TData, TError>,
   options?: UseMutationOptions<TData, TError, TParams, TContext>,
 ): UseMutationResult<TData, TError, TParams, TContext> => {
-  const { mutationFn } = useApiClient();
-  const _mutationFn = useMemo(() => mutationFn<TParams, TData>(mutation), [mutationFn, mutation]);
+  const { mutationFn: clientMutationFn } = useApiClient();
+  const mutationFn = useMemo(() => clientMutationFn<TParams, TData>(mutation), [clientMutationFn, mutation]);
 
-  return useRQMutation<TData, TError, TParams, TContext>(mutationKey, _mutationFn, options);
+  return useRQMutation<TData, TError, TParams, TContext>(mutationKey, mutationFn, options);
 };

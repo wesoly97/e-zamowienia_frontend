@@ -1,9 +1,9 @@
-import { QueryKey, useInfiniteQuery as useRQInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query';
+import { QueryKey, useInfiniteQuery as useTanstackInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
-import { useApiClient } from 'hooks/useApiClient/useApiClient';
+import { useApiClient } from '../useApiClient/useApiClient';
 
-import { InfiniteQueryFn, UseInfiniteQueryOptions } from './useInfiniteQuery.types';
+import { InfiniteQueryClientOptions, InfiniteQueryFn, UseInfiniteQueryOptions } from './useInfiniteQuery.types';
 
 /**
  * Fetching data using this hook doesn't require specifying query function like it's required in react-query
@@ -14,13 +14,17 @@ import { InfiniteQueryFn, UseInfiniteQueryOptions } from './useInfiniteQuery.typ
 export const useInfiniteQuery = <TArgs = unknown, TParams = unknown, TError = unknown, TResponse = TParams>(
   queryKey: QueryKey,
   query: InfiniteQueryFn<TArgs, TParams, TResponse>,
-  options?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+  useInfiniteQueryOptions?: UseInfiniteQueryOptions<TArgs, TParams, TError, TResponse>,
+  clientOptions?: InfiniteQueryClientOptions,
 ): UseInfiniteQueryResult<TResponse, TError> => {
-  const { infiniteQueryFn } = useApiClient();
-  const _infiniteQueryFn = useMemo(
-    () => infiniteQueryFn<TArgs, TParams, TResponse, TError>(query, options),
-    [infiniteQueryFn, query, options],
-  );
+  const { infiniteQueryFn: clientInfiniteQueryFn } = useApiClient();
 
-  return useRQInfiniteQuery<TParams, TError, TResponse, QueryKey>(queryKey, _infiniteQueryFn, options);
+  const infiniteQueryFn = useMemo(() => {
+    return clientInfiniteQueryFn<TArgs, TParams, TResponse, TError>(query, useInfiniteQueryOptions, clientOptions);
+  }, [clientInfiniteQueryFn, clientOptions, query, useInfiniteQueryOptions]);
+
+  return useTanstackInfiniteQuery<TParams, TError, TResponse, QueryKey>(queryKey, infiniteQueryFn, {
+    ...useInfiniteQueryOptions,
+    refetchOnWindowFocus: false,
+  });
 };
