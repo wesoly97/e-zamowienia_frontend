@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
-import { AppRoute } from '@/routing/AppRoutes.types';
+import { AppLinks } from '@/routing/AppRoutes.types';
 import { RoleTypes } from '@/api/types/types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
@@ -12,7 +12,7 @@ export const AuthenticatedLayout = ({ children, role }: { children?: ReactNode; 
 
   useEffect(() => {
     if (isAccountError) {
-      navigate(AppRoute.Login);
+      navigate(AppLinks.Login);
     }
   }, [isAccountError, navigate]);
 
@@ -20,5 +20,5 @@ export const AuthenticatedLayout = ({ children, role }: { children?: ReactNode; 
     return null;
   }
 
-  return <>{children ? children : <Navigate to={AppRoute.Login} replace />}</>;
+  return <>{children ? children : <Navigate to={AppLinks.Login} replace />}</>;
 };

@@ -1,25 +1,27 @@
 import MuiTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useMemo, ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, MouseEvent } from 'react';
 
 import { TablePaginationActions } from './tablePaginationActions/TablePaginationActions';
 import { TableProps } from './Tables.types';
 
 import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
-export const Table = <T,>({ rows, keyExtractor, renderRow, onLoadMore, hasNextPage, onRefetch }: TableProps<T>) => {
+export const Table = <T,>({
+  rows,
+  keyExtractor,
+  renderRow,
+  onLoadMore,
+  hasNextPage,
+  onRefetch,
+  onRowClick,
+}: TableProps<T>) => {
   const { limit, offset, setLimitArg, setOffsetArg } = useFiltersParams();
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows = useMemo(() => {
-    return !!offset ? Math.max(0, (1 + offset) * limit - rows.length) : 0;
-  }, [offset, rows.length, limit]);
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setOffsetArg(newPage);
@@ -34,16 +36,13 @@ export const Table = <T,>({ rows, keyExtractor, renderRow, onLoadMore, hasNextPa
 
   return (
     <TableContainer component={Paper}>
-      <MuiTable sx={{ minWidth: 500 }} aria-label="orders table">
+      <MuiTable aria-label="orders table">
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={keyExtractor(row)}>{renderRow(row)}</TableRow>
-          ))}
-          {!!emptyRows && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+            <TableRow key={keyExtractor(row)} onClick={onRowClick}>
+              {renderRow(row)}
             </TableRow>
-          )}
+          ))}
         </TableBody>
         <TableFooter>
           <TableRow>

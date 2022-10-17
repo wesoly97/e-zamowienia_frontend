@@ -8,9 +8,9 @@ import { Navbar } from '@/ui/navbar/Navbar';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
-import { AppRoute } from '@/routing/AppRoutes.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { useLogoutEffect } from '@/hooks/useLogout/useLogoutEffect';
+import { AppLinks } from '@/routing/AppRoutes.types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
@@ -19,20 +19,20 @@ export const Nav = ({ position }: NavProps) => {
   const { mutate: logout } = useLogoutEffect();
 
   const handleRedirectMainPage = () => {
-    navigate(AppRoute.Main);
+    navigate(AppLinks.Main);
   };
 
   const handleRedirectOrdersPage = () => {
-    navigate(AppRoute.Orders);
+    navigate(AppLinks.Orders);
   };
 
   const buttons = useMemo(() => {
     const handleRedirectLoginPage = () => {
-      navigate(AppRoute.Login);
+      navigate(AppLinks.Login);
     };
 
     const handleRedirectRegisterPage = () => {
-      navigate(AppRoute.Register);
+      navigate(AppLinks.Register);
     };
 
     if (isUnauthenticated) {
