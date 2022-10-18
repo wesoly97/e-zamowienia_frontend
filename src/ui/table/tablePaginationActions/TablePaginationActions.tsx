@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
@@ -17,19 +18,19 @@ export const TablePaginationActions = ({
 }: TablePaginationActionsProps) => {
   const theme = useTheme();
 
-  const handleFirstPageButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFirstPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onPageChange(event, 0);
   };
 
-  const handleBackButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleBackButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onPageChange(event, page - 1);
   };
 
-  const handleNextButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleNextButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onPageChange(event, page + 1);
   };
 
-  const handleLastPageButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLastPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 

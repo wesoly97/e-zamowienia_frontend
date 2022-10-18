@@ -9,6 +9,7 @@ import { ChangeEvent, MouseEvent } from 'react';
 
 import { TablePaginationActions } from './tablePaginationActions/TablePaginationActions';
 import { TableProps } from './Tables.types';
+import { StyledTableRow } from './Table.styles';
 
 import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
@@ -39,9 +40,9 @@ export const Table = <T,>({
       <MuiTable aria-label="orders table">
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={keyExtractor(row)} onClick={onRowClick}>
+            <StyledTableRow key={keyExtractor(row)} onClick={(event) => onRowClick(event, row)}>
               {renderRow(row)}
-            </TableRow>
+            </StyledTableRow>
           ))}
         </TableBody>
         <TableFooter>

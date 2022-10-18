@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 
 export type TableProps<T> = {
   rows: T[];
   keyExtractor: (row: T) => string;
   renderRow: (row: T) => ReactNode;
-  onRowClick: VoidFunction;
+  onRowClick: (event: MouseEvent<HTMLTableRowElement>, row: T) => void;
   onLoadMore: VoidFunction;
   hasNextPage?: boolean;
   onRefetch: VoidFunction;

@@ -12,5 +12,5 @@ export enum AppLinks {
   Login = '/logowanie',
   Register = '/rejestracja',
   Orders = '/zamowienia',
-  OrderDetails = '/zamowienia/szczegoly',
+  OrderDetails = '/zamowienia/szczegoly/:orderId',
 }
