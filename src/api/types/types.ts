@@ -32,6 +32,6 @@ export type BadRequestError = {
 
 export enum RoleTypes {
   Administrator = 'administrator',
-  orderer = 'orderer',
-  regular = 'regular',
+  Orderer = 'orderer',
+  Regular = 'regular',
 }

@@ -1,18 +1,19 @@
 import { UseFormReturn } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { LoginFormData } from '../../loginForm/LoginForm.types';
 
 import { useLogin } from './useLogin';
 
+import { getSessionQueryKey } from '@/api/actions/session/session';
 import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 
 export const useLoginEffect = (form: UseFormReturn<LoginFormData>) => {
-  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   return useLogin({
     onSuccess: () => {
-      navigate(0);
+      queryClient.invalidateQueries([getSessionQueryKey]);
     },
     onError: (error) => {
       setFieldsError({

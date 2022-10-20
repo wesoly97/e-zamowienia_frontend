@@ -3,13 +3,13 @@ import { useMemo } from 'react';
 
 import { StyledList, StyledListItem, StyledLogo } from './Nav.styles';
 import { NavProps } from './Nav.types';
+import { useLogoutEffect } from './hooks/useLogout/useLogoutEffect';
 
 import { Navbar } from '@/ui/navbar/Navbar';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
-import { useLogoutEffect } from '@/hooks/useLogout/useLogoutEffect';
 import { AppLinks } from '@/routing/AppRoutes.types';
 
 export const Nav = ({ position }: NavProps) => {
