@@ -1,4 +1,5 @@
 import { BadRequestError, NotFoundError, InternalServerError } from '@/api/types/types';
+import { InfiniteQueryFn } from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
 
 export type Order = {
   _id: string;
@@ -17,6 +18,8 @@ export type GetOrdersResponse = {
 };
 
 export type GetOrdersError = InternalServerError;
+
+export type GetOrdersInfiniteQueryFn = InfiniteQueryFn<GetOrdersArgs, GetOrdersResponse>;
 
 type SortOptionBody = {
   sortOption?: {

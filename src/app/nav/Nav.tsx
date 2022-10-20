@@ -51,6 +51,10 @@ export const Nav = ({ position }: NavProps) => {
         action: () => logout(),
         label: 'Wyloguj',
       },
+      {
+        action: () => {},
+        label: 'Dodaj ogłoszenie',
+      },
     ];
   }, [logout]);
 
