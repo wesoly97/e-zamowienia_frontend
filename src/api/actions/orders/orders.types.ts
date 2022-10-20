@@ -1,4 +1,4 @@
-import { InternalServerError } from '@/api/types/types';
+import { BadRequestError, NotFoundError, InternalServerError } from '@/api/types/types';
 
 export type Order = {
   _id: string;
@@ -41,3 +41,29 @@ export type FiltersOptionArgs = {
 };
 
 export type GetOrdersArgs = FiltersOptionArgs & SortOptionBody & FiltersOptionBody;
+
+type Files = {
+  url: string;
+  fileName: string;
+  key: string;
+};
+
+export type GetOrdersDetailsResponse = {
+  _id: string;
+  procedureIdentifier: string;
+  category: string;
+  mode: string;
+  title: string;
+  description: string;
+  customerName: string;
+  price: number;
+  files: Files[];
+  dateOfPublication: string;
+  ownerId: string;
+  expirationDate: string;
+  phoneNumber: string;
+  country: string;
+  email: string;
+};
+
+export type GetOrdersDetailsError = BadRequestError | NotFoundError | InternalServerError;

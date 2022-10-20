@@ -10,3 +10,5 @@ export const getInfiniteOrdersQuery: InfiniteQueryFn<GetOrdersArgs, GetOrdersRes
     args,
   };
 };
+
+export const getOrdersDetailsQueryKey = 'orders/:orderId';
