@@ -11,6 +11,7 @@ import { responseFailureInterceptor, responseSuccessInterceptor } from './interc
 
 import { InfiniteQueryClientOptions } from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
 import { ApiClientContextValue } from '@/context/apiClient/apiClientContext/ApiClientContext.types';
+import { isFormData } from '@/utils/api/formData/formatFormData.typeguards';
 
 export const useAxios = (): ApiClientContextValue => {
   const client = useMemo(() => {
@@ -66,12 +67,23 @@ export const useAxios = (): ApiClientContextValue => {
       async (variables) => {
         const { endpoint, params, method, headers, timeout } = mutation(variables);
 
+        const axiosConfigOptions = () => {
+          if (params && isFormData(params)) {
+            return { data: params, headers: { 'Content-Type': 'multipart/form-data' } };
+          }
+
+          if (params && !isFormData(params)) {
+            return { data: JSON.stringify(params), headers };
+          }
+
+          return { data: undefined, headers };
+        };
+
         const axiosConfig: AxiosRequestConfig = {
           url: `/${endpoint}`,
-          data: params ? JSON.stringify(params) : undefined,
           method: method || 'POST',
-          headers,
           timeout,
+          ...axiosConfigOptions(),
         };
 
         const { data } = await client.request(axiosConfig);

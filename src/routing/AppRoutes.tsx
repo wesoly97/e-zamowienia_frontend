@@ -10,6 +10,7 @@ import { Login } from '@/app/login/Login';
 import { Register } from '@/app/register/Register';
 import { UnauthenticatedLayout } from '@/layouts/unauthenticatedLayout/UnauthenticatedLayout';
 import { OrdersDetailsContainer } from '@/app/orders/ordersDetails/OrdersDetailsContainer';
+import { OrdersAdd } from '@/app/orders/ordersAdd/OrdersAdd';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -66,6 +67,32 @@ export const AppRoutes = () => (
             }
           />
         </Route>
+      </Route>
+      <Route path={AppRoute.OrderEdit}>
+        <Route path={AppRoute.OrderId}>
+          <Route
+            index
+            element={
+              <>
+                <Nav position={'static'} />
+                todoEdit
+                <Footer />
+              </>
+            }
+          />
+        </Route>
+      </Route>
+      <Route path={AppRoute.OrderAdd}>
+        <Route
+          index
+          element={
+            <>
+              <Nav position={'static'} />
+              <OrdersAdd />
+              <Footer />
+            </>
+          }
+        />
       </Route>
     </Route>
   </Routes>

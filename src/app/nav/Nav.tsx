@@ -18,6 +18,10 @@ export const Nav = ({ position }: NavProps) => {
   const { isUnauthenticated } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
 
+  const handleRedirectAddOrderPage = () => {
+    navigate(AppLinks.OrderAdd);
+  };
+
   const handleRedirectMainPage = () => {
     navigate(AppLinks.Main);
   };
@@ -45,22 +49,22 @@ export const Nav = ({ position }: NavProps) => {
     }
   }, [isUnauthenticated, navigate]);
 
-  const userPanel = useMemo(() => {
+  const userPanel = () => {
     return [
       {
         action: () => logout(),
         label: 'Wyloguj',
       },
       {
-        action: () => {},
+        action: () => handleRedirectAddOrderPage(),
         label: 'Dodaj ogłoszenie',
       },
     ];
-  }, [logout]);
+  };
 
   return (
     <>
-      <Navbar position={position} buttons={buttons} userPanel={userPanel}>
+      <Navbar position={position} buttons={buttons} userPanel={userPanel()}>
         <StyledLogo onClick={handleRedirectMainPage} />
         <StyledList>
           <StyledListItem>
