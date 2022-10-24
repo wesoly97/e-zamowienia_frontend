@@ -1,11 +1,10 @@
 import { StyledUploadButton, Box, Blob } from './UploadButton.styles';
 import { UploadButtonProps } from './UploadButton.types';
 
-export const UploadButton = ({ accept, multiple, children }: UploadButtonProps) => {
+export const UploadButton = ({ children, handleClick }: UploadButtonProps) => {
   return (
-    <StyledUploadButton>
+    <StyledUploadButton onClick={handleClick}>
       {children}
-      <input hidden accept={accept} multiple={multiple} type="file" />
       <Box>
         <Blob />
         <Blob />

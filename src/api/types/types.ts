@@ -35,3 +35,9 @@ export enum RoleTypes {
   Orderer = 'orderer',
   Regular = 'regular',
 }
+
+export type ResponseFile = {
+  url: string;
+  fileName: string;
+  key: string;
+};

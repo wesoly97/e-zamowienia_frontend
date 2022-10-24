@@ -1,12 +1,8 @@
-import { AxiosError } from 'axios';
-
-import { LogoutError, LogoutRequestBody, LogoutResponse } from './logout.types';
-
-import { MutationFn } from '@/hooks/useMutation/useMutation.types';
+import { LogoutMutationFn } from './logout.types';
 
 export const logoutKey = 'users/logout';
 
-export const logoutMutationFn: MutationFn<LogoutRequestBody, LogoutResponse, AxiosError<LogoutError>> = (params) => ({
+export const logoutMutationFn: LogoutMutationFn = (params) => ({
   endpoint: logoutKey,
   method: 'POST',
   params,

@@ -1,4 +1,15 @@
-import { BadRequestError, NotFoundError, InternalServerError } from '@/api/types/types';
+import { AxiosError } from 'axios';
+
+import {
+  BadRequestError,
+  NotFoundError,
+  InternalServerError,
+  UnauthorizedError,
+  ForbiddenError,
+  ResponseFile,
+} from '@/api/types/types';
+import { InfiniteQueryFn } from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
+import { MutationFn } from '@/hooks/useMutation/useMutation.types';
 
 export type Order = {
   _id: string;
@@ -17,6 +28,8 @@ export type GetOrdersResponse = {
 };
 
 export type GetOrdersError = InternalServerError;
+
+export type GetOrdersInfiniteQueryFn = InfiniteQueryFn<GetOrdersArgs, GetOrdersResponse>;
 
 type SortOptionBody = {
   sortOption?: {
@@ -42,12 +55,6 @@ export type FiltersOptionArgs = {
 
 export type GetOrdersArgs = FiltersOptionArgs & SortOptionBody & FiltersOptionBody;
 
-type Files = {
-  url: string;
-  fileName: string;
-  key: string;
-};
-
 export type GetOrdersDetailsResponse = {
   _id: string;
   procedureIdentifier: string;
@@ -57,7 +64,7 @@ export type GetOrdersDetailsResponse = {
   description: string;
   customerName: string;
   price: number;
-  files: Files[];
+  files: ResponseFile[];
   dateOfPublication: string;
   ownerId: string;
   expirationDate: string;
@@ -67,3 +74,22 @@ export type GetOrdersDetailsResponse = {
 };
 
 export type GetOrdersDetailsError = BadRequestError | NotFoundError | InternalServerError;
+
+export type AddOrdersResponse = {
+  _id: string;
+  procedureIdentifier: string;
+  category: string;
+  mode: string;
+  title: string;
+  description: string;
+  customerName: string;
+  price: string;
+  files: ResponseFile[];
+  dateOfPublication: string;
+  ownerId: string;
+  expirationDate: string;
+};
+
+export type AddOrdersError = BadRequestError | UnauthorizedError | ForbiddenError | InternalServerError;
+
+export type AddOrdersMutationFn = MutationFn<FormData, AddOrdersResponse, AxiosError<AddOrdersError>>;

@@ -1,14 +1,8 @@
-import { AxiosError } from 'axios';
-
-import { RegisterError, RegisterRequestBody, RegisterResponse } from './register.types';
-
-import { MutationFn } from '@/hooks/useMutation/useMutation.types';
+import { RegisterMutationFn } from './register.types';
 
 export const registerKey = 'users';
 
-export const registerMutationFn: MutationFn<RegisterRequestBody, RegisterResponse, AxiosError<RegisterError>> = (
-  params,
-) => ({
+export const registerMutationFn: RegisterMutationFn = (params) => ({
   endpoint: registerKey,
   method: 'POST',
   params,

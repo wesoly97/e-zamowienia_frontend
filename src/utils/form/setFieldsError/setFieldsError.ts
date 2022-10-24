@@ -28,7 +28,7 @@ export const setFieldsError = <
   }
 
   if (isNotFoundError(error as NotFoundError) || isBadRequestError(error as BadRequestError)) {
-    const errors = mapErrorResponseToFormErrors(error.errors);
+    const errors = mapErrorResponseToFormErrors((error as NotFoundError | BadRequestError).errors);
 
     if (!errors) {
       return;
