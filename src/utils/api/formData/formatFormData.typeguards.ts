@@ -3,5 +3,5 @@ export const isFileArray = (field: File[]): field is File[] => {
 };
 
 export const isFormData = (data: unknown): data is FormData => {
-  return !!(data as FormData);
+  return (data as FormData) instanceof FormData;
 };
