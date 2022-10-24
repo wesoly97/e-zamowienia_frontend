@@ -11,6 +11,7 @@ import { Register } from '@/app/register/Register';
 import { UnauthenticatedLayout } from '@/layouts/unauthenticatedLayout/UnauthenticatedLayout';
 import { OrdersDetailsContainer } from '@/app/orders/ordersDetails/OrdersDetailsContainer';
 import { OrdersAdd } from '@/app/orders/ordersAdd/OrdersAdd';
+import { AuthenticatedLayout } from '@/layouts/authenticatedLayout/AuthenticatedLayout';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -86,11 +87,11 @@ export const AppRoutes = () => (
         <Route
           index
           element={
-            <>
+            <AuthenticatedLayout>
               <Nav position={'static'} />
               <OrdersAdd />
               <Footer />
-            </>
+            </AuthenticatedLayout>
           }
         />
       </Route>
