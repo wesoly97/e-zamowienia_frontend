@@ -32,7 +32,7 @@ export const OrdersDetails = ({ data }: OrdersDetailsProps) => {
         <p>{data.procedureIdentifier}</p>
         <h3>Data publikacji</h3>
         <p>{formatDate(data.dateOfPublication, { isWithTime: true })}</p>
-        <h3>Data składania</h3>
+        <h3>Termin składania</h3>
         <p>{formatDate(data.expirationDate, { isWithTime: true })}</p>
         <h3>Kategoria</h3>
         <p>{data.category}</p>

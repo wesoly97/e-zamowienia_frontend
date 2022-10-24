@@ -6,7 +6,7 @@ import {
   InternalServerError,
   UnauthorizedError,
   ForbiddenError,
-  Files,
+  ResponseFile,
 } from '@/api/types/types';
 import { InfiniteQueryFn } from '@/hooks/useInfiniteQuery/useInfiniteQuery.types';
 import { MutationFn } from '@/hooks/useMutation/useMutation.types';
@@ -64,7 +64,7 @@ export type GetOrdersDetailsResponse = {
   description: string;
   customerName: string;
   price: number;
-  files: Files[];
+  files: ResponseFile[];
   dateOfPublication: string;
   ownerId: string;
   expirationDate: string;
@@ -84,7 +84,7 @@ export type AddOrdersResponse = {
   description: string;
   customerName: string;
   price: string;
-  files: Files;
+  files: ResponseFile[];
   dateOfPublication: string;
   ownerId: string;
   expirationDate: string;

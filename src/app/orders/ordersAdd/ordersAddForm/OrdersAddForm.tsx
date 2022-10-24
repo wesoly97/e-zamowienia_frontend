@@ -6,10 +6,11 @@ import { OrdersAddFormProps } from './OrdersAddForm.types';
 
 import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
+import { FormDropzone } from '@/ui/formDropzone/FormDropzone';
 
 export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    return /^[0-9]+\.?[0-9]*$/.test(event.target.value);
+    return /^\d+\.?\d{0,2}$/.test(event.target.value);
   };
 
   return (
@@ -31,7 +32,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
         />
         <FormInput label={'Opis'} name={'description'} multiline rows={4} />
         <FormInput
-          label={'Data składania'}
+          label={'Termin składania'}
           name={'expirationDate'}
           type={'date'}
           inputProps={{
@@ -39,6 +40,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           }}
           InputLabelProps={{ shrink: true }}
         />
+        <FormDropzone name={'files'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? '...' : 'Dodawanie'}
         </PrimaryButton>

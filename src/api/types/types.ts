@@ -36,7 +36,7 @@ export enum RoleTypes {
   Regular = 'regular',
 }
 
-export type Files = {
+export type ResponseFile = {
   url: string;
   fileName: string;
   key: string;
