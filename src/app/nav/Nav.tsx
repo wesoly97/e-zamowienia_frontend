@@ -10,7 +10,7 @@ import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
-import { AppLinks } from '@/routing/AppRoutes.types';
+import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export const Nav = ({ position }: NavProps) => {
   };
 
   const handleRedirectMainPage = () => {
-    navigate(AppLinks.Main);
+    navigate(AppRoute.Main);
   };
 
   const handleRedirectOrdersPage = () => {
@@ -52,12 +52,12 @@ export const Nav = ({ position }: NavProps) => {
   const userPanel = () => {
     return [
       {
-        action: () => logout(),
-        label: 'Wyloguj',
-      },
-      {
         action: () => handleRedirectAddOrderPage(),
         label: 'Dodaj ogłoszenie',
+      },
+      {
+        action: () => logout(),
+        label: 'Wyloguj',
       },
     ];
   };

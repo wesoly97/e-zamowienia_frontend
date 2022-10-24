@@ -10,10 +10,10 @@ export enum AppRoute {
 }
 
 export enum AppLinks {
-  Main = '/',
   Login = '/logowanie',
   Register = '/rejestracja',
   Orders = '/zamowienia',
+  OrderEdit = '/zamowienia/edytuj/:orderId',
   OrderDetails = '/zamowienia/szczegoly/:orderId',
   OrderAdd = '/zamowienia/dodaj',
 }
