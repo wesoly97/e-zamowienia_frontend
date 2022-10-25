@@ -1,15 +1,14 @@
 import { ChangeEvent } from 'react';
 import { FormProvider } from 'react-hook-form';
 
-import { Form } from './OrdersAddForm.styles';
-import { OrdersAddFormProps } from './OrdersAddForm.types';
+import { Form } from './OrdersEditForm.styles';
+import { OrdersEditFormProps } from './OrdersEditForm.types';
 
 import { FormInput } from '@/ui/formInput/FormInput';
-import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { FormDropzone } from '@/ui/formDropzone/FormDropzone';
-import { parseDateToString } from '@/utils/date/parseDateToString';
+import { PrimaryButton } from '@/ui/button/PrimaryButton';
 
-export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormProps) => {
+export const OrdersEditForm = ({ isSubmitting, onSubmit, form, minExpirationDate }: OrdersEditFormProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     return /^\d+\.?\d{0,2}$/.test(event.target.value);
   };
@@ -37,13 +36,13 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           name={'expirationDate'}
           type={'date'}
           inputProps={{
-            min: parseDateToString(),
+            min: minExpirationDate,
           }}
           InputLabelProps={{ shrink: true }}
         />
         <FormDropzone name={'files'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? 'Dodawanie' : 'Dodaj'}
+          {isSubmitting ? 'Wysyłanie' : 'Wyślij prośbę'}
         </PrimaryButton>
       </FormProvider>
     </Form>

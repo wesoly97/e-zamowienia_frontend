@@ -7,16 +7,16 @@ import { RoleTypes } from '@/api/types/types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const AuthenticatedLayout = ({ children, role }: { children?: ReactNode; role?: RoleTypes }) => {
-  const { isLoadingAccount, isAccountError } = useAuthContext();
+  const { isUnauthenticated, isLoadingAccount } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAccountError) {
+    if (isUnauthenticated) {
       navigate(AppLinks.Login);
     }
-  }, [isAccountError, navigate]);
+  }, [isUnauthenticated, navigate]);
 
-  if (isLoadingAccount || isAccountError) {
+  if (isUnauthenticated || isLoadingAccount) {
     return null;
   }
 

@@ -8,7 +8,6 @@ import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 
 export const useAddOrdersEffect = (form: UseFormReturn<OrdersAddFormData>) => {
   return useAddOrders({
-    onSuccess: () => {},
     onError: (error) => {
       setFieldsError({
         form,

@@ -8,19 +8,16 @@ import { AuthContextControllerProps } from './AuthContextController.types';
 
 export const AuthContextController = ({ children }: AuthContextControllerProps) => {
   const { data, isLoading: isLoadingAccount, isError: isAccountError } = useGetAccount({ retry: false });
-  const isUnauthenticated = isAccountError && !isLoadingAccount;
-  const session = isUnauthenticated ? undefined : data;
-  const isAuthenticated = !!session && !isLoadingAccount;
 
   const value = useMemo<AuthContextValue>(
     () => ({
-      session,
+      session: data,
       isLoadingAccount,
       isAccountError,
-      isAuthenticated,
-      isUnauthenticated,
+      isAuthenticated: !!data && !isAccountError,
+      isUnauthenticated: isAccountError,
     }),
-    [session, isLoadingAccount, isAccountError, isAuthenticated, isUnauthenticated],
+    [isAccountError, isLoadingAccount, data],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

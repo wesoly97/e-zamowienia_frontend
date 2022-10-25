@@ -1,5 +1,5 @@
 import { Container, FormWrapper, Header, SubHeader, IconWrapper, StyledRegisterIcon } from './Register.styles';
-import { RegisterForm } from './registerForm/RegisterForm';
+import { RegisterFormWrapper } from './registerForm/RegisterFormWrapper';
 
 export const Register = () => {
   return (
@@ -10,7 +10,7 @@ export const Register = () => {
       <FormWrapper>
         <Header>Załóż konto</Header>
         <SubHeader>To proste i bezpieczne</SubHeader>
-        <RegisterForm />
+        <RegisterFormWrapper />
       </FormWrapper>
     </Container>
   );
