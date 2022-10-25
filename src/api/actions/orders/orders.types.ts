@@ -93,3 +93,22 @@ export type AddOrdersResponse = {
 export type AddOrdersError = BadRequestError | UnauthorizedError | ForbiddenError | InternalServerError;
 
 export type AddOrdersMutationFn = MutationFn<FormData, AddOrdersResponse, AxiosError<AddOrdersError>>;
+
+export type EditOrdersResponse = {
+  _id: string;
+  procedureIdentifier: string;
+  category: string;
+  mode: string;
+  title: string;
+  description: string;
+  customerName: string;
+  price: string;
+  files: ResponseFile[];
+  dateOfPublication: string;
+  ownerId: string;
+  expirationDate: string;
+};
+
+export type EditOrdersError = BadRequestError | UnauthorizedError | NotFoundError | InternalServerError;
+
+export type EditOrdersMutationFn = MutationFn<FormData, EditOrdersResponse, AxiosError<EditOrdersError>>;

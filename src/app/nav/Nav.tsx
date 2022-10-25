@@ -22,6 +22,10 @@ export const Nav = ({ position }: NavProps) => {
     navigate(AppLinks.OrderAdd);
   };
 
+  const handleRedirectOrdersUserListPage = () => {
+    navigate(AppLinks.OrdersUserList);
+  };
+
   const handleRedirectMainPage = () => {
     navigate(AppRoute.Main);
   };
@@ -51,6 +55,10 @@ export const Nav = ({ position }: NavProps) => {
 
   const userPanel = () => {
     return [
+      {
+        action: () => handleRedirectOrdersUserListPage(),
+        label: 'Moje ogłoszenia',
+      },
       {
         action: () => handleRedirectAddOrderPage(),
         label: 'Dodaj ogłoszenie',
