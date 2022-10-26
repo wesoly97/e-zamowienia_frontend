@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import { useDropzone } from 'react-dropzone';
 
 import { UploadButton } from '../uploadButton/UploadButton';
 
+import { defaultConfig } from './Dropzone.constans';
 import {
   Wrapper,
   Container,
@@ -15,27 +15,12 @@ import {
 import { DropzoneProps } from './Dropzone.types';
 import { FileListing } from './fileListing/FileListing';
 
-export const Dropzone = ({ onDrop, onChange, onBlur, error }: DropzoneProps) => {
+export const Dropzone = ({ onDrop, onChange, onBlur, error, fetchedFiles, uploadedFiles }: DropzoneProps) => {
   //TODO fetch from backend
-  const { acceptedFiles, getRootProps, open, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
-    accept: {
-      'text/plain': [],
-      'application/pdf': [],
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [],
-      'application/vnd.ms-excel': [],
-      'application/msword': [],
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [],
-      'application/gzip': [],
-      'application/zip': [],
-      'application/x-7z-compressed': [],
-      'application/vnd.oasis.opendocument.text': [],
-      'application/vnd.oasis.opendocument.spreadsheet': [],
-    },
-    maxFiles: 20,
-    maxSize: 20971520,
-    noClick: true,
-    noKeyboard: true,
-    onDrop,
+
+  const { getRootProps, open, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
+    ...defaultConfig,
+    onDrop: onDrop,
   });
 
   return (
@@ -53,7 +38,7 @@ export const Dropzone = ({ onDrop, onChange, onBlur, error }: DropzoneProps) => 
           <p>Upuść pliki tutaj</p>
         </Plug>
       </Wrapper>
-      <FileListing acceptedFiles={acceptedFiles} error={error} />
+      <FileListing uploadedFiles={uploadedFiles} fetchedFiles={fetchedFiles} error={error} />
     </Container>
   );
 };

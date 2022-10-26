@@ -8,7 +8,13 @@ import { FormInput } from '@/ui/formInput/FormInput';
 import { FormDropzone } from '@/ui/formDropzone/FormDropzone';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 
-export const OrdersEditForm = ({ isSubmitting, onSubmit, form, minExpirationDate }: OrdersEditFormProps) => {
+export const OrdersEditForm = ({
+  isSubmitting,
+  onSubmit,
+  form,
+  minExpirationDate,
+  initialFiles,
+}: OrdersEditFormProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     return /^\d+\.?\d{0,2}$/.test(event.target.value);
   };
@@ -40,7 +46,7 @@ export const OrdersEditForm = ({ isSubmitting, onSubmit, form, minExpirationDate
           }}
           InputLabelProps={{ shrink: true }}
         />
-        <FormDropzone name={'files'} />
+        <FormDropzone name={'files'} initialFiles={initialFiles} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? 'Wysyłanie' : 'Wyślij prośbę'}
         </PrimaryButton>
