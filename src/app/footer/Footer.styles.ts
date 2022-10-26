@@ -5,6 +5,9 @@ import { containerStyles } from '@/theme/shared';
 
 export const Container = styled.footer`
   display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 400px;
   justify-content: flex-start;
   flex-direction: column;
@@ -15,6 +18,7 @@ export const Container = styled.footer`
 export const Content = styled.div`
   ${containerStyles}
 
+  height: 100%;
   margin-top: 40px;
 `;
 
