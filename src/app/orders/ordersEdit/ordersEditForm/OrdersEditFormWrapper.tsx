@@ -48,7 +48,8 @@ export const OrdersEditFormWrapper = () => {
 
   //TODO send only changed values
   const submit = async (data: OrdersEditFormData) => {
-    mutateAsync(formatFormData(data));
+    const { files, ...rest } = data; //TODO remove when files edit ready
+    mutateAsync(formatFormData(rest));
   };
 
   return (

@@ -9,7 +9,7 @@ export type OrdersEditFormData = {
   title: string;
   price: number;
   description: string;
-  files?: File[];
+  files: File[];
   expirationDate: string;
 };
 
