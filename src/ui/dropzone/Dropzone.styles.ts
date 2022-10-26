@@ -62,7 +62,7 @@ export const Desciption = styled.span`
   font-style: italic;
   font-size: 12px;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 export const Plug = styled.div<{ $isDragAccept: boolean; $isDragReject: boolean }>`

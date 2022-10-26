@@ -25,22 +25,28 @@ export const OrdersEditFormWrapper = () => {
     defaultValues: ordersEditFormInitialData,
   });
 
-  const orderDetailsValues = useMemo(() => {
+  const initialData = useMemo(() => {
     if (!!orderDetails) {
-      const { files, ...rest } = orderDetails;
-      //todo files type conversion
-      return { ...rest, expirationDate: parseDateToString(rest.expirationDate) };
+      const { _id, phoneNumber, email, dateOfPublication, customerName, country, files, ...rest } = orderDetails;
+
+      return {
+        initialFiles: files,
+        orderDetailsValues: { ...rest, expirationDate: parseDateToString(rest.expirationDate) },
+      };
     }
   }, [orderDetails]);
 
   useEffect(() => {
-    form.reset(orderDetailsValues);
-  }, [form, orderDetailsValues]);
+    if (!!initialData) {
+      form.reset(initialData.orderDetailsValues);
+    }
+  }, [form, initialData]);
 
   const isLoading = !!useIsMutating({ mutationKey: [editOrdersQueryKey] });
 
   const { mutateAsync } = useEditOrdersEffect(orderId || '', form);
 
+  //TODO send only changed values
   const submit = async (data: OrdersEditFormData) => {
     mutateAsync(formatFormData(data));
   };
@@ -50,7 +56,8 @@ export const OrdersEditFormWrapper = () => {
       isSubmitting={isLoading}
       onSubmit={submit}
       form={form}
-      minExpirationDate={orderDetailsValues?.expirationDate}
+      minExpirationDate={initialData?.orderDetailsValues.expirationDate}
+      initialFiles={initialData?.initialFiles}
     />
   );
 };

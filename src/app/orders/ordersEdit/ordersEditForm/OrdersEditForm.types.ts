@@ -1,5 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 
+import { ResponseFile } from '@/api/types/types';
+
 export type OrdersEditFormData = {
   procedureIdentifier: string;
   category: string;
@@ -16,4 +18,5 @@ export type OrdersEditFormProps = {
   onSubmit: (data: OrdersEditFormData) => void;
   form: UseFormReturn<OrdersEditFormData>;
   minExpirationDate?: string;
+  initialFiles?: ResponseFile[];
 };

@@ -19,10 +19,10 @@ export const addOrdersMutationFn: AddOrdersMutationFn = (params) => ({
   params,
 });
 
-export const editOrdersQueryKey = 'orders/:orderId';
+export const editOrdersQueryKey = 'orders';
 
-export const editOrdersMutationFn: EditOrdersMutationFn = (params) => ({
-  endpoint: editOrdersQueryKey,
+export const editOrdersMutationFn: (orderId: string) => EditOrdersMutationFn = (id) => (params) => ({
+  endpoint: `${editOrdersQueryKey}/${id}`,
   method: 'PATCH',
   params,
 });
