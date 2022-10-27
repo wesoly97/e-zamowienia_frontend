@@ -9,13 +9,14 @@ import { Order } from '@/api/actions/orders/orders.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 
-export const Orders = ({ data, hasNextPage, onLoadMore, onRefetch }: OrdersProps) => {
+export const Orders = ({ data, count, hasNextPage, onLoadMore, onRefetch }: OrdersProps) => {
   const navigate = useNavigate();
 
   return (
     <Container>
       <Table
         rows={data}
+        count={count}
         keyExtractor={({ _id }: Order) => _id}
         onLoadMore={onLoadMore}
         hasNextPage={hasNextPage}

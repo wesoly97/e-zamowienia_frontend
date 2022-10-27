@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { FiltersOptionArgs } from '@/api/actions/orders/orders.types';
-
 export type FiltersParamsControllerProps = {
   children: ReactNode;
-} & Required<FiltersOptionArgs>;
+  limit: 5 | 10 | 25 | 50 | 75;
+  offset: number;
+};

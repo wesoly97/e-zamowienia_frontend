@@ -10,17 +10,22 @@ export const useGetOrders = () => {
     [getOrdersQueryKey],
     getInfiniteOrdersQuery,
     {
-      keepPreviousData: true,
+      keepPreviousData: false,
       retry: 5,
       retryDelay: 1000,
       args: {
         limit: limit,
-        offset: offset,
       },
       onSuccess: () => {},
       onError: () => {},
       getNextPageParam: ({ count }) => {
-        return count <= limit * (offset + 1);
+        const page = offset + 1;
+
+        if (page * limit >= count) {
+          return;
+        }
+
+        return offset + 1;
       },
     },
   );

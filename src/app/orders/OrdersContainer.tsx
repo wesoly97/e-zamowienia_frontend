@@ -4,19 +4,33 @@ import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
 
 import { FiltersParamsController } from '@/context/filtersParams/filtersParamsController/FiltersParamsController';
+import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
 export const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, isFetching, refetch } = useGetOrders();
+  const { offset } = useFiltersParams();
 
-  const allData = useMemo(() => {
-    return data?.pages.flatMap((page) => page.orders);
-  }, [data]);
+  const pageData = useMemo(() => {
+    if (!data?.pages || offset === undefined) {
+      return null;
+    }
 
-  if (!allData || isFetching) {
+    return data.pages[offset];
+  }, [data?.pages, offset]);
+
+  if (!pageData || isFetching) {
     return null;
   }
 
-  return <Orders data={allData ?? []} hasNextPage={hasNextPage} onLoadMore={fetchNextPage} onRefetch={refetch} />;
+  return (
+    <Orders
+      data={pageData.orders ?? []}
+      count={pageData.count ?? 0}
+      hasNextPage={hasNextPage}
+      onLoadMore={fetchNextPage}
+      onRefetch={refetch}
+    />
+  );
 };
 
 export const OrdersContainer = () => {

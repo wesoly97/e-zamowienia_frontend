@@ -1,10 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { FiltersParamsControllerProps } from '../filtersParamsController/FiltersParamsController.types';
-
-import { FiltersOptionArgs } from '@/api/actions/orders/orders.types';
-
 export type FiltersParamsContextValue = {
-  setLimitArg: Dispatch<SetStateAction<Pick<FiltersParamsControllerProps, 'limit'>>>;
-  setOffsetArg: Dispatch<SetStateAction<Pick<FiltersParamsControllerProps, 'offset'>>>;
-} & Required<FiltersOptionArgs>;
+  limit: 5 | 10 | 25 | 50 | 75;
+  offset: number;
+  setLimitArg: Dispatch<SetStateAction<5 | 10 | 25 | 50 | 75>>;
+  setOffsetArg: Dispatch<SetStateAction<number>>;
+};

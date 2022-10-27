@@ -15,6 +15,7 @@ import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams
 
 export const Table = <T,>({
   rows,
+  count,
   keyExtractor,
   renderRow,
   onLoadMore,
@@ -29,7 +30,7 @@ export const Table = <T,>({
     onLoadMore();
   };
 
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
     setLimitArg(Number(event.target.value));
     setOffsetArg(0);
     onRefetch();
@@ -50,7 +51,7 @@ export const Table = <T,>({
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, 50, 75]}
               colSpan={3}
-              count={rows.length}
+              count={count}
               rowsPerPage={limit}
               page={offset}
               showLastButton={hasNextPage}

@@ -6,8 +6,8 @@ import { FiltersParamsContextValue } from '../filtersParamsContext/FiltersParams
 import { FiltersParamsControllerProps } from './FiltersParamsController.types';
 
 export const FiltersParamsController = ({ children, limit, offset }: FiltersParamsControllerProps) => {
-  const [limitArg, setLimitArg] = useState<Pick<FiltersParamsControllerProps, 'limit'>>(limit);
-  const [offsetArg, setOffsetArg] = useState<Pick<FiltersParamsControllerProps, 'offset'>>(offset);
+  const [limitArg, setLimitArg] = useState(limit);
+  const [offsetArg, setOffsetArg] = useState(offset);
 
   const value = useMemo<FiltersParamsContextValue>(
     () => ({

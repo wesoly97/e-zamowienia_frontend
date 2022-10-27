@@ -5,12 +5,6 @@ import { useApiClient } from '../useApiClient/useApiClient';
 
 import { InfiniteQueryClientOptions, InfiniteQueryFn, UseInfiniteQueryOptions } from './useInfiniteQuery.types';
 
-/**
- * Fetching data using this hook doesn't require specifying query function like it's required in react-query
- * @see https://react-query.tanstack.com/guides/query-functions
- * This hook uses proper querying strategy provided via ApiClientContext
- * @see ApiClientContextController.ts
- * */
 export const useInfiniteQuery = <TArgs = unknown, TParams = unknown, TError = unknown, TResponse = TParams>(
   queryKey: QueryKey,
   query: InfiniteQueryFn<TArgs, TParams, TResponse>,
