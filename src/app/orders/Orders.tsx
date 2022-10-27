@@ -9,7 +9,7 @@ import { Order } from '@/api/actions/orders/orders.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 
-export const Orders = ({ data, count, hasNextPage, onLoadMore, onRefetch }: OrdersProps) => {
+export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, onRefetch }: OrdersProps) => {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,8 @@ export const Orders = ({ data, count, hasNextPage, onLoadMore, onRefetch }: Orde
         rows={data}
         count={count}
         keyExtractor={({ _id }: Order) => _id}
-        onLoadMore={onLoadMore}
+        onNextPage={onNextPage}
+        onPreviousPage={onPreviousPage}
         hasNextPage={hasNextPage}
         onRefetch={onRefetch}
         onRowClick={(_, item) => {

@@ -18,7 +18,8 @@ export const Table = <T,>({
   count,
   keyExtractor,
   renderRow,
-  onLoadMore,
+  onNextPage,
+  onPreviousPage,
   hasNextPage,
   onRefetch,
   onRowClick,
@@ -27,7 +28,12 @@ export const Table = <T,>({
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setOffsetArg(newPage);
-    onLoadMore();
+    if (offset < newPage) {
+      onNextPage();
+    }
+    if (offset > newPage) {
+      onPreviousPage();
+    }
   };
 
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {

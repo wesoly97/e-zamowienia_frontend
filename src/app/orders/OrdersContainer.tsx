@@ -7,7 +7,7 @@ import { FiltersParamsController } from '@/context/filtersParams/filtersParamsCo
 import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
 export const OrdersContainerRaw = () => {
-  const { data, hasNextPage, fetchNextPage, isFetching, refetch } = useGetOrders();
+  const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
   const { offset } = useFiltersParams();
 
   const pageData = useMemo(() => {
@@ -27,7 +27,8 @@ export const OrdersContainerRaw = () => {
       data={pageData.orders ?? []}
       count={pageData.count ?? 0}
       hasNextPage={hasNextPage}
-      onLoadMore={fetchNextPage}
+      onNextPage={fetchNextPage}
+      onPreviousPage={fetchPreviousPage}
       onRefetch={refetch}
     />
   );

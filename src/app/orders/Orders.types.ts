@@ -4,6 +4,7 @@ export type OrdersProps = {
   data: Order[];
   count: number;
   hasNextPage?: boolean;
-  onLoadMore: VoidFunction;
+  onNextPage: VoidFunction;
+  onPreviousPage: VoidFunction;
   onRefetch: VoidFunction;
 };

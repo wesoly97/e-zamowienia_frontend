@@ -16,8 +16,6 @@ export const useGetOrders = () => {
       args: {
         limit: limit,
       },
-      onSuccess: () => {},
-      onError: () => {},
       getNextPageParam: ({ count }) => {
         const page = offset + 1;
 
@@ -25,7 +23,16 @@ export const useGetOrders = () => {
           return;
         }
 
-        return offset + 1;
+        return page;
+      },
+      getPreviousPageParam: () => {
+        const page = offset - 1;
+
+        if (page < 0) {
+          return;
+        }
+
+        return page;
       },
     },
   );

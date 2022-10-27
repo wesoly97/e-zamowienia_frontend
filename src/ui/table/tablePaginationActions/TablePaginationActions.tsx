@@ -31,7 +31,7 @@ export const TablePaginationActions = ({
   };
 
   const handleLastPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
-    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onPageChange(event, Math.ceil(count / rowsPerPage) - 1);
   };
 
   return (
