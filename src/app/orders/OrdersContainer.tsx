@@ -2,20 +2,22 @@ import { useMemo } from 'react';
 
 import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
+import { isNumber } from './Orders.utils';
+import { useGetOrdersFilters } from './hooks/useGetOrdersFilters/useGetOrdersFilters';
 
+import { QueryParamsContextController } from '@/context/queryParams/queryParamsController/QueryParamsContextController';
 import { FiltersParamsController } from '@/context/filtersParams/filtersParamsController/FiltersParamsController';
-import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
 export const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset } = useFiltersParams();
+  const { offset } = useGetOrdersFilters();
 
   const pageData = useMemo(() => {
-    if (!data?.pages || offset === undefined) {
+    if (!data?.pages || !offset || !isNumber(offset)) {
       return null;
     }
 
-    return data.pages[offset];
+    return data.pages[Number(offset)];
   }, [data?.pages, offset]);
 
   if (!pageData || isFetching) {
@@ -36,8 +38,10 @@ export const OrdersContainerRaw = () => {
 
 export const OrdersContainer = () => {
   return (
-    <FiltersParamsController limit={5} offset={0}>
-      <OrdersContainerRaw />
-    </FiltersParamsController>
+    <QueryParamsContextController>
+      <FiltersParamsController filtersKeys={['offset', 'limit', 'filterOption', 'sortOption']}>
+        <OrdersContainerRaw />
+      </FiltersParamsController>
+    </QueryParamsContextController>
   );
 };

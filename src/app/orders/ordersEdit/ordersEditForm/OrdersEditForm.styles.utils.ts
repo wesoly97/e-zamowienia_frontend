@@ -8,4 +8,5 @@ export const ordersEditFormInitialData: OrdersEditFormData = {
   price: 0,
   description: '',
   expirationDate: '',
+  files: [],
 };

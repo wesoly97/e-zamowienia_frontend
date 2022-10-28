@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 import { TableCell } from '@mui/material';
 
 import { Container } from './Orders.styles';

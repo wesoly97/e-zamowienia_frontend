@@ -1,32 +1,35 @@
+import { useGetOrdersFilters } from '../useGetOrdersFilters/useGetOrdersFilters';
+
 import { getInfiniteOrdersQuery, getOrdersQueryKey } from '@/api/actions/orders/orders';
 import { GetOrdersArgs, GetOrdersError, GetOrdersResponse } from '@/api/actions/orders/orders.types';
-import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 import { useInfiniteQuery } from '@/hooks/useInfiniteQuery/useInfiniteQuery';
 
 export const useGetOrders = () => {
-  const { limit, offset } = useFiltersParams();
+  const { limit, offset, filterOption, sortOption } = useGetOrdersFilters();
 
   return useInfiniteQuery<GetOrdersArgs, GetOrdersResponse, GetOrdersError>(
     [getOrdersQueryKey],
     getInfiniteOrdersQuery,
     {
-      keepPreviousData: false,
+      keepPreviousData: true,
       retry: 5,
       retryDelay: 1000,
       args: {
-        limit: limit,
+        limit,
+        filterOption,
+        sortOption,
       },
       getNextPageParam: ({ count }) => {
-        const page = offset + 1;
+        const page = Number(offset) + 1;
 
-        if (page * limit >= count) {
+        if (page * Number(limit) >= count) {
           return;
         }
 
         return page;
       },
       getPreviousPageParam: () => {
-        const page = offset - 1;
+        const page = Number(offset) - 1;
 
         if (page < 0) {
           return;

@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Query } from '@/context/queryParams/queryParamsContent/QueryParamsContext.types';
 
 export type FiltersParamsContextValue = {
-  limit: 5 | 10 | 25 | 50 | 75;
-  offset: number;
-  setLimitArg: Dispatch<SetStateAction<5 | 10 | 25 | 50 | 75>>;
-  setOffsetArg: Dispatch<SetStateAction<number>>;
+  query: Query;
+  setParam: (key: string, value: number | string | string[]) => void;
 };
