@@ -31,7 +31,7 @@ export type GetOrdersError = InternalServerError;
 
 export type GetOrdersInfiniteQueryFn = InfiniteQueryFn<GetOrdersArgs, GetOrdersResponse>;
 
-type SortOptionBody = {
+export type SortOptionArgs = {
   sortOption?: {
     _id?: 1 | -1;
     title?: 1 | -1;
@@ -40,7 +40,7 @@ type SortOptionBody = {
   };
 };
 
-type FiltersOptionBody = {
+export type FiltersOptionArgs = {
   filterOption?: {
     title?: string;
     mode?: string;
@@ -48,12 +48,12 @@ type FiltersOptionBody = {
   };
 };
 
-export type FiltersOptionArgs = {
-  limit: 5 | 10 | 25 | 50 | 75;
-  offset?: number;
+export type DefaultOptionArgs = {
+  limit?: '5' | '10' | '25' | '50' | '75';
+  offset?: string;
 };
 
-export type GetOrdersArgs = FiltersOptionArgs & SortOptionBody & FiltersOptionBody;
+export type GetOrdersArgs = DefaultOptionArgs & SortOptionArgs & FiltersOptionArgs;
 
 export type GetOrdersDetailsResponse = {
   _id: string;

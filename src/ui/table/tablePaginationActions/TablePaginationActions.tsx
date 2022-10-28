@@ -31,7 +31,7 @@ export const TablePaginationActions = ({
   };
 
   const handleLastPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
-    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onPageChange(event, Math.ceil(count / rowsPerPage) - 1);
   };
 
   return (
@@ -42,7 +42,7 @@ export const TablePaginationActions = ({
       <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
         {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
       </IconButton>
-      <IconButton onClick={handleNextButtonClick} disabled={showLastButton} aria-label="next page">
+      <IconButton onClick={handleNextButtonClick} disabled={!showLastButton} aria-label="next page">
         {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
       </IconButton>
       <IconButton

@@ -1,10 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
-
-import { FiltersParamsControllerProps } from '../filtersParamsController/FiltersParamsController.types';
-
-import { FiltersOptionArgs } from '@/api/actions/orders/orders.types';
+import { Query } from '@/context/queryParams/queryParamsContent/QueryParamsContext.types';
 
 export type FiltersParamsContextValue = {
-  setLimitArg: Dispatch<SetStateAction<Pick<FiltersParamsControllerProps, 'limit'>>>;
-  setOffsetArg: Dispatch<SetStateAction<Pick<FiltersParamsControllerProps, 'offset'>>>;
-} & Required<FiltersOptionArgs>;
+  query: Query;
+  setParam: (key: string, value: number | string | string[]) => void;
+};

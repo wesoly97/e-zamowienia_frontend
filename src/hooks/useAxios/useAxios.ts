@@ -47,7 +47,7 @@ export const useAxios = (): ApiClientContextValue => {
         const queryParams = stringify(
           {
             ...args,
-            ...pageParam,
+            offset: pageParam,
           },
           { arrayFormat: 'brackets' },
         );

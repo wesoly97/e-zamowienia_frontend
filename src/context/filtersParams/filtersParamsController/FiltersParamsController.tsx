@@ -1,22 +1,42 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { FiltersParamsContext } from '../filtersParamsContext/FiltersParamsContext';
 import { FiltersParamsContextValue } from '../filtersParamsContext/FiltersParamsContext.types';
 
 import { FiltersParamsControllerProps } from './FiltersParamsController.types';
 
-export const FiltersParamsController = ({ children, limit, offset }: FiltersParamsControllerProps) => {
-  const [limitArg, setLimitArg] = useState<Pick<FiltersParamsControllerProps, 'limit'>>(limit);
-  const [offsetArg, setOffsetArg] = useState<Pick<FiltersParamsControllerProps, 'offset'>>(offset);
+import { useQueryParams } from '@/context/queryParams/hooks/useQueryParams';
+import { pick } from '@/utils/pick';
+
+export const FiltersParamsController = ({ children, filtersKeys }: FiltersParamsControllerProps) => {
+  const keys = useMemo(() => [...filtersKeys, 'search'], []);
+  const { query: queryParams, setQuery } = useQueryParams();
+  const query = pick(queryParams, keys);
+
+  const setParam = useCallback(
+    (key: string, value: number | string | string[]) => {
+      const parsedValue = String(value);
+      setQuery((prevState) => {
+        const newQuery = JSON.parse(JSON.stringify(prevState));
+        if (!parsedValue.length) {
+          return { key, ...newQuery };
+        }
+
+        return {
+          ...prevState,
+          [key]: parsedValue,
+        };
+      });
+    },
+    [setQuery],
+  );
 
   const value = useMemo<FiltersParamsContextValue>(
     () => ({
-      limit: limitArg,
-      offset: offsetArg,
-      setLimitArg,
-      setOffsetArg,
+      query,
+      setParam,
     }),
-    [limitArg, offsetArg],
+    [query, setParam],
   );
 
   return <FiltersParamsContext.Provider value={value}>{children}</FiltersParamsContext.Provider>;

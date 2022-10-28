@@ -1,10 +1,11 @@
+import { useGetOrdersFilters } from '../useGetOrdersFilters/useGetOrdersFilters';
+
 import { getInfiniteOrdersQuery, getOrdersQueryKey } from '@/api/actions/orders/orders';
 import { GetOrdersArgs, GetOrdersError, GetOrdersResponse } from '@/api/actions/orders/orders.types';
-import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 import { useInfiniteQuery } from '@/hooks/useInfiniteQuery/useInfiniteQuery';
 
 export const useGetOrders = () => {
-  const { limit, offset } = useFiltersParams();
+  const { limit, offset, filterOption, sortOption } = useGetOrdersFilters();
 
   return useInfiniteQuery<GetOrdersArgs, GetOrdersResponse, GetOrdersError>(
     [getOrdersQueryKey],
@@ -14,13 +15,27 @@ export const useGetOrders = () => {
       retry: 5,
       retryDelay: 1000,
       args: {
-        limit: limit,
-        offset: offset,
+        limit,
+        filterOption,
+        sortOption,
       },
-      onSuccess: () => {},
-      onError: () => {},
       getNextPageParam: ({ count }) => {
-        return count <= limit * (offset + 1);
+        const page = Number(offset) + 1;
+
+        if (page * Number(limit) >= count) {
+          return;
+        }
+
+        return page;
+      },
+      getPreviousPageParam: () => {
+        const page = Number(offset) - 1;
+
+        if (page < 0) {
+          return;
+        }
+
+        return page;
       },
     },
   );

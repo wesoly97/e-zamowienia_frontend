@@ -12,26 +12,37 @@ import { TableProps } from './Tables.types';
 import { StyledTableRow } from './Table.styles';
 
 import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
+import { useGetOrdersFilters } from '@/app/orders/hooks/useGetOrdersFilters/useGetOrdersFilters';
 
 export const Table = <T,>({
   rows,
+  count,
   keyExtractor,
   renderRow,
-  onLoadMore,
+  onNextPage,
+  onPreviousPage,
   hasNextPage,
   onRefetch,
   onRowClick,
 }: TableProps<T>) => {
-  const { limit, offset, setLimitArg, setOffsetArg } = useFiltersParams();
+  const { setParam } = useFiltersParams();
+  const { limit, offset } = useGetOrdersFilters();
+  const offsetFilter = Number(offset);
+  const limitFilter = Number(limit);
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    setOffsetArg(newPage);
-    onLoadMore();
+    setParam('offset', newPage);
+    if (offsetFilter < newPage) {
+      onNextPage();
+    }
+    if (offsetFilter > newPage) {
+      onPreviousPage();
+    }
   };
 
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setLimitArg(Number(event.target.value));
-    setOffsetArg(0);
+  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
+    setParam('limit', event.target.value);
+    setParam('offset', 0);
     onRefetch();
   };
 
@@ -50,9 +61,9 @@ export const Table = <T,>({
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, 50, 75]}
               colSpan={3}
-              count={rows.length}
-              rowsPerPage={limit}
-              page={offset}
+              count={count}
+              rowsPerPage={limitFilter}
+              page={offsetFilter}
               showLastButton={hasNextPage}
               SelectProps={{
                 inputProps: {

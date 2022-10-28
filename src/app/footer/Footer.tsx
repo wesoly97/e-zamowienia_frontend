@@ -22,8 +22,8 @@ export const Footer = () => {
             </Column>
           </Menu>
         </Content>
+        <BottomBar>2022</BottomBar>
       </Container>
-      <BottomBar>2022</BottomBar>
     </>
   );
 };
