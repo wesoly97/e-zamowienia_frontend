@@ -6,14 +6,17 @@ import { ReactNode } from 'react';
 import { ApiClientContextController } from '@/context/apiClient/apiClientContextController/ApiClientContextController';
 import { theme } from '@/theme/theme';
 import { AuthContextController } from '@/context/auth/authContextController/AuthContextController';
+import { SettingsContextController } from '@/context/settings/settingsContextController/SettingsContextController';
 
 export const AppProviders = ({ children }: { children?: ReactNode }) => (
   <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <ApiClientContextController>
-        <AuthContextController>
-          <BrowserRouter>{children}</BrowserRouter>
-        </AuthContextController>
+        <SettingsContextController>
+          <AuthContextController>
+            <BrowserRouter>{children}</BrowserRouter>
+          </AuthContextController>
+        </SettingsContextController>
       </ApiClientContextController>
     </ThemeProvider>
   </StyledEngineProvider>

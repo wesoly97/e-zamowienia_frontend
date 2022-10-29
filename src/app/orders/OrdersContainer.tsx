@@ -12,6 +12,10 @@ export const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
   const { offset } = useGetOrdersFilters();
 
+  if (!data?.pages[Number(offset)]) {
+    //todo redirect to offset 0
+  }
+
   const pageData = useMemo(() => {
     if (!data?.pages || !offset || !isNumber(offset)) {
       return null;

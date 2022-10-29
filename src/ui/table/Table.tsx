@@ -11,7 +11,6 @@ import { TablePaginationActions } from './tablePaginationActions/TablePagination
 import { TableProps } from './Tables.types';
 import { StyledTableRow } from './Table.styles';
 
-import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 import { useGetOrdersFilters } from '@/app/orders/hooks/useGetOrdersFilters/useGetOrdersFilters';
 
 export const Table = <T,>({
@@ -25,8 +24,7 @@ export const Table = <T,>({
   onRefetch,
   onRowClick,
 }: TableProps<T>) => {
-  const { setParam } = useFiltersParams();
-  const { limit, offset } = useGetOrdersFilters();
+  const { limit, offset, setParam } = useGetOrdersFilters();
   const offsetFilter = Number(offset);
   const limitFilter = Number(limit);
 
