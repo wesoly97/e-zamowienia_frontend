@@ -19,9 +19,12 @@ export const Select = <T,>({
   errorText,
 }: SelectProps<T>) => {
   return (
-    <FormControl fullWidth disabled={disabled} required={required} error={error}>
-      <InputLabel id={labelId}>{label}</InputLabel>
-      <MuiSelect labelId={labelId} id={id} value={value} label={label} onChange={onChange}>
+    <FormControl disabled={disabled} required={required} error={error}>
+      <InputLabel shrink id={labelId}>
+        {label}
+      </InputLabel>
+      <MuiSelect labelId={labelId} id={id} value={value} label={label} onChange={onChange} notched displayEmpty>
+        <MenuItem value={''}>Wszystko</MenuItem>
         {data.map((item, index) => (
           <MenuItem key={index} value={item as unknown as string}>
             {item as unknown as string}

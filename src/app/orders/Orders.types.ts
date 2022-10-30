@@ -7,4 +7,5 @@ export type OrdersProps = {
   onNextPage: VoidFunction;
   onPreviousPage: VoidFunction;
   onRefetch: VoidFunction;
+  isLoading: boolean;
 };

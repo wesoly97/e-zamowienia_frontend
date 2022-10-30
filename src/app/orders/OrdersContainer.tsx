@@ -4,13 +4,14 @@ import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
 import { isNumber } from './Orders.utils';
 import { useGetOrdersFilters } from './hooks/useGetOrdersFilters/useGetOrdersFilters';
+import { OrdersForm } from './ordersForm/OrdersForm';
 
 import { QueryParamsContextController } from '@/context/queryParams/queryParamsController/QueryParamsContextController';
 import { FiltersParamsController } from '@/context/filtersParams/filtersParamsController/FiltersParamsController';
 
 export const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset } = useGetOrdersFilters();
+  const { offset, setParam } = useGetOrdersFilters();
 
   if (!data?.pages[Number(offset)]) {
     //todo redirect to offset 0
@@ -24,19 +25,19 @@ export const OrdersContainerRaw = () => {
     return data.pages[Number(offset)];
   }, [data?.pages, offset]);
 
-  if (!pageData || isFetching) {
-    return null;
-  }
-
   return (
-    <Orders
-      data={pageData.orders ?? []}
-      count={pageData.count ?? 0}
-      hasNextPage={hasNextPage}
-      onNextPage={fetchNextPage}
-      onPreviousPage={fetchPreviousPage}
-      onRefetch={refetch}
-    />
+    <>
+      <OrdersForm updateFilters={setParam} onRefetch={refetch} />
+      <Orders
+        data={pageData?.orders ?? []}
+        count={pageData?.count ?? 0}
+        hasNextPage={hasNextPage}
+        onNextPage={fetchNextPage}
+        onPreviousPage={fetchPreviousPage}
+        onRefetch={refetch}
+        isLoading={isFetching}
+      />
+    </>
   );
 };
 

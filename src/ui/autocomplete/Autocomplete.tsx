@@ -26,10 +26,18 @@ export const Autocomplete = <T,>({
     option: T;
     stateValue: string;
   }) => {
-    const optionStringified = String(selectValue);
-    const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
-    const matches = match(option[parameter], stateValue, { insideWords: true });
-    const parts = parse(option[parameter], matches);
+    let matches = undefined;
+    let parts = undefined;
+
+    if (!!selectValue) {
+      const optionStringified = String(selectValue);
+      const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
+      matches = match(option[parameter], stateValue, { insideWords: true });
+      parts = parse(option[parameter], matches);
+    } else {
+      matches = match(option, stateValue, { insideWords: true });
+      parts = parse(option, matches);
+    }
 
     return (
       <li {...props}>
@@ -48,8 +56,24 @@ export const Autocomplete = <T,>({
     <StyledAutocomplete
       id={id}
       options={options}
-      getOptionLabel={(option) => (typeof option[selectValue] === 'string' ? option[selectValue] : '')}
-      isOptionEqualToValue={(option, value) => option[selectValue] === value[selectValue]}
+      getOptionLabel={(option) => {
+        if (typeof option === 'string' || typeof option === 'number') {
+          return option;
+        }
+
+        if (typeof option[selectValue] === 'string') {
+          return option[selectValue];
+        }
+
+        return '';
+      }}
+      isOptionEqualToValue={(option, value) => {
+        if (typeof option === 'string' || typeof option === 'number') {
+          return option === value;
+        }
+
+        return option[selectValue] === value[selectValue];
+      }}
       value={value}
       onChange={onChange}
       inputValue={inputValue}
@@ -62,8 +86,8 @@ export const Autocomplete = <T,>({
       renderOption={(props, option, { inputValue: stateValue }) => renderOption({ props, option, stateValue })}
       clearOnEscape={false}
       clearOnBlur={false}
-      openOnFocus={true}
-      freeSolo={true}
+      openOnFocus
+      freeSolo
     />
   );
 };

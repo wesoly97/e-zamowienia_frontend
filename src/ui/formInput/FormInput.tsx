@@ -32,7 +32,6 @@ export const FormInput = ({
             inputProps={inputProps}
             InputProps={InputProps}
             InputLabelProps={InputLabelProps}
-            {...restField}
             onChange={(event) => {
               if (!!handleChange && handleChange(event)) {
                 handleFieldChange(event);
@@ -45,6 +44,7 @@ export const FormInput = ({
             multiline={multiline}
             maxRows={maxRows}
             rows={rows}
+            {...restField}
           />
         );
       }}

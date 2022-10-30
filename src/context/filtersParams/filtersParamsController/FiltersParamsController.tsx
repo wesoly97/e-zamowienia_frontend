@@ -16,17 +16,11 @@ export const FiltersParamsController = ({ children, filtersKeys }: FiltersParams
   const setParam = useCallback(
     (key: string, value: number | string | string[]) => {
       const parsedValue = String(value);
-      setQuery((prevState) => {
-        const newQuery = JSON.parse(JSON.stringify(prevState));
-        if (!parsedValue.length) {
-          return { key, ...newQuery };
-        }
 
-        return {
-          ...prevState,
-          [key]: parsedValue,
-        };
-      });
+      setQuery((prevState) => ({
+        ...prevState,
+        ...(!!key && { [key]: parsedValue }),
+      }));
     },
     [setQuery],
   );

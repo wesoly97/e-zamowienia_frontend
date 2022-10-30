@@ -8,8 +8,12 @@ import { Order } from '@/api/actions/orders/orders.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 
-export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, onRefetch }: OrdersProps) => {
+export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, onRefetch, isLoading }: OrdersProps) => {
   const navigate = useNavigate();
+
+  if (!data.length || isLoading) {
+    return null;
+  }
 
   return (
     <Container>
@@ -24,10 +28,11 @@ export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, o
         onRowClick={(_, item) => {
           navigate(AppLinks.OrderDetails.replace(AppRoute.OrderId, item._id));
         }}
-        renderRow={({ title, price, mode }: Order) => (
+        renderRow={({ title, price, category, mode }: Order) => (
           <>
             <TableCell>{title}</TableCell>
             <TableCell>{price}</TableCell>
+            <TableCell>{category}</TableCell>
             <TableCell>{mode}</TableCell>
           </>
         )}

@@ -48,6 +48,7 @@ const Template: Story<any> = <Book,>({ ...props }: AutocompleteProps<Book>) => {
       }}
     />
   );
+
   return (
     <>
       <Autocomplete

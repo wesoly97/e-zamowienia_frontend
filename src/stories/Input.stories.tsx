@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
+import { ChangeEvent, useState } from 'react';
 
 import { InputProps } from '@/ui/input/Input.types';
 import { Input } from '@/ui/input/Input';
@@ -22,21 +23,24 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<InputProps> = ({ ...props }: InputProps) => (
-  <>
-    <Input {...props} variant="standard" />
-    <Input {...props} variant="outlined" />
-    <Input {...props} variant="filled" />
-  </>
-);
+const Template: Story<InputProps> = ({ ...props }: InputProps) => {
+  const [value, setValue] = useState<string | number>('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <>
+      <Input {...props} value={value} onChange={handleChange} variant={'standard'} />
+      <Input {...props} value={value} onChange={handleChange} variant={'outlined'} />
+      <Input {...props} value={value} onChange={handleChange} variant={'filled'} />
+    </>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {};
-
-export const DefaultValue = Template.bind({});
-DefaultValue.args = {
-  defaultValue: 'John',
-};
 
 export const Error = Template.bind({});
 Error.args = {
@@ -55,7 +59,6 @@ ErrorWithText.args = {
 
 export const Number = Template.bind({});
 Number.args = {
-  defaultValue: '12',
   type: 'number',
 };
 
@@ -67,7 +70,6 @@ Labeled.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-  defaultValue: 'John',
   id: 'name',
   label: 'Name',
   required: true,

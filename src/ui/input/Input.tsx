@@ -6,7 +6,6 @@ export const Input = ({
   label,
   id,
   disabled,
-  defaultValue,
   helperText,
   required,
   type,
@@ -18,6 +17,7 @@ export const Input = ({
   InputLabelProps,
   classes,
   className,
+  value,
   onChange,
 }: InputProps) => {
   return (
@@ -28,7 +28,6 @@ export const Input = ({
       type={type}
       variant={variant}
       disabled={disabled}
-      defaultValue={defaultValue}
       helperText={helperText}
       required={required}
       error={error}
@@ -38,6 +37,7 @@ export const Input = ({
       InputLabelProps={InputLabelProps}
       classes={classes}
       className={className}
+      value={value}
       onChange={onChange}
     />
   );
