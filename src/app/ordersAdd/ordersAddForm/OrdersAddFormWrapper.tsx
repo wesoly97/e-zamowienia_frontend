@@ -1,7 +1,7 @@
 import { useIsMutating } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
-import { useAddOrdersEffect } from '../../hooks/useAddOrders/useAddOrdersEffect';
+import { useAddOrdersEffect } from '../hooks/useAddOrders/useAddOrdersEffect';
 
 import { OrdersAddFormData } from './OrdersAddForm.types';
 import { ordersAddFormInitialData } from './OrdersAddForm.utils';

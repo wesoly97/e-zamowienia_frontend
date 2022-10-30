@@ -1,7 +1,6 @@
 import { useParams } from 'react-router';
 
-import { useGetOrdersDetails } from '../hooks/useGetOrdersDetails/useGetOrdersDetails';
-
+import { useGetOrdersDetails } from './hooks/useGetOrdersDetails/useGetOrdersDetails';
 import { OrdersDetails } from './OrdersDetails';
 
 export const OrdersDetailsContainer = () => {

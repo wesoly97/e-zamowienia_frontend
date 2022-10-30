@@ -9,10 +9,10 @@ import { Footer } from '@/app/footer/Footer';
 import { Login } from '@/app/login/Login';
 import { Register } from '@/app/register/Register';
 import { UnauthenticatedLayout } from '@/layouts/unauthenticatedLayout/UnauthenticatedLayout';
-import { OrdersDetailsContainer } from '@/app/orders/ordersDetails/OrdersDetailsContainer';
-import { OrdersAdd } from '@/app/orders/ordersAdd/OrdersAdd';
 import { AuthenticatedLayout } from '@/layouts/authenticatedLayout/AuthenticatedLayout';
-import { OrdersEdit } from '@/app/orders/ordersEdit/OrdersEdit';
+import { OrdersEdit } from '@/app/ordersEdit/OrdersEdit';
+import { OrdersAdd } from '@/app/ordersAdd/OrdersAdd';
+import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContainer';
 
 //TODO lazy
 export const AppRoutes = () => (
