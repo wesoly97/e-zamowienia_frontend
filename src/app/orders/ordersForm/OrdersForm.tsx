@@ -44,12 +44,6 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
     onRefetch();
   };
 
-  // const handleChangeMode = (event: SelectChangeEvent) => {
-  //   setMode(event.target.value);
-  //   updateFilters('filterOption[mode]', event.target.value);
-  //   onRefetch();
-  // };
-
   const autocompleteCategoryInput = (params: AutocompleteRenderInputParams) => (
     <Input {...params} label={'Kategoria'} />
   );
@@ -62,22 +56,6 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
 
   return (
     <>
-      {/* <Select
-        data={settings.orderCategories}
-        id={'categories'}
-        labelId={'categories-label'}
-        label={'Kategoria'}
-        value={category}
-        onChange={handleChangeCategory}
-      /> */}
-      {/* <Select
-        data={settings.orderModes}
-        id={'mode'}
-        labelId={'mode-label'}
-        label={'Typ'}
-        value={mode}
-        onChange={handleChangeMode}
-      /> */}
       <Input
         id={'title'}
         variant={'outlined'}
@@ -87,7 +65,7 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
         onChange={handleChangeTitle}
       />
       <Autocomplete
-        id={'categories'}
+        id={'category'}
         options={settings.orderCategories}
         renderInput={autocompleteCategoryInput}
         value={category}
