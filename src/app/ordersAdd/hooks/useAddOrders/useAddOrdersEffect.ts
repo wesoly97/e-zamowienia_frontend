@@ -1,6 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 
-import { OrdersAddFormData } from '../../ordersAdd/ordersAddForm/OrdersAddForm.types';
+import { OrdersAddFormData } from '../../ordersAddForm/OrdersAddForm.types';
 
 import { useAddOrders } from './useAddOrders';
 

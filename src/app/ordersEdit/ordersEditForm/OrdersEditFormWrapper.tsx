@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import { useEffect, useMemo } from 'react';
 
-import { useEditOrdersEffect } from '../../hooks/useEditOrders/useEditOrdersEffect';
-import { useGetOrdersDetails } from '../../hooks/useGetOrdersDetails/useGetOrdersDetails';
+import { useEditOrdersEffect } from '../hooks/useEditOrders/useEditOrdersEffect';
 
 import { OrdersEditFormData } from './OrdersEditForm.types';
 import { OrdersEditForm } from './OrdersEditForm';
@@ -13,6 +12,7 @@ import { ordersEditFormInitialData } from './OrdersEditForm.styles.utils';
 import { formatFormData } from '@/utils/api/formData/formatFormData';
 import { editOrdersQueryKey } from '@/api/actions/orders/orders';
 import { parseDateToString } from '@/utils/date/parseDateToString';
+import { useGetOrdersDetails } from '@/app/ordersDetails/hooks/useGetOrdersDetails/useGetOrdersDetails';
 
 export const OrdersEditFormWrapper = () => {
   const { orderId } = useParams<{ orderId: string }>();

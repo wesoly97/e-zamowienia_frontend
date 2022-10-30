@@ -6,7 +6,6 @@ export type InputProps = Pick<
   | 'label'
   | 'id'
   | 'disabled'
-  | 'defaultValue'
   | 'helperText'
   | 'type'
   | 'required'
@@ -18,5 +17,6 @@ export type InputProps = Pick<
   | 'InputLabelProps'
   | 'classes'
   | 'className'
+  | 'value'
   | 'onChange'
 >;

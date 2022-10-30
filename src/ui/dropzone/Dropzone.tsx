@@ -15,11 +15,17 @@ import {
 import { DropzoneProps } from './Dropzone.types';
 import { FileListing } from './fileListing/FileListing';
 
+import { useSettingsContext } from '@/context/settings/hooks/useSettingsContext';
+
 export const Dropzone = ({ onDrop, onChange, onBlur, error, fetchedFiles, uploadedFiles }: DropzoneProps) => {
-  //TODO fetch from backend
+  const { settings } = useSettingsContext();
 
   const { getRootProps, open, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
     ...defaultConfig,
+    ...(settings && {
+      accept: settings.fileTypes,
+      maxFiles: settings.maxFileSize,
+    }),
     onDrop: onDrop,
   });
 

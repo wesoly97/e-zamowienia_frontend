@@ -4,7 +4,7 @@ import { DefaultOptionArgs, FiltersOptionArgs, SortOptionArgs } from '@/api/acti
 import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
 
 export const useGetOrdersFilters = () => {
-  const { query } = useFiltersParams();
+  const { query, setParam } = useFiltersParams();
 
   const params = useMemo(() => {
     return {
@@ -17,5 +17,6 @@ export const useGetOrdersFilters = () => {
 
   return {
     ...params,
+    setParam,
   };
 };

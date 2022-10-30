@@ -35,7 +35,8 @@ const books: Book[] = [
   },
 ];
 
-const Template: Story<AutocompleteProps> = ({ ...props }: AutocompleteProps) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Template: Story<any> = <Book,>({ ...props }: AutocompleteProps<Book>) => {
   const [value, setValue] = useState(books[0]);
 
   const renderInput = (params: AutocompleteRenderInputParams) => (
@@ -47,17 +48,18 @@ const Template: Story<AutocompleteProps> = ({ ...props }: AutocompleteProps) => 
       }}
     />
   );
+
   return (
     <>
       <Autocomplete
         {...props}
+        id={'asd'}
         options={books}
         renderInput={renderInput}
-        getOptionLabel={(book) => (book as Book).title}
-        isOptionEqualToValue={(option, value) => (option as Book).title === (value as Book).title}
+        selectValue={'title'}
         value={value}
         onChange={(_, newValue) => {
-          setValue(newValue as Book);
+          setValue(newValue);
         }}
       />
     </>
