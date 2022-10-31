@@ -16,6 +16,9 @@ export const FormInput = ({
   multiline,
   maxRows,
   rows,
+  variant,
+  className,
+  classes,
 }: FormInputProps) => {
   const { control } = useFormContext();
 
@@ -46,6 +49,9 @@ export const FormInput = ({
             multiline={multiline}
             maxRows={maxRows}
             rows={rows}
+            variant={variant}
+            className={className}
+            classes={classes}
             {...restField}
           />
         );

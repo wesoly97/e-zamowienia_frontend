@@ -12,6 +12,8 @@ import {
 } from './Login.styles';
 import { LoginFormWrapper } from './loginForm/LoginFormWrapper';
 
+import { AppLinks } from '@/routing/AppRoutes.types';
+
 export const Login = () => {
   return (
     <Container>
@@ -25,7 +27,7 @@ export const Login = () => {
             <LoginFormWrapper />
             <RegisterPrompt>
               <span>Nie możesz się zalogować?</span>
-              <StyledLink to={'/'}>&nbsp;Zresetuj hasło</StyledLink>
+              <StyledLink to={AppLinks.PasswordRecovery}>&nbsp;Zresetuj hasło</StyledLink>
             </RegisterPrompt>
           </FormBox>
         </FormContainer>

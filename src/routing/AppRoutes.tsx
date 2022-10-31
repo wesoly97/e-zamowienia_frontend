@@ -13,6 +13,7 @@ import { AuthenticatedLayout } from '@/layouts/authenticatedLayout/Authenticated
 import { OrdersEdit } from '@/app/ordersEdit/OrdersEdit';
 import { OrdersAdd } from '@/app/ordersAdd/OrdersAdd';
 import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContainer';
+import { PasswordRecovery } from '@/app/passwordRecovery/PasswordRecovery';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -109,5 +110,14 @@ export const AppRoutes = () => (
         />
       </Route>
     </Route>
+    <Route
+      path={AppRoute.PasswordRecovery}
+      element={
+        <>
+          <Nav position={'absolute'} />
+          <PasswordRecovery />
+        </>
+      }
+    />
   </Routes>
 );

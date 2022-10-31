@@ -52,6 +52,9 @@ export const theme = createTheme({
     medium: '10px',
     large: '20px',
   },
+  boxShadow: {
+    normal: '0 15px 35px 0 rgba(87, 87, 87, 0.12), 0 5px 15px 0 rgba(0, 0, 0, 0.12)',
+  },
   //TODO change fontSize px->rem
   fontType: {
     h1: css`
