@@ -1,12 +1,25 @@
 import { FieldValues, UseFormReturn } from 'react-hook-form';
 
-import { BadRequestError, ConflictError, ForbiddenError, NotFoundError, UnauthorizedError } from '@/api/types/types';
+import {
+  BadRequestError,
+  ConflictError,
+  ForbiddenError,
+  InternalServerError,
+  NotFoundError,
+  UnauthorizedError,
+} from '@/api/types/types';
 
 export type SetFieldsErrorsConfig<
   TFormData extends FieldValues,
-  TError extends BadRequestError | UnauthorizedError | ForbiddenError | NotFoundError | ConflictError,
+  TError extends
+    | BadRequestError
+    | UnauthorizedError
+    | ForbiddenError
+    | NotFoundError
+    | ConflictError
+    | InternalServerError,
 > = {
   form: UseFormReturn<TFormData>;
-  error: TError;
+  error?: TError;
   fieldToPick?: string;
 };

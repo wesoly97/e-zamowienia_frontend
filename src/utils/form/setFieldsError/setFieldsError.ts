@@ -4,32 +4,39 @@ import { mapErrorResponseToFormErrors } from '../mapErrorResponseToFormErrors/ma
 import { iterateOverErrors } from '../iterateOverErrors/iterateOverErrors';
 
 import { SetFieldsErrorsConfig } from './setFieldsError.types';
-import { isBadRequestError, isNotFoundError } from './setFieldsError.typeguards';
+import { isErrorArray, isInternalServerError } from './setFieldsError.typeguards';
 
 import {
   BadRequestError,
   ConflictError,
+  ErrorArray,
   ErrorMessage,
   ForbiddenError,
   NotFoundError,
   UnauthorizedError,
+  InternalServerError,
 } from '@/api/types/types';
 
 export const setFieldsError = <
   TFormData extends FieldValues,
-  TError extends BadRequestError | UnauthorizedError | ForbiddenError | NotFoundError | ConflictError,
+  TError extends
+    | BadRequestError
+    | UnauthorizedError
+    | ForbiddenError
+    | NotFoundError
+    | ConflictError
+    | InternalServerError,
 >({
   form,
   error,
   fieldToPick,
 }: SetFieldsErrorsConfig<TFormData, TError>) => {
-  if (!error) {
+  if (!error || isInternalServerError(error as InternalServerError)) {
     return;
   }
 
-  if (isNotFoundError(error as NotFoundError) || isBadRequestError(error as BadRequestError)) {
-    const errors = mapErrorResponseToFormErrors((error as NotFoundError | BadRequestError).errors);
-
+  if (isErrorArray(error as ErrorArray)) {
+    const errors = mapErrorResponseToFormErrors((error as ErrorArray).errors);
     if (!errors) {
       return;
     }

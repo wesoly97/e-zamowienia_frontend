@@ -10,8 +10,8 @@ export const LoginForm = ({ isSubmitting, onSubmit, form }: LoginFormProps) => {
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput label={'Email'} name={'email'} type={'email'} />
-        <FormInput label={'Hasło'} name={'password'} type={'password'} />
+        <FormInput id={'email'} name={'email'} type={'email'} label={'Email'} />
+        <FormInput id={'password'} name={'password'} type={'password'} label={'Hasło'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? '...' : 'Logowanie'}
         </PrimaryButton>
