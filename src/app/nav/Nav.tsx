@@ -53,7 +53,7 @@ export const Nav = ({ position }: NavProps) => {
     }
   }, [isUnauthenticated, navigate]);
 
-  const userPanel = () => {
+  const userPanel = useMemo(() => {
     return [
       {
         action: () => handleRedirectOrdersUserListPage(),
@@ -68,11 +68,11 @@ export const Nav = ({ position }: NavProps) => {
         label: 'Wyloguj',
       },
     ];
-  };
+  }, []);
 
   return (
     <>
-      <Navbar position={position} buttons={buttons} userPanel={userPanel()}>
+      <Navbar position={position} buttons={buttons} userPanel={userPanel}>
         <StyledLogo onClick={handleRedirectMainPage} />
         <StyledList>
           <StyledListItem>

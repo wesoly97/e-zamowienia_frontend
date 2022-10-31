@@ -5,6 +5,7 @@ import { StyledInput } from '../input/Input.styles';
 import { FormInputProps } from './FormInput.types';
 
 export const FormInput = ({
+  id,
   label,
   name,
   type,
@@ -25,6 +26,7 @@ export const FormInput = ({
       render={({ field: { onChange: handleFieldChange, ...restField }, fieldState: { error } }) => {
         return (
           <StyledInput
+            id={id}
             type={type}
             label={label}
             error={!!error}

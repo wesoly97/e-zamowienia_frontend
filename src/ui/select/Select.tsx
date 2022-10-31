@@ -1,10 +1,6 @@
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import MuiSelect from '@mui/material/Select';
-
 import { SelectProps } from './Select.types';
+import { SelectBase } from './selectBase/SelectBase';
+import { SelectWrapper } from './selectWrapper/SelectWrapper';
 
 export const Select = <T,>({
   data,
@@ -19,19 +15,16 @@ export const Select = <T,>({
   errorText,
 }: SelectProps<T>) => {
   return (
-    <FormControl disabled={disabled} required={required} error={error}>
-      <InputLabel shrink id={labelId}>
-        {label}
-      </InputLabel>
-      <MuiSelect labelId={labelId} id={id} value={value} label={label} onChange={onChange} notched displayEmpty>
-        <MenuItem value={''}>Wszystko</MenuItem>
-        {data.map((item, index) => (
-          <MenuItem key={index} value={item as unknown as string}>
-            {item as unknown as string}
-          </MenuItem>
-        ))}
-      </MuiSelect>
-      <FormHelperText>{errorText}</FormHelperText>
-    </FormControl>
+    <SelectWrapper labelId={labelId} label={label} disabled={disabled} required={required} error={error}>
+      <SelectBase
+        data={data}
+        labelId={labelId}
+        id={id}
+        label={label}
+        value={value}
+        onChange={onChange}
+        errorText={errorText}
+      />
+    </SelectWrapper>
   );
 };

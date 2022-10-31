@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Drawer } from '@mui/material';
 
+import { PrimaryButton } from '@/ui/button/PrimaryButton';
+
 export const StyledDrawer = styled(Drawer)`
   display: block;
 
@@ -32,4 +34,8 @@ export const ButtonBox = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 8px;
+`;
+
+export const StyledPrimaryButton = styled(PrimaryButton)`
+  width: auto;
 `;
