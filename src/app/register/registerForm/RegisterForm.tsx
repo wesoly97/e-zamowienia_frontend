@@ -14,7 +14,7 @@ export const RegisterForm = ({ isSubmitting, onSubmit, form }: RegisterFormProps
         <FormInput id={'surname'} name={'surname'} label={'Nazwisko'} />
         <FormInput id={'email'} name={'email'} type={'email'} label={'Email'} />
         <FormInput id={'password'} name={'password'} type={'password'} label={'Hasło'} />
-        <FormInput id={'repeat-password'} name={'repeat-password'} type={'password'} label={'Powtórz hasło'} />
+        <FormInput id={'repeat-password'} name={'repeatPassword'} type={'password'} label={'Powtórz hasło'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? '...' : 'Załóż konto'}
         </PrimaryButton>

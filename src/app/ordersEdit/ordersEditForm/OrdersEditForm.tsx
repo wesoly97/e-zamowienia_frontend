@@ -43,7 +43,7 @@ export const OrdersEditForm = ({
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput id={'procedure-identifier'} name={'procedure-identifier'} label={'Identyfikator'} />
+        <FormInput id={'procedure-identifier'} name={'procedureIdentifier'} label={'Identyfikator'} />
         <FormSelect
           id={'category'}
           name={'category'}
@@ -77,7 +77,7 @@ export const OrdersEditForm = ({
         <FormInput id={'description'} name={'description'} label={'Opis'} multiline rows={8} />
         <FormInput
           id={'expiration-date'}
-          name={'expiration-date'}
+          name={'expirationDate'}
           label={'Termin składania'}
           type={'date'}
           inputProps={{

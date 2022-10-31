@@ -5,6 +5,9 @@ interface ShapeOptions {
   medium: string;
   large: string;
 }
+interface ShadowOptions {
+  normal: string;
+}
 interface ShadeOptions {
   125?: string;
   100?: string;
@@ -34,5 +37,6 @@ interface FontTypeOptions {
 export interface CustomTheme {
   colors: ColorOptions;
   borderRadius: ShapeOptions;
+  boxShadow: ShadowOptions;
   fontType: FontTypeOptions;
 }

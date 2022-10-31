@@ -9,7 +9,7 @@ import { OrdersForm } from './ordersForm/OrdersForm';
 import { QueryParamsContextController } from '@/context/queryParams/queryParamsController/QueryParamsContextController';
 import { FiltersParamsController } from '@/context/filtersParams/filtersParamsController/FiltersParamsController';
 
-export const OrdersContainerRaw = () => {
+const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
   const { offset, setParam } = useGetOrdersFilters();
 
