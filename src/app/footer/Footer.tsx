@@ -1,8 +1,19 @@
-import { Container, Menu, StyledLogo, Column, ColumnHeader, Item, BottomBar, Content } from './Footer.styles';
+import {
+  Container,
+  Menu,
+  StyledLogo,
+  Column,
+  ColumnHeader,
+  Item,
+  BottomBar,
+  Content,
+  GlobalBottomPadding,
+} from './Footer.styles';
 
 export const Footer = () => {
   return (
     <>
+      <GlobalBottomPadding />
       <Container>
         <Content>
           <StyledLogo />

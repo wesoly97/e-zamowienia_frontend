@@ -1,7 +1,13 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
 import { containerStyles } from '@/theme/shared';
+
+export const GlobalBottomPadding = createGlobalStyle`
+  #root{
+    padding-bottom: 400px;
+  }
+`;
 
 export const Container = styled.footer`
   display: flex;
