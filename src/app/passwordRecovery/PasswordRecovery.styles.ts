@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import BackgroundPicture from '@/assets/icons/passwordRecovery/background.png';
+import { ReactComponent as EmailSentIcon } from '@/assets/icons/passwordRecovery/email-sent.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -19,4 +20,13 @@ export const Wrapper = styled.div`
   padding: 40px 48px;
   width: auto;
   max-width: 500px;
+`;
+
+export const StyledEmailSentIcon = styled(EmailSentIcon)`
+  width: 80%;
+  height: auto;
+`;
+
+export const SentMessage = styled.p`
+  font-weight: 600;
 `;
