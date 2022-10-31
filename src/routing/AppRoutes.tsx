@@ -96,6 +96,18 @@ export const AppRoutes = () => (
           }
         />
       </Route>
+      <Route path={AppRoute.OrdersUserList}>
+        <Route
+          index
+          element={
+            <AuthenticatedLayout>
+              <Nav position={'static'} />
+              order list
+              <Footer />
+            </AuthenticatedLayout>
+          }
+        />
+      </Route>
     </Route>
   </Routes>
 );
