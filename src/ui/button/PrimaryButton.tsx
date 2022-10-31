@@ -1,7 +1,16 @@
 import { StyledPrimaryButton } from './Button.styles';
 import { ButtonProps } from './Button.types';
 
-export const PrimaryButton = ({ children, disabled, endIcon, startIcon, handleClick, type }: ButtonProps) => (
+export const PrimaryButton = ({
+  children,
+  disabled,
+  endIcon,
+  startIcon,
+  handleClick,
+  type,
+  classes,
+  className,
+}: ButtonProps) => (
   <StyledPrimaryButton
     onClick={handleClick}
     disabled={disabled}
@@ -9,6 +18,8 @@ export const PrimaryButton = ({ children, disabled, endIcon, startIcon, handleCl
     startIcon={startIcon}
     endIcon={endIcon}
     type={type}
+    classes={classes}
+    className={className}
   >
     {children}
   </StyledPrimaryButton>
