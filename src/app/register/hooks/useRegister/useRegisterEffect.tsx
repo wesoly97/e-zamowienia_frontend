@@ -16,6 +16,7 @@ export const useRegisterEffect = (form: UseFormReturn<RegisterFormData>) => {
       setFieldsError({
         form,
         error: error.response?.data,
+        fieldToPick: 'email',
       });
     },
   });

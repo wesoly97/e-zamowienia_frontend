@@ -1,9 +1,9 @@
-import { NotFoundError, BadRequestError } from '@/api/types/types';
+import { ErrorArray, InternalServerError } from '@/api/types/types';
 
-export const isNotFoundError = (error: NotFoundError): error is NotFoundError => {
-  return !!(error as NotFoundError).errors;
+export const isErrorArray = (error: ErrorArray): error is ErrorArray => {
+  return !!(error as ErrorArray).errors;
 };
 
-export const isBadRequestError = (error: BadRequestError): error is BadRequestError => {
-  return !!(error as BadRequestError).errors;
+export const isInternalServerError = (error: InternalServerError): error is InternalServerError => {
+  return !!(error as InternalServerError)._message;
 };

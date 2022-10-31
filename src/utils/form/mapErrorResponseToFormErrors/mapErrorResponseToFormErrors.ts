@@ -1,6 +1,6 @@
-import { BadRequestError, NotFoundError } from '@/api/types/types';
+import { ErrorArray } from '@/api/types/types';
 
-export const mapErrorResponseToFormErrors = <TError extends BadRequestError | NotFoundError>(
+export const mapErrorResponseToFormErrors = <TError extends ErrorArray>(
   errors: TError['errors'] | undefined,
 ): Partial<Record<string, string>> | null => {
   if (!errors) {
