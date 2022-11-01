@@ -5,11 +5,16 @@ import { PasswordRecoveryResetFormData } from '../../passwordRecoveryResetForm/P
 import { usePasswordRecoveryReset } from './usePasswordRecoveryReset';
 
 import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
+import { useNavigate } from '@/hooks/useNavigate/useNavigate';
+import { AppLinks } from '@/routing/AppRoutes.types';
 
 export const usePasswordRecoveryResetEffect = (form: UseFormReturn<PasswordRecoveryResetFormData>) => {
+  const navigate = useNavigate();
+
   return usePasswordRecoveryReset({
     onSuccess: () => {
       localStorage.removeItem('tokenExpirationDate');
+      navigate(AppLinks.Login);
     },
     onError: (error) => {
       setFieldsError({

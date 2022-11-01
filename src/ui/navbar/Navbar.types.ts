@@ -5,6 +5,7 @@ export type UserPanelProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: any;
   label: string;
+  order: number;
 };
 
 type ChildrenProps = {

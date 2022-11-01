@@ -15,6 +15,7 @@ import { OrdersAdd } from '@/app/ordersAdd/OrdersAdd';
 import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContainer';
 import { PasswordRecoveryContainer } from '@/app/passwordRecovery/PasswordRecoveryContainer';
 import { UserProfile } from '@/app/userProfile/UserProfile';
+import { RoleTypes } from '@/api/types/types';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -77,7 +78,7 @@ export const AppRoutes = () => (
           <Route
             index
             element={
-              <AuthenticatedLayout>
+              <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
                 <Nav position={'static'} />
                 <OrdersEdit />
                 <Footer />
@@ -90,7 +91,7 @@ export const AppRoutes = () => (
         <Route
           index
           element={
-            <AuthenticatedLayout>
+            <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
               <Nav position={'static'} />
               <OrdersAdd />
               <Footer />
@@ -102,7 +103,7 @@ export const AppRoutes = () => (
         <Route
           index
           element={
-            <AuthenticatedLayout>
+            <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
               <Nav position={'static'} />
               order list
               <Footer />
