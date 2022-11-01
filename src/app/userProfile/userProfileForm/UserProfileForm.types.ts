@@ -6,6 +6,7 @@ export type UserProfileFormData = {
   name: string;
   surname: string;
   email: string;
+  phoneNumber: string;
   nip: string;
   country: string;
   companyName: string;

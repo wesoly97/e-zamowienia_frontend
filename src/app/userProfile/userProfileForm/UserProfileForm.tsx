@@ -13,8 +13,9 @@ export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: User
     if (isUserVerified(userRole))
       return (
         <>
+          <FormInput id={'phone-number'} name={'phoneNumber'} type={'tel'} label={'Numer telefonu'} disabled />
           <FormInput id={'country'} name={'country'} label={'Kraj'} disabled />
-          <FormInput id={'companyName'} name={'companyName'} label={'Firma'} disabled />
+          <FormInput id={'company-name'} name={'companyName'} label={'Firma'} disabled />
           <FormInput id={'nip'} name={'nip'} label={'NIP'} disabled />
         </>
       );
@@ -25,7 +26,7 @@ export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: User
       <FormProvider {...form}>
         <FormInput id={'name'} name={'name'} label={'Imię'} />
         <FormInput id={'surname'} name={'surname'} label={'Nazwisko'} />
-        <FormInput id={'email'} name={'email'} label={'Email'} disabled />
+        <FormInput id={'email'} name={'email'} type={'email'} label={'Email'} disabled />
         {verifiedUserFields}
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? 'Zapisywanie' : 'Zatwierdź'}
