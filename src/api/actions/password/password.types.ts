@@ -36,3 +36,21 @@ export type PasswordResetMutationFn = MutationFn<
   PasswordResetResponse,
   AxiosError<PasswordResetError>
 >;
+
+export type PasswordChangeRequestBody = {
+  currentPassword: string;
+  password: string;
+  repeatPassword: string;
+};
+
+export type PasswordChangeResponse = {
+  message: string;
+};
+
+export type PasswordChangeError = BadRequestError | UnauthorizedError | InternalServerError;
+
+export type PasswordChangeMutationFn = MutationFn<
+  PasswordChangeRequestBody,
+  PasswordChangeResponse,
+  AxiosError<PasswordChangeError>
+>;
