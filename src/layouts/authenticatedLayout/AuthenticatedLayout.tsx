@@ -1,22 +1,24 @@
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+
+import { AuthenticatedLayoutProps } from './AuthenticatedLayout.types';
+import { arePrivilegesSufficient } from './AuthenticatedLayout.utils';
 
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { AppLinks } from '@/routing/AppRoutes.types';
-import { RoleTypes } from '@/api/types/types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
-export const AuthenticatedLayout = ({ children, role }: { children?: ReactNode; role?: RoleTypes }) => {
-  const { isUnauthenticated, isLoadingAccount } = useAuthContext();
+export const AuthenticatedLayout = ({ children, acceptedRoles }: AuthenticatedLayoutProps) => {
+  const { isUnauthenticated, isLoadingAccount, session } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isUnauthenticated) {
+    if (isUnauthenticated || !arePrivilegesSufficient(session, acceptedRoles)) {
       navigate(AppLinks.Login);
     }
-  }, [isUnauthenticated, navigate]);
+  }, [acceptedRoles, isUnauthenticated, navigate, session]);
 
-  if (isUnauthenticated || isLoadingAccount) {
+  if (isUnauthenticated || !arePrivilegesSufficient(session, acceptedRoles) || isLoadingAccount) {
     return null;
   }
 

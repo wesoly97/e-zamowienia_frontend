@@ -11,11 +11,12 @@ import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
+import { RoleTypes } from '@/api/types/types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
 
-  const { isUnauthenticated } = useAuthContext();
+  const { isUnauthenticated, session } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
 
   const handleRedirectUserProfilePage = () => {
@@ -58,25 +59,40 @@ export const Nav = ({ position }: NavProps) => {
   }, [isUnauthenticated, navigate]);
 
   const userPanel = useMemo(() => {
-    return [
+    let naviagationItems = [
       {
         action: () => handleRedirectUserProfilePage(),
         label: 'Profil',
-      },
-      {
-        action: () => handleRedirectOrdersUserListPage(),
-        label: 'Moje ogłoszenia',
-      },
-      {
-        action: () => handleRedirectAddOrderPage(),
-        label: 'Dodaj ogłoszenie',
+        order: 1,
       },
       {
         action: () => logout(),
         label: 'Wyloguj',
+        order: 4,
       },
     ];
-  }, []);
+
+    if (session && [RoleTypes.Administrator, RoleTypes.Orderer].includes(session?.accountType)) {
+      const verifiedUserNaviagationItems = [
+        {
+          action: () => handleRedirectOrdersUserListPage(),
+          label: 'Moje ogłoszenia',
+          order: 2,
+        },
+        {
+          action: () => handleRedirectAddOrderPage(),
+          label: 'Dodaj ogłoszenie',
+          order: 3,
+        },
+      ];
+
+      naviagationItems = [...naviagationItems, ...verifiedUserNaviagationItems].sort(
+        (prev, next) => prev.order - next.order,
+      );
+    }
+
+    return naviagationItems;
+  }, [session]);
 
   return (
     <>
