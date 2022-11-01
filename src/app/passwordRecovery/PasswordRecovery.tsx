@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { useEffect } from 'react';
 
 import { SentMessage, StyledEmailSentIcon } from './PasswordRecovery.styles';
@@ -8,6 +8,7 @@ import { PasswordRecoveryResetFormWrapper } from './passwordRecoveryResetForm/Pa
 
 import { usePasswordRecoveryContext } from '@/context/passwordRecovery/hooks/usePasswordRecoveryContext';
 import { AppLinks } from '@/routing/AppRoutes.types';
+import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const PasswordRecovery = () => {
   const { tokenExpirationDate } = usePasswordRecoveryContext();
