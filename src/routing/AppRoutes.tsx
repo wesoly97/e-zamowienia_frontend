@@ -14,6 +14,7 @@ import { OrdersEdit } from '@/app/ordersEdit/OrdersEdit';
 import { OrdersAdd } from '@/app/ordersAdd/OrdersAdd';
 import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContainer';
 import { PasswordRecoveryContainer } from '@/app/passwordRecovery/PasswordRecoveryContainer';
+import { UserProfile } from '@/app/userProfile/UserProfile';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -114,23 +115,33 @@ export const AppRoutes = () => (
       <Route
         index
         element={
-          <>
+          <UnauthenticatedLayout>
             <Nav position={'absolute'} />
             <PasswordRecoveryContainer />
-          </>
+          </UnauthenticatedLayout>
         }
       />
       <Route path={AppRoute.PasswordRecoveryTokenId}>
         <Route
           index
           element={
-            <>
+            <UnauthenticatedLayout>
               <Nav position={'absolute'} />
               <PasswordRecoveryContainer />
-            </>
+            </UnauthenticatedLayout>
           }
         />
       </Route>
     </Route>
+    <Route
+      path={AppRoute.UserProfile}
+      element={
+        <AuthenticatedLayout>
+          <Nav position={'static'} />
+          <UserProfile />
+          <Footer />
+        </AuthenticatedLayout>
+      }
+    />
   </Routes>
 );
