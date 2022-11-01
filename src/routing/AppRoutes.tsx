@@ -2,9 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 
 import { AppRoute } from './AppRoutes.types';
 
+import { Nav } from '@/app/nav/Nav';
 import { Main } from '@/app/main/Main';
 import { OrdersContainer } from '@/app/orders/OrdersContainer';
-import { Nav } from '@/app/nav/Nav';
 import { Footer } from '@/app/footer/Footer';
 import { Login } from '@/app/login/Login';
 import { Register } from '@/app/register/Register';

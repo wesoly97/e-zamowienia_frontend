@@ -1,17 +1,15 @@
-import { ListItemButton } from '@mui/material';
 import { useMemo } from 'react';
 
-import { StyledList, StyledListItem, StyledLogo } from './Nav.styles';
-import { NavProps } from './Nav.types';
 import { useLogoutEffect } from './hooks/useLogout/useLogoutEffect';
+import { NavBase } from './NavBase';
+import { NavProps } from './Nav.types';
+import { isUserVerified } from './Nav.utils';
 
-import { Navbar } from '@/ui/navbar/Navbar';
+import { useNavigate } from '@/hooks/useNavigate/useNavigate';
+import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
+import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
-import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
-import { useNavigate } from '@/hooks/useNavigate/useNavigate';
-import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
-import { RoleTypes } from '@/api/types/types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
@@ -66,13 +64,13 @@ export const Nav = ({ position }: NavProps) => {
         order: 1,
       },
       {
-        action: () => logout(),
+        action: () => logout(null),
         label: 'Wyloguj',
         order: 4,
       },
     ];
 
-    if (session && [RoleTypes.Administrator, RoleTypes.Orderer].includes(session?.accountType)) {
+    if (isUserVerified(session)) {
       const verifiedUserNaviagationItems = [
         {
           action: () => handleRedirectOrdersUserListPage(),
@@ -92,20 +90,16 @@ export const Nav = ({ position }: NavProps) => {
     }
 
     return naviagationItems;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   return (
-    <>
-      <Navbar position={position} buttons={buttons} userPanel={userPanel}>
-        <StyledLogo onClick={handleRedirectMainPage} />
-        <StyledList>
-          <StyledListItem>
-            <ListItemButton onClick={handleRedirectOrdersPage}>
-              <span>Zamówienia</span>
-            </ListItemButton>
-          </StyledListItem>
-        </StyledList>
-      </Navbar>
-    </>
+    <NavBase
+      position={position}
+      userPanel={userPanel}
+      buttons={buttons}
+      handleRedirectMainPage={handleRedirectMainPage}
+      handleRedirectOrdersPage={handleRedirectOrdersPage}
+    />
   );
 };

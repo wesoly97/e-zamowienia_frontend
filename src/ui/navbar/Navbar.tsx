@@ -1,11 +1,11 @@
-import { IconButton, useMediaQuery } from '@mui/material';
-import { useMemo, useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useMediaQuery } from '@mui/material';
+import { useState } from 'react';
 
 import { NavbarProps } from './Navbar.types';
-import { ActionBox, Container, List, StyledAppBar, Wrapper } from './Navbar.styles';
+import { ActionBox, Container, StyledAppBar, Wrapper } from './Navbar.styles';
 import { Drawer } from './drawer/Drawer';
 import { UserMenu } from './userMenu/UserMenu';
+import { Hamburger } from './hamburger/Hamburger';
 
 import { theme } from '@/theme/theme';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
@@ -21,38 +21,26 @@ export const Navbar = ({ children, buttons, enableColorOnDark, position, userPan
 
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
-  const hamburger = useMemo(
-    () => (
-      <List>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          color="inherit"
-          onClick={handleMenuToggle}
-        >
-          <MenuIcon />
-        </IconButton>
-      </List>
-    ),
-    [],
-  );
+  if (isDesktop) {
+    return (
+      <StyledAppBar position={position} enableColorOnDark={enableColorOnDark}>
+        <Wrapper>
+          <Container>
+            {children}
+            <ActionBox>{buttons}</ActionBox>
+            {isAuthenticated && <UserMenu userPanel={userPanel} />}
+          </Container>
+        </Wrapper>
+      </StyledAppBar>
+    );
+  }
 
   return (
     <>
       <StyledAppBar position={position} enableColorOnDark={enableColorOnDark}>
         <Wrapper>
           <Container>
-            {isDesktop ? (
-              <>
-                {children}
-                <ActionBox>{buttons}</ActionBox>
-              </>
-            ) : (
-              hamburger
-            )}
-            {isAuthenticated && isDesktop && <UserMenu userPanel={userPanel} />}
+            <Hamburger handleMenuToggle={handleMenuToggle} />
           </Container>
         </Wrapper>
       </StyledAppBar>

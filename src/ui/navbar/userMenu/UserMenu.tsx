@@ -3,31 +3,41 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useMemo } from 'react';
 
 import { UserMenuProps } from './UserMenu.types';
 
 export const UserMenu = ({ userPanel }: UserMenuProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
 
-  const handleMenu = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenMenu = (event: MouseEvent<HTMLElement>) => {
+    setAnchorElement(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseMenu = () => {
+    setAnchorElement(null);
   };
+
+  const userMenuActions = useMemo(() => {
+    return userPanel.map(({ label, action }, index) => {
+      return (
+        <MenuItem key={index} onClick={action}>
+          {label}
+        </MenuItem>
+      );
+    });
+  }, [userPanel]);
 
   return (
     <div>
       <Tooltip title="Menu użytkownika">
-        <IconButton onClick={handleMenu}>
+        <IconButton onClick={handleOpenMenu}>
           <Avatar alt="avatar" />
         </IconButton>
       </Tooltip>
       <Menu
         sx={{ mt: '45px' }}
-        anchorEl={anchorEl}
+        anchorEl={anchorElement}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -37,16 +47,10 @@ export const UserMenu = ({ userPanel }: UserMenuProps) => {
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={!!anchorEl}
-        onClose={handleClose}
+        open={!!anchorElement}
+        onClose={handleCloseMenu}
       >
-        {userPanel.map(({ label, action }, index) => {
-          return (
-            <MenuItem key={index} onClick={action}>
-              {label}
-            </MenuItem>
-          );
-        })}
+        {userMenuActions}
       </Menu>
     </div>
   );
