@@ -6,11 +6,11 @@ import { UserProfileFormProps } from './UserProfileForm.types';
 
 import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
-import { RoleTypes } from '@/api/types/types';
+import { isUserVerified } from '@/utils/isUserVerified';
 
 export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: UserProfileFormProps) => {
   const verifiedUserFields = useMemo(() => {
-    if (userRole && [RoleTypes.Administrator, RoleTypes.Orderer].includes(userRole))
+    if (isUserVerified(userRole))
       return (
         <>
           <FormInput id={'country'} name={'country'} label={'Kraj'} disabled />

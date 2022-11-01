@@ -3,13 +3,13 @@ import { useMemo } from 'react';
 import { useLogoutEffect } from './hooks/useLogout/useLogoutEffect';
 import { NavBase } from './NavBase';
 import { NavProps } from './Nav.types';
-import { isUserVerified } from './Nav.utils';
 
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
+import { isUserVerified } from '@/utils/isUserVerified';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ export const Nav = ({ position }: NavProps) => {
       },
     ];
 
-    if (isUserVerified(session)) {
+    if (isUserVerified(session?.accountType)) {
       const verifiedUserNaviagationItems = [
         {
           action: () => handleRedirectOrdersUserListPage(),
