@@ -9,7 +9,6 @@ import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 export const usePasswordRecoveryResetEffect = (form: UseFormReturn<PasswordRecoveryResetFormData>) => {
   return usePasswordRecoveryReset({
     onSuccess: () => {
-      localStorage.removeItem('isTokenExpired');
       localStorage.removeItem('tokenExpirationDate');
     },
     onError: (error) => {
