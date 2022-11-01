@@ -3,11 +3,11 @@ import { useIsMutating } from '@tanstack/react-query';
 
 import { usePasswordRecoveryEffect } from '../hooks/usePasswordRecovery/usePasswordRecoveryEffect';
 
-import { passwordRecoveryFormInitialData } from './PasswordRecovery.utlis';
+import { passwordRecoveryFormInitialData } from './PasswordRecoveryForm.utlis';
 import { PasswordRecoveryForm } from './PasswordRecoveryForm';
 import { PasswordRecoveryFormData } from './PasswordRecoveryForm.types';
 
-import { passwordRecoveryQueryKey } from '@/api/actions/passwordRecovery/passwordRecovery';
+import { passwordRecoveryQueryKey } from '@/api/actions/password/password';
 
 export const PasswordRecoveryFormWrapper = () => {
   const form = useForm<PasswordRecoveryFormData>({

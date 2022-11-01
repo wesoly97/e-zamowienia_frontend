@@ -8,11 +8,11 @@ import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 import { usePasswordRecoveryContext } from '@/context/passwordRecovery/hooks/usePasswordRecoveryContext';
 
 export const usePasswordRecoveryEffect = (form: UseFormReturn<PasswordRecoveryFormData>) => {
-  const { setEmailSent } = usePasswordRecoveryContext();
+  const { setTokenExpirationDate } = usePasswordRecoveryContext();
 
   return usePasswordRecovery({
     onSuccess: () => {
-      setEmailSent(true);
+      setTokenExpirationDate(new Date().getTime() + 60000);
     },
     onError: (error) => {
       setFieldsError({

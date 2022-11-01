@@ -13,7 +13,7 @@ import { AuthenticatedLayout } from '@/layouts/authenticatedLayout/Authenticated
 import { OrdersEdit } from '@/app/ordersEdit/OrdersEdit';
 import { OrdersAdd } from '@/app/ordersAdd/OrdersAdd';
 import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContainer';
-import { PasswordRecovery } from '@/app/passwordRecovery/PasswordRecovery';
+import { PasswordRecoveryContainer } from '@/app/passwordRecovery/PasswordRecoveryContainer';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -110,14 +110,27 @@ export const AppRoutes = () => (
         />
       </Route>
     </Route>
-    <Route
-      path={AppRoute.PasswordRecovery}
-      element={
-        <>
-          <Nav position={'absolute'} />
-          <PasswordRecovery />
-        </>
-      }
-    />
+    <Route path={AppRoute.PasswordRecovery}>
+      <Route
+        index
+        element={
+          <>
+            <Nav position={'absolute'} />
+            <PasswordRecoveryContainer />
+          </>
+        }
+      />
+      <Route path={AppRoute.PasswordRecoveryTokenId}>
+        <Route
+          index
+          element={
+            <>
+              <Nav position={'absolute'} />
+              <PasswordRecoveryContainer />
+            </>
+          }
+        />
+      </Route>
+    </Route>
   </Routes>
 );
