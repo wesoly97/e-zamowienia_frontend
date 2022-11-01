@@ -12,6 +12,7 @@ export const useChangePasswordEffect = (form: UseFormReturn<UserProfileChangePas
       setFieldsError({
         form,
         error: error.response?.data,
+        fieldToPick: 'currentPassword',
       });
     },
   });

@@ -10,9 +10,9 @@ export const UserProfileChangePasswordForm = ({ isSubmitting, onSubmit, form }: 
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput id={'current-password'} name={'currentPassword'} label={'Stare hasło'} />
-        <FormInput id={'password'} name={'password'} label={'Nowe hasło'} />
-        <FormInput id={'repeat-password'} name={'repeatPassword'} label={'Potwierdź nowe hasło'} />
+        <FormInput id={'current-password'} name={'currentPassword'} type={'password'} label={'Stare hasło'} />
+        <FormInput id={'password'} name={'password'} type={'password'} label={'Nowe hasło'} />
+        <FormInput id={'repeat-password'} name={'repeatPassword'} type={'password'} label={'Potwierdź nowe hasło'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
           {isSubmitting ? 'Zapisywanie' : 'Zatwierdź'}
         </PrimaryButton>

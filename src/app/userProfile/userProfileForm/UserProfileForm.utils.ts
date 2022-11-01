@@ -4,6 +4,7 @@ export const userProfileFormInitialData: UserProfileFormData = {
   name: '',
   surname: '',
   email: '',
+  phoneNumber: '',
   nip: '',
   country: '',
   companyName: '',
