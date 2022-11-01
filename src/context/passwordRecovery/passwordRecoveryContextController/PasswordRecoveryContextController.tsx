@@ -8,22 +8,14 @@ import { PasswordRecoveryContextControllerProps } from './PasswordRecoveryContex
 import { useLocalStorage } from '@/hooks/useLocalStorage/useLocalStorage';
 
 export const PasswordRecoveryContextController = ({ children }: PasswordRecoveryContextControllerProps) => {
-  const [isTokenExpired, setIsTokenExpired] = useLocalStorage('isTokenExpired', true);
-  const [tokenExpirationDate, setTokenExpirationDate] = useLocalStorage('tokenExpirationDate', new Date().getTime());
-
-  useEffect(() => {
-    if (tokenExpirationDate < new Date().getTime()) {
-      setIsTokenExpired(true);
-    }
-  }, []);
+  const [tokenExpirationDate, setTokenExpirationDate] = useLocalStorage('tokenExpirationDate', 0);
 
   const value = useMemo<PasswordRecoveryContextValue>(
     () => ({
-      isTokenExpired,
-      setIsTokenExpired,
+      tokenExpirationDate,
       setTokenExpirationDate,
     }),
-    [isTokenExpired, setIsTokenExpired, setTokenExpirationDate],
+    [tokenExpirationDate, setTokenExpirationDate],
   );
 
   return <PasswordRecoveryContext.Provider value={value}>{children}</PasswordRecoveryContext.Provider>;
