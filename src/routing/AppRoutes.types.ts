@@ -11,6 +11,7 @@ export enum AppRoute {
   PasswordRecovery = 'resetowanie-hasla',
   PasswordRecoveryTokenId = ':tokenId',
   UserProfile = 'konto',
+  UserId = ':userId',
 }
 
 export enum AppLinks {

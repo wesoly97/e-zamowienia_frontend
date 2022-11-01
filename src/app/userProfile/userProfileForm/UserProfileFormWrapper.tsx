@@ -3,15 +3,19 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useUserProfileEffect } from '../hooks/useUserProfile/useUserProfileEffect';
+import { useGetUserDetails } from '../hooks/useGetUserDetails/useGetUserDetails';
 
 import { UserProfileForm } from './UserProfileForm';
 import { UserProfileFormData } from './UserProfileForm.types';
 import { userProfileFormInitialData } from './UserProfileForm.utils';
 
 import { editUserDataQueryKey } from '@/api/actions/userData/userData';
+import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 
 export const UserProfileFormWrapper = () => {
-  const { data: userDetails } = userId || '';
+  const { session } = useAuthContext();
+
+  const { data: userDetails } = useGetUserDetails(session?._id || '');
 
   const form = useForm<UserProfileFormData>({
     defaultValues: userProfileFormInitialData,
@@ -19,17 +23,18 @@ export const UserProfileFormWrapper = () => {
 
   useEffect(() => {
     if (!!userDetails) {
-      form.reset(userDetails.orderDetailsValues);
+      form.reset(userDetails);
     }
   }, [form, userDetails]);
 
   const isLoading = !!useIsMutating({ mutationKey: [editUserDataQueryKey] });
 
-  const { mutate } = useUserProfileEffect(userId || '', form);
+  const { mutate } = useUserProfileEffect(session?._id || '', form);
 
   const submit = (data: UserProfileFormData) => {
-    mutate(data);
+    const { name, surname } = data;
+    mutate({ name, surname });
   };
 
-  return <UserProfileForm isSubmitting={isLoading} onSubmit={submit} form={form} />;
+  return <UserProfileForm isSubmitting={isLoading} onSubmit={submit} form={form} userRole={session?.accountType} />;
 };

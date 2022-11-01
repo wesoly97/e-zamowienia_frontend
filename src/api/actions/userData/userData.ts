@@ -7,3 +7,5 @@ export const editUserDataMutationFn: (userId: string) => EditUserDataMutationFn 
   method: 'PATCH',
   params,
 });
+
+export const getUserDataQueryKey = 'users/:userId';

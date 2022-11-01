@@ -41,3 +41,22 @@ export type EditUserDataMutationFn = MutationFn<
   EditUserDataResponse,
   AxiosError<EditUserDataError>
 >;
+
+export type GetUserDataResponse = {
+  _id: string;
+  name: string;
+  surname: string;
+  email: string;
+  accountType: RoleTypes;
+  dateOfCreation: string;
+  nip: string;
+  country: string;
+  companyName: string;
+};
+
+export type GetUserDataError =
+  | BadRequestError
+  | UnauthorizedError
+  | ForbiddenError
+  | NotFoundError
+  | InternalServerError;

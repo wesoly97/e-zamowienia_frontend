@@ -19,4 +19,5 @@ export type InputProps = Pick<
   | 'className'
   | 'value'
   | 'onChange'
+  | 'focused'
 >;
