@@ -5,9 +5,9 @@ import {
   PasswordRecoveryError,
   PasswordRecoveryRequestBody,
   PasswordRecoveryResponse,
-} from '@/api/actions/passwordRecovery/passwordRecovery.types';
+} from '@/api/actions/password/password.types';
 import { useMutation } from '@/hooks/useMutation/useMutation';
-import { passwordRecoveryMutationFn, passwordRecoveryQueryKey } from '@/api/actions/passwordRecovery/passwordRecovery';
+import { passwordRecoveryMutationFn, passwordRecoveryQueryKey } from '@/api/actions/password/password';
 
 export const usePasswordRecovery = (
   options?: UseMutationOptions<

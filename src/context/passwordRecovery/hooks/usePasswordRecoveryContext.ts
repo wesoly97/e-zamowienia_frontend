@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { PasswordRecoveryContext } from '../passwordRecoveryContext/passwordRecoveryContext';
+import { PasswordRecoveryContext } from '../passwordRecoveryContext/PasswordRecoveryContext';
 
 export const usePasswordRecoveryContext = () => {
   const ctx = useContext(PasswordRecoveryContext);

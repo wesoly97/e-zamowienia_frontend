@@ -1,4 +1,7 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export type PasswordRecoveryContextValue = {
-  emailSent: boolean;
-  setEmailSent: React.Dispatch<React.SetStateAction<boolean>>;
+  isTokenExpired: boolean;
+  setIsTokenExpired: Dispatch<SetStateAction<boolean>>;
+  setTokenExpirationDate: Dispatch<SetStateAction<number>>;
 };

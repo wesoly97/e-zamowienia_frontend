@@ -1,38 +1,44 @@
-import { Container, SentMessage, StyledEmailSentIcon, Wrapper } from './PasswordRecovery.styles';
-import { PasswordRecoveryFormWrapper } from './passwordRecoveryForm/PasswordRecoveryFormWrapper';
+import { useParams } from 'react-router';
 
-import { PasswordRecoveryController } from '@/context/passwordRecovery/passwordRecoveryController/passwordRecoveryController';
+import { SentMessage, StyledEmailSentIcon } from './PasswordRecovery.styles';
+import { PasswordRecoveryFormWrapper } from './passwordRecoveryForm/PasswordRecoveryFormWrapper';
+import { PasswordRecoveryResetFormWrapper } from './passwordRecoveryResetForm/PasswordRecoveryResetFormWrapper';
+
 import { usePasswordRecoveryContext } from '@/context/passwordRecovery/hooks/usePasswordRecoveryContext';
 
-const PasswordRecoveryRaw = () => {
-  const { emailSent } = usePasswordRecoveryContext();
+export const PasswordRecovery = () => {
+  const { isTokenExpired } = usePasswordRecoveryContext();
+  const { tokenId } = useParams<{ tokenId: string }>();
 
-  if (emailSent) {
+  if (!isTokenExpired && tokenId) {
     return (
-      <Container>
-        <Wrapper>
-          <StyledEmailSentIcon />
-          <SentMessage>Link został wysłany na podany email.</SentMessage>
-        </Wrapper>
-      </Container>
+      <>
+        <h1>Resetowanie hasła</h1>
+        <PasswordRecoveryResetFormWrapper token={tokenId} />
+      </>
     );
   }
 
-  return (
-    <Container>
-      <Wrapper>
+  if (!isTokenExpired && !tokenId) {
+    return (
+      <>
+        <StyledEmailSentIcon />
+        <SentMessage>
+          Link został wysłany na podany email. Jeśli nie pojawi się on w ciągu kilku minut, sprawdź folder spamu.
+        </SentMessage>
+      </>
+    );
+  }
+
+  if (isTokenExpired && !tokenId) {
+    return (
+      <>
         <h1>Zresetuj hasło</h1>
         <p>Wpisz adres email swojego konta, a my wyślemy Ci link do resetowania hasła.</p>
         <PasswordRecoveryFormWrapper />
-      </Wrapper>
-    </Container>
-  );
-};
+      </>
+    );
+  }
 
-export const PasswordRecovery = () => {
-  return (
-    <PasswordRecoveryController>
-      <PasswordRecoveryRaw />
-    </PasswordRecoveryController>
-  );
+  return null;
 };
