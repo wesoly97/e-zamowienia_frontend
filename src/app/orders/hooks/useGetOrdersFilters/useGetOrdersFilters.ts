@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 
 import { DefaultOptionArgs, FiltersOptionArgs, SortOptionArgs } from '@/api/actions/orders/orders.types';
-import { useFiltersParams } from '@/context/filtersParams/hooks/useFiltersParams';
+import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
 
 export const useGetOrdersFilters = () => {
-  const { query, setParam } = useFiltersParams();
+  const { query, setParam } = useFiltersParamsContext();
 
   const params = useMemo(() => {
     return {

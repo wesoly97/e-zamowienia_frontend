@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type FiltersParamsControllerProps = {
+export type FiltersParamsContextControllerProps = {
   children: ReactNode;
   filtersKeys: string[];
 };

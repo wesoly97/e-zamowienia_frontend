@@ -7,7 +7,7 @@ import { useEditOrdersEffect } from '../hooks/useEditOrders/useEditOrdersEffect'
 
 import { OrdersEditFormData } from './OrdersEditForm.types';
 import { OrdersEditForm } from './OrdersEditForm';
-import { ordersEditFormInitialData } from './OrdersEditForm.styles.utils';
+import { ordersEditFormInitialData } from './OrdersEditForm.utils';
 
 import { formatFormData } from '@/utils/api/formData/formatFormData';
 import { editOrdersQueryKey } from '@/api/actions/orders/orders';

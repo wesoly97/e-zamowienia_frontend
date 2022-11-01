@@ -6,6 +6,7 @@ export type FormInputProps = {
 } & Required<Pick<TextFieldProps, 'id' | 'label' | 'name'>> &
   Pick<
     TextFieldProps,
+    | 'disabled'
     | 'inputProps'
     | 'InputProps'
     | 'InputLabelProps'
@@ -16,4 +17,5 @@ export type FormInputProps = {
     | 'variant'
     | 'className'
     | 'classes'
+    | 'focused'
   >;

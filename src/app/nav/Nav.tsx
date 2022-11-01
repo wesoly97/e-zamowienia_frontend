@@ -18,6 +18,10 @@ export const Nav = ({ position }: NavProps) => {
   const { isUnauthenticated } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
 
+  const handleRedirectUserProfilePage = () => {
+    navigate(AppLinks.UserProfile);
+  };
+
   const handleRedirectAddOrderPage = () => {
     navigate(AppLinks.OrderAdd);
   };
@@ -55,6 +59,10 @@ export const Nav = ({ position }: NavProps) => {
 
   const userPanel = useMemo(() => {
     return [
+      {
+        action: () => handleRedirectUserProfilePage(),
+        label: 'Profil',
+      },
       {
         action: () => handleRedirectOrdersUserListPage(),
         label: 'Moje ogłoszenia',

@@ -7,7 +7,7 @@ export const usePasswordRecoveryContext = () => {
 
   if (!ctx) {
     throw new Error(
-      'usePasswordRecoveryContext hook is not wrapped by PasswordRecoveryContext provider or Context value is not provided',
+      'usePasswordRecoveryContext hook is not wrapped by PasswordRecoveryContextController provider or Context value is not provided',
     );
   }
 

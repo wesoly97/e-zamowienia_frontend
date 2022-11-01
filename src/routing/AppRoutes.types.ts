@@ -10,6 +10,8 @@ export enum AppRoute {
   OrderId = ':orderId',
   PasswordRecovery = 'resetowanie-hasla',
   PasswordRecoveryTokenId = ':tokenId',
+  UserProfile = 'konto',
+  UserId = ':userId',
 }
 
 export enum AppLinks {
@@ -21,4 +23,5 @@ export enum AppLinks {
   OrderDetails = '/zamowienia/szczegoly/:orderId',
   OrderAdd = '/zamowienia/dodaj',
   PasswordRecovery = '/resetowanie-hasla',
+  UserProfile = '/konto',
 }

@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { StyledInput } from '../input/Input.styles';
@@ -9,6 +10,7 @@ export const FormInput = ({
   label,
   name,
   type,
+  disabled,
   inputProps,
   InputProps,
   InputLabelProps,
@@ -19,6 +21,7 @@ export const FormInput = ({
   variant,
   className,
   classes,
+  focused,
 }: FormInputProps) => {
   const { control } = useFormContext();
 
@@ -27,31 +30,35 @@ export const FormInput = ({
       control={control}
       name={name}
       render={({ field: { onChange: handleFieldChange, ...restField }, fieldState: { error } }) => {
+        const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+          if (!!handleChange && handleChange(event)) {
+            handleFieldChange(event);
+          }
+
+          if (!handleChange) {
+            handleFieldChange(event);
+          }
+        };
+
         return (
           <StyledInput
             id={id}
             type={type}
             label={label}
             error={!!error}
+            disabled={disabled}
             helperText={<>{error?.message}</>}
             inputProps={inputProps}
             InputProps={InputProps}
             InputLabelProps={InputLabelProps}
-            onChange={(event) => {
-              if (!!handleChange && handleChange(event)) {
-                handleFieldChange(event);
-              }
-
-              if (!handleChange) {
-                handleFieldChange(event);
-              }
-            }}
+            onChange={onChange}
             multiline={multiline}
             maxRows={maxRows}
             rows={rows}
             variant={variant}
             className={className}
             classes={classes}
+            focused={focused}
             {...restField}
           />
         );
