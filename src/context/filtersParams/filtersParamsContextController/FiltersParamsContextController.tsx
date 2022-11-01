@@ -3,12 +3,12 @@ import { useCallback, useMemo } from 'react';
 import { FiltersParamsContext } from '../filtersParamsContext/FiltersParamsContext';
 import { FiltersParamsContextValue } from '../filtersParamsContext/FiltersParamsContext.types';
 
-import { FiltersParamsControllerProps } from './FiltersParamsController.types';
+import { FiltersParamsContextControllerProps } from './FiltersParamsContextController.types';
 
 import { useQueryParams } from '@/context/queryParams/hooks/useQueryParams';
 import { pick } from '@/utils/pick';
 
-export const FiltersParamsController = ({ children, filtersKeys }: FiltersParamsControllerProps) => {
+export const FiltersParamsContextController = ({ children, filtersKeys }: FiltersParamsContextControllerProps) => {
   const keys = useMemo(() => [...filtersKeys, 'search'], []);
   const { query: queryParams, setQuery } = useQueryParams();
   const query = pick(queryParams, keys);
