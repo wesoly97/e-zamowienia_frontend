@@ -16,6 +16,7 @@ import { OrdersDetailsContainer } from '@/app/ordersDetails/OrdersDetailsContain
 import { PasswordRecoveryContainer } from '@/app/passwordRecovery/PasswordRecoveryContainer';
 import { UserProfile } from '@/app/userProfile/UserProfile';
 import { RoleTypes } from '@/api/types/types';
+import { UserVerification } from '@/app/userVerification/UserVerification';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -140,6 +141,16 @@ export const AppRoutes = () => (
         <AuthenticatedLayout>
           <Nav position={'static'} />
           <UserProfile />
+          <Footer />
+        </AuthenticatedLayout>
+      }
+    />
+    <Route
+      path={AppRoute.UserVerification}
+      element={
+        <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
+          <Nav position={'static'} />
+          <UserVerification />
           <Footer />
         </AuthenticatedLayout>
       }
