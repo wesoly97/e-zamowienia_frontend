@@ -20,6 +20,7 @@ export const Input = ({
   value,
   onChange,
   focused,
+  ...rest
 }: InputProps) => {
   return (
     <StyledInput
@@ -41,6 +42,7 @@ export const Input = ({
       value={value}
       onChange={onChange}
       focused={focused}
+      {...rest}
     />
   );
 };

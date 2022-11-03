@@ -1,5 +1,5 @@
-import { TextField } from '@mui/material';
-import styled, { css } from 'styled-components';
+import TextField from '@mui/material/TextField';
+import styled from 'styled-components';
 
 export const StyledInput = styled(TextField)`
   & .MuiInputLabel-root {
@@ -27,26 +27,24 @@ export const StyledInput = styled(TextField)`
       border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
     }
 
-    & .MuiInputBase-input:-webkit-autofill,
-    & .MuiInputBase-input:-webkit-autofill:focus {
-      -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
-      transition: background-color 60000000000s 0s;
-    }
-
     &.Mui-error {
       color: ${({ theme }) => theme.palette.error.main};
+
+      & .MuiInputBase-input:-webkit-autofill,
+      & .MuiInputBase-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: ${({ theme }) => theme.palette.error.main};
+        transition: background-color 60000000000s 0s;
+      }
     }
 
     &:not(.Mui-error) {
-      ${({ variant, theme }) =>
-        variant === 'filled' &&
-        css`
-          background-color: ${theme.colors.LIGHT_BLUE[0]};
+      &.MuiFilledInput-root {
+        background-color: ${({ theme }) => theme.colors.LIGHT_BLUE[0]};
 
-          &:hover {
-            background-color: ${theme.colors.DARK_BLUE[0]};
-          }
-        `}
+        &:hover {
+          background-color: ${({ theme }) => theme.colors.DARK_BLUE[0]};
+        }
+      }
 
       &:before {
         border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
@@ -71,6 +69,12 @@ export const StyledInput = styled(TextField)`
 
       & .MuiOutlinedInput-notchedOutline {
         border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+      }
+
+      & .MuiInputBase-input:-webkit-autofill,
+      & .MuiInputBase-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+        transition: background-color 60000000000s 0s;
       }
     }
   }
