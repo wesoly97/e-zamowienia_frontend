@@ -1,37 +1,50 @@
-import { TextField } from '@mui/material';
-import styled, { css } from 'styled-components';
+import TextField from '@mui/material/TextField';
+import styled from 'styled-components';
 
 export const StyledInput = styled(TextField)`
-  & .MuiFormHelperText-root {
-    min-height: 20px;
-  }
+  & .MuiInputLabel-root {
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
 
-  .Mui-focused:not(.Mui-error) {
-    color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
-    border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    &.Mui-focused {
+      color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
+      border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    }
 
-    & .MuiOutlinedInput-notchedOutline {
-      border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
+    &.Mui-error {
+      color: ${({ theme }) => theme.palette.error.main};
+    }
+
+    & .MuiFormLabel-asterisk {
+      color: ${({ theme }) => theme.palette.error.main};
     }
   }
 
-  & label {
+  & .MuiInputBase-root {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
-  }
 
-  div {
-    color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    &.Mui-focused {
+      color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
+      border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    }
+
+    &.Mui-error {
+      color: ${({ theme }) => theme.palette.error.main};
+
+      & .MuiInputBase-input:-webkit-autofill,
+      & .MuiInputBase-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: ${({ theme }) => theme.palette.error.main};
+        transition: background-color 60000000000s 0s;
+      }
+    }
 
     &:not(.Mui-error) {
-      ${({ variant, theme }) =>
-        variant === 'filled' &&
-        css`
-          background-color: ${theme.colors.LIGHT_BLUE[0]};
+      &.MuiFilledInput-root {
+        background-color: ${({ theme }) => theme.colors.LIGHT_BLUE[0]};
 
-          &:hover {
-            background-color: ${theme.colors.DARK_BLUE[0]};
-          }
-        `}
+        &:hover {
+          background-color: ${({ theme }) => theme.colors.DARK_BLUE[0]};
+        }
+      }
 
       &:before {
         border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
@@ -46,23 +59,27 @@ export const StyledInput = styled(TextField)`
           &:before {
             border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[125]};
           }
-        }
 
-        &:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline {
-          border-width: 2px;
-          border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
+          & .MuiOutlinedInput-notchedOutline {
+            border-width: 2px;
+            border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
+          }
         }
       }
 
-      & fieldset {
+      & .MuiOutlinedInput-notchedOutline {
         border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
       }
-    }
 
-    & input:-webkit-autofill,
-    & input:-webkit-autofill:focus {
-      -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
-      transition: background-color 60000000000s 0s;
+      & .MuiInputBase-input:-webkit-autofill,
+      & .MuiInputBase-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+        transition: background-color 60000000000s 0s;
+      }
     }
+  }
+
+  & .MuiFormHelperText-root {
+    min-height: 20px;
   }
 `;

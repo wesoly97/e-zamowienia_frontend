@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { StyledInput } from '../input/Input.styles';
+import { Input } from '../input/Input';
 
 import { FormInputProps } from './FormInput.types';
 
@@ -22,6 +22,7 @@ export const FormInput = ({
   className,
   classes,
   focused,
+  required,
 }: FormInputProps) => {
   const { control } = useFormContext();
 
@@ -31,19 +32,14 @@ export const FormInput = ({
       name={name}
       render={({ field: { onChange: handleFieldChange, ...restField }, fieldState: { error } }) => {
         const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-          if (!!handleChange && handleChange(event)) {
-            handleFieldChange(event);
-          }
-
-          if (!handleChange) {
+          if ((!!handleChange && handleChange(event)) || !handleChange) {
             handleFieldChange(event);
           }
         };
 
         return (
-          <StyledInput
+          <Input
             id={id}
-            type={type}
             label={label}
             error={!!error}
             disabled={disabled}
@@ -59,6 +55,8 @@ export const FormInput = ({
             className={className}
             classes={classes}
             focused={focused}
+            required={required}
+            {...(type ? { type } : { type: 'text' })}
             {...restField}
           />
         );

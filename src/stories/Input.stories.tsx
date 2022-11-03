@@ -24,7 +24,7 @@ export default {
 } as Meta;
 
 const Template: Story<InputProps> = ({ ...props }: InputProps) => {
-  const [value, setValue] = useState<string | number>('');
+  const [value, setValue] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
