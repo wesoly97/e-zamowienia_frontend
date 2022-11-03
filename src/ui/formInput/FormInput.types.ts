@@ -1,21 +1,7 @@
-import { TextFieldProps } from '@mui/material';
+import { TextFieldProps } from '@mui/material/TextField';
 import { ChangeEvent } from 'react';
 
 export type FormInputProps = {
   handleChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => boolean;
 } & Required<Pick<TextFieldProps, 'id' | 'label' | 'name'>> &
-  Pick<
-    TextFieldProps,
-    | 'disabled'
-    | 'inputProps'
-    | 'InputProps'
-    | 'InputLabelProps'
-    | 'type'
-    | 'multiline'
-    | 'maxRows'
-    | 'rows'
-    | 'variant'
-    | 'className'
-    | 'classes'
-    | 'focused'
-  >;
+  TextFieldProps;
