@@ -12,19 +12,17 @@ export const QueryParamsContextController = ({ children }: QueryParamsContextPro
   const [query, setQuery] = useState<Query>(parse(search, { ignoreQueryPrefix: true, plainObjects: true }) as Query);
 
   useEffect(() => {
-    navigate(
-      pathname +
-        stringify(query, {
-          arrayFormat: 'brackets',
-          encode: false,
-          addQueryPrefix: true,
-          skipNulls: true,
-        }),
-      {
-        replace: true,
-      },
-    );
-  }, [navigate, pathname, query]);
+    const queryUrl = stringify(query, {
+      arrayFormat: 'brackets',
+      encode: false,
+      addQueryPrefix: true,
+      skipNulls: true,
+    });
+
+    if (!!queryUrl) {
+      navigate(pathname + queryUrl, { replace: true });
+    }
+  }, [pathname, query]);
 
   return <QueryParamsContext.Provider value={{ query, setQuery }}>{children}</QueryParamsContext.Provider>;
 };
