@@ -12,13 +12,16 @@ export const AuthContextController = ({ children }: AuthContextControllerProps) 
   const value = useMemo<AuthContextValue>(
     () => ({
       session: data,
-      isLoadingAccount,
       isAccountError,
       isAuthenticated: !!data && !isAccountError,
       isUnauthenticated: isAccountError,
     }),
-    [isAccountError, isLoadingAccount, data],
+    [isAccountError, data],
   );
+
+  if (isLoadingAccount) {
+    return null;
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

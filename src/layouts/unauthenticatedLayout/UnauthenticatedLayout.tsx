@@ -6,7 +6,7 @@ import { AppRoute } from '@/routing/AppRoutes.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const UnauthenticatedLayout = ({ children }: { children?: ReactNode }) => {
-  const { isAuthenticated, isLoadingAccount } = useAuthContext();
+  const { isAuthenticated } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const UnauthenticatedLayout = ({ children }: { children?: ReactNode }) =>
     }
   }, [isAuthenticated, navigate]);
 
-  if (isAuthenticated || isLoadingAccount) {
+  if (isAuthenticated) {
     return null;
   }
 
