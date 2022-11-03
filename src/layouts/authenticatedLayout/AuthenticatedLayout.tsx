@@ -9,7 +9,7 @@ import { AppLinks } from '@/routing/AppRoutes.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 
 export const AuthenticatedLayout = ({ children, acceptedRoles }: AuthenticatedLayoutProps) => {
-  const { isUnauthenticated, isLoadingAccount, session } = useAuthContext();
+  const { isUnauthenticated, session } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const AuthenticatedLayout = ({ children, acceptedRoles }: AuthenticatedLa
     }
   }, [acceptedRoles, isUnauthenticated, navigate, session]);
 
-  if (isUnauthenticated || !arePrivilegesSufficient(session, acceptedRoles) || isLoadingAccount) {
+  if (isUnauthenticated || !arePrivilegesSufficient(session, acceptedRoles)) {
     return null;
   }
 

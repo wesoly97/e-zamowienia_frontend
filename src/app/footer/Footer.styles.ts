@@ -13,7 +13,7 @@ export const Container = styled.footer`
   display: flex;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   height: 400px;
   justify-content: flex-start;
   flex-direction: column;

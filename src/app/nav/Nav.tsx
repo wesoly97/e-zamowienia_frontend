@@ -25,6 +25,10 @@ export const Nav = ({ position }: NavProps) => {
     navigate(AppLinks.OrderAdd);
   };
 
+  const handleRedirectUserVerificationPage = () => {
+    navigate(AppLinks.UserVerification);
+  };
+
   const handleRedirectOrdersUserListPage = () => {
     navigate(AppLinks.OrdersUserList);
   };
@@ -66,7 +70,7 @@ export const Nav = ({ position }: NavProps) => {
       {
         action: () => logout(null),
         label: 'Wyloguj',
-        order: 4,
+        order: 5,
       },
     ];
 
@@ -81,6 +85,11 @@ export const Nav = ({ position }: NavProps) => {
           action: () => handleRedirectAddOrderPage(),
           label: 'Dodaj ogłoszenie',
           order: 3,
+        },
+        {
+          action: () => handleRedirectUserVerificationPage(),
+          label: 'Zostań zamawiającym',
+          order: 4,
         },
       ];
 

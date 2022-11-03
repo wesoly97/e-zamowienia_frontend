@@ -7,13 +7,14 @@ import { UserProfileFormProps } from './UserProfileForm.types';
 import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { isUserVerified } from '@/utils/isUserVerified';
+import { FormPhoneInput } from '@/ui/formPhoneInput/FormPhoneInput';
 
 export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: UserProfileFormProps) => {
   const verifiedUserFields = useMemo(() => {
     if (isUserVerified(userRole))
       return (
         <>
-          <FormInput id={'phone-number'} name={'phoneNumber'} type={'tel'} label={'Numer telefonu'} disabled />
+          <FormPhoneInput id={'phone-number'} name={'phoneNumber'} label={'Numer telefonu'} disabled />
           <FormInput id={'country'} name={'country'} label={'Kraj'} disabled />
           <FormInput id={'company-name'} name={'companyName'} label={'Firma'} disabled />
           <FormInput id={'nip'} name={'nip'} label={'NIP'} disabled />

@@ -57,14 +57,12 @@ export const PasswordRecovery = () => {
     );
   }
 
-  if (isTokenExpired(tokenExpirationDate) && tokenId) {
-    return (
-      <>
-        <h1>Niepoprawny link</h1>
-        <p>
-          Token wygasł lub coś poszło nie tak. Za chwilę nastąpi przekierowanie na początek procesu resetowania hasła.
-        </p>
-      </>
-    );
-  }
+  return (
+    <>
+      <h1>Niepoprawny link</h1>
+      <p>
+        Token wygasł lub coś poszło nie tak. Za chwilę nastąpi przekierowanie na początek procesu resetowania hasła.
+      </p>
+    </>
+  );
 };

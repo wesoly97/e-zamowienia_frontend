@@ -12,6 +12,7 @@ export enum AppRoute {
   PasswordRecoveryTokenId = ':tokenId',
   UserProfile = 'konto',
   UserId = ':userId',
+  UserVerification = 'weryfikacja',
 }
 
 export enum AppLinks {
@@ -24,4 +25,5 @@ export enum AppLinks {
   OrderAdd = '/zamowienia/dodaj',
   PasswordRecovery = '/resetowanie-hasla',
   UserProfile = '/konto',
+  UserVerification = '/weryfikacja',
 }
