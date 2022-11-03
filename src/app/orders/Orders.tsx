@@ -11,8 +11,13 @@ import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, onRefetch, isLoading }: OrdersProps) => {
   const navigate = useNavigate();
 
-  if (!data.length || isLoading) {
+  if (!data) {
+    //TODO placeholder empty
     return null;
+  }
+
+  if (isLoading) {
+    //TODO loader
   }
 
   return (
