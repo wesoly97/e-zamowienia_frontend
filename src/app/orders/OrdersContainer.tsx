@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
@@ -11,7 +11,7 @@ import { FiltersParamsContextController } from '@/context/filtersParams/filtersP
 
 const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset, setParam } = useGetOrdersFilters();
+  const { offset, limit, setParam } = useGetOrdersFilters();
 
   if (!data?.pages[Number(offset)]) {
     //todo redirect to offset 0
@@ -25,6 +25,10 @@ const OrdersContainerRaw = () => {
     return data.pages[Number(offset)];
   }, [data?.pages, offset]);
 
+  useEffect(() => {
+    refetch();
+  }, [limit]);
+
   return (
     <>
       <OrdersForm updateFilters={setParam} onRefetch={refetch} />
@@ -34,7 +38,6 @@ const OrdersContainerRaw = () => {
         hasNextPage={hasNextPage}
         onNextPage={fetchNextPage}
         onPreviousPage={fetchPreviousPage}
-        onRefetch={refetch}
         isLoading={isFetching}
       />
     </>
