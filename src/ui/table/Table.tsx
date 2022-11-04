@@ -21,7 +21,6 @@ export const Table = <T,>({
   onNextPage,
   onPreviousPage,
   hasNextPage,
-  onRefetch,
   onRowClick,
 }: TableProps<T>) => {
   const { limit, offset, setParam } = useGetOrdersFilters();
@@ -41,7 +40,6 @@ export const Table = <T,>({
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
     setParam('limit', event.target.value);
     setParam('offset', 0);
-    onRefetch();
   };
 
   return (

@@ -9,5 +9,4 @@ export type TableProps<T> = {
   onNextPage: VoidFunction;
   onPreviousPage: VoidFunction;
   hasNextPage?: boolean;
-  onRefetch: VoidFunction;
 };

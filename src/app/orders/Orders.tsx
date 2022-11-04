@@ -8,7 +8,7 @@ import { Order } from '@/api/actions/orders/orders.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 
-export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, onRefetch, isLoading }: OrdersProps) => {
+export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, isLoading }: OrdersProps) => {
   const navigate = useNavigate();
 
   if (!data) {
@@ -29,7 +29,6 @@ export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, o
         onNextPage={onNextPage}
         onPreviousPage={onPreviousPage}
         hasNextPage={hasNextPage}
-        onRefetch={onRefetch}
         onRowClick={(_, item) => {
           navigate(AppLinks.OrderDetails.replace(AppRoute.OrderId, item._id));
         }}
