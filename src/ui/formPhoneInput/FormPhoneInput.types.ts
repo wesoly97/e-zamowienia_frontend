@@ -1,4 +1,4 @@
-import { MuiTelInputProps } from 'mui-tel-input';
+import { PhoneInputProps } from '../phoneInput/PhoneInput.types';
 
-export type FormPhoneInputProps = Required<Pick<MuiTelInputProps, 'name' | 'label' | 'id'>> &
-  Pick<MuiTelInputProps, 'disabled'>;
+export type FormPhoneInputProps = Required<Pick<PhoneInputProps, 'name' | 'label' | 'id'>> &
+  Pick<PhoneInputProps, 'disabled'>;

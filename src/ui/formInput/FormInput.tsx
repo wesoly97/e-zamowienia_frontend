@@ -30,7 +30,7 @@ export const FormInput = ({
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange: handleFieldChange, ...restField }, fieldState: { error } }) => {
+      render={({ field: { onChange: handleFieldChange, ref, ...restField }, fieldState: { error } }) => {
         const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
           if ((!!handleChange && handleChange(event)) || !handleChange) {
             handleFieldChange(event);
@@ -56,6 +56,7 @@ export const FormInput = ({
             classes={classes}
             focused={focused}
             required={required}
+            inputRef={ref}
             {...(type ? { type } : { type: 'text' })}
             {...restField}
           />

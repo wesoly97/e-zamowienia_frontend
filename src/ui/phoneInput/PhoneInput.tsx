@@ -1,4 +1,5 @@
-import { MuiTelInput, MuiTelInputProps } from 'mui-tel-input';
+import { StyledPhoneInput } from './PhoneInput.styles';
+import { PhoneInputProps } from './PhoneInput.types';
 
 export const PhoneInput = ({
   label,
@@ -10,9 +11,9 @@ export const PhoneInput = ({
   inputRef,
   disabled,
   ...props
-}: MuiTelInputProps) => {
+}: PhoneInputProps) => {
   return (
-    <MuiTelInput
+    <StyledPhoneInput
       value={value}
       onChange={onChange}
       defaultCountry="PL"
