@@ -1,4 +1,4 @@
-import { Autocomplete } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import styled, { css } from 'styled-components';
 
 export const StyledAutocomplete = styled(Autocomplete)`

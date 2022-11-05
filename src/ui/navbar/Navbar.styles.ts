@@ -1,5 +1,5 @@
+import AppBar from '@mui/material/AppBar';
 import styled from 'styled-components';
-import { AppBar } from '@mui/material';
 
 export const StyledAppBar = styled(AppBar)`
   background-color: ${({ theme }) => theme.colors.WHITE};

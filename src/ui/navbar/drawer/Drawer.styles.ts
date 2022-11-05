@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Drawer } from '@mui/material';
+import Drawer from '@mui/material/Drawer';
 
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 

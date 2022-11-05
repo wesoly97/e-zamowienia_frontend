@@ -1,6 +1,6 @@
-import { Button } from '@mui/material';
 import styled from 'styled-components';
 
+import { Button } from '../button/Button';
 import { baseButtonStyles } from '../button/Button.styles';
 
 export const Box = styled.div`

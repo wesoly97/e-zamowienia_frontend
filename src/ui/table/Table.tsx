@@ -24,15 +24,13 @@ export const Table = <T,>({
   onRowClick,
 }: TableProps<T>) => {
   const { limit, offset, setParam } = useGetOrdersFilters();
-  const offsetFilter = Number(offset);
-  const limitFilter = Number(limit);
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setParam('offset', String(newPage));
-    if (offsetFilter < newPage) {
+    if (Number(offset) < newPage) {
       onNextPage();
     }
-    if (offsetFilter > newPage) {
+    if (Number(offset) > newPage) {
       onPreviousPage();
     }
   };
@@ -58,8 +56,8 @@ export const Table = <T,>({
               rowsPerPageOptions={[5, 10, 25, 50, 75]}
               colSpan={3}
               count={count}
-              rowsPerPage={limitFilter}
-              page={offsetFilter}
+              rowsPerPage={Number(limit)}
+              page={Number(offset)}
               showLastButton={hasNextPage}
               SelectProps={{
                 inputProps: {

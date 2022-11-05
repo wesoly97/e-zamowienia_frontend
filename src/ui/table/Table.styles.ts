@@ -1,4 +1,4 @@
-import { TableRow } from '@mui/material';
+import TableRow from '@mui/material/TableRow';
 import styled from 'styled-components';
 
 export const StyledTableRow = styled(TableRow)`
