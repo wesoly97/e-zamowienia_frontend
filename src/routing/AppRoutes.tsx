@@ -148,7 +148,7 @@ export const AppRoutes = () => (
     <Route
       path={AppRoute.UserVerification}
       element={
-        <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
+        <AuthenticatedLayout acceptedRoles={[RoleTypes.Regular]}>
           <Nav position={'static'} />
           <UserVerification />
           <Footer />
