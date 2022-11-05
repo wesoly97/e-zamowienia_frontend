@@ -34,14 +34,10 @@ export const StyledInput = styled(TextField)`
       border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[75]};
     }
 
-    & .MuiOutlinedInput-notchedOutline {
-      border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
-    }
-
-    & .MuiInputBase-input:-webkit-autofill,
-    & .MuiInputBase-input:-webkit-autofill:focus {
-      -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
-      transition: background-color 60000000000s 0s;
+    &:hover {
+      &:before {
+        border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+      }
     }
 
     &.MuiFilledInput-root {
@@ -59,6 +55,10 @@ export const StyledInput = styled(TextField)`
 
     &.Mui-error {
       color: ${({ theme }) => theme.palette.error.main};
+
+      &:after {
+        border-color: ${({ theme }) => theme.palette.error.main};
+      }
 
       &.MuiFilledInput-root {
         background-color: ${({ theme }) => theme.palette.action.selected};
@@ -94,6 +94,16 @@ export const StyledInput = styled(TextField)`
       & .MuiOutlinedInput-notchedOutline {
         border-color: ${({ theme }) => theme.palette.action.disabled};
       }
+    }
+
+    & .MuiOutlinedInput-notchedOutline {
+      border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    }
+
+    & .MuiInputBase-input:-webkit-autofill,
+    & .MuiInputBase-input:-webkit-autofill:focus {
+      -webkit-text-fill-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+      transition: background-color 60000000000s 0s;
     }
   }
 
