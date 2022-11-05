@@ -9,7 +9,7 @@ import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
-import { isUserVerified } from '@/utils/isUserVerified';
+import { isUserRegular, isUserVerified } from '@/utils/accountTypes';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
@@ -68,37 +68,44 @@ export const Nav = ({ position }: NavProps) => {
         order: 1,
       },
       {
-        action: () => handleRedirectUserVerificationPage(),
-        label: 'Zostań zamawiającym',
-        order: 4,
-      },
-      {
         action: () => logout(null),
         label: 'Wyloguj',
         order: 5,
       },
     ];
 
-    if (isUserVerified(session?.accountType)) {
-      const verifiedUserNaviagationItems = [
-        {
-          action: () => handleRedirectOrdersUserListPage(),
-          label: 'Moje ogłoszenia',
-          order: 2,
-        },
-        {
-          action: () => handleRedirectAddOrderPage(),
-          label: 'Dodaj ogłoszenie',
-          order: 3,
-        },
+    if (isUserRegular(session?.accountType)) {
+      naviagationItems = [
+        ...naviagationItems,
+        ...[
+          {
+            action: () => handleRedirectUserVerificationPage(),
+            label: 'Zostań zamawiającym',
+            order: 4,
+          },
+        ],
       ];
-
-      naviagationItems = [...naviagationItems, ...verifiedUserNaviagationItems].sort(
-        (prev, next) => prev.order - next.order,
-      );
     }
 
-    return naviagationItems;
+    if (isUserVerified(session?.accountType)) {
+      naviagationItems = [
+        ...naviagationItems,
+        ...[
+          {
+            action: () => handleRedirectOrdersUserListPage(),
+            label: 'Moje ogłoszenia',
+            order: 2,
+          },
+          {
+            action: () => handleRedirectAddOrderPage(),
+            label: 'Dodaj ogłoszenie',
+            order: 3,
+          },
+        ],
+      ];
+    }
+
+    return naviagationItems.sort((prev, next) => prev.order - next.order);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 

@@ -6,7 +6,7 @@ import { UserProfileFormProps } from './UserProfileForm.types';
 
 import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
-import { isUserVerified } from '@/utils/isUserVerified';
+import { isUserVerified } from '@/utils/accountTypes';
 import { FormPhoneInput } from '@/ui/formPhoneInput/FormPhoneInput';
 
 export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: UserProfileFormProps) => {
