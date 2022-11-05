@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { AutocompleteRenderInputParams } from '@mui/material/Autocomplete';
 
 import { OrdersFormProps } from './OrdersForm.types';
@@ -8,19 +8,17 @@ import { Autocomplete } from '@/ui/autocomplete/Autocomplete';
 import { Input } from '@/ui/input/Input';
 import { useDebounce } from '@/hooks/useDebounce/useDebounce';
 
-export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
+export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   const { settings } = useSettingsContext();
 
-  const [title, setTitle] = useState('');
-
-  const debouncedTitle = useDebounce(title, onRefetch);
+  const [title, setTitle] = useState(filters.filter_title || '');
+  const debouncedTitle = useDebounce(title);
+  const [category, setCategory] = useState(filters.filter_category || '');
+  const [mode, setMode] = useState(filters.filter_mode || '');
 
   const handleChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
-    updateFilters('filterOption[title]', debouncedTitle);
   };
-
-  const [category, setCategory] = useState('');
 
   const handleChangeCategory = (_: SyntheticEvent<Element, Event>, newValue: string) => {
     if (newValue === null) {
@@ -28,11 +26,8 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
     }
 
     setCategory(newValue);
-    updateFilters('filterOption[category]', newValue);
-    onRefetch();
+    updateFilters('filter_category', newValue);
   };
-
-  const [mode, setMode] = useState('');
 
   const handleChangeMode = (_: SyntheticEvent<Element, Event>, newValue: string) => {
     if (newValue === null) {
@@ -40,8 +35,7 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
     }
 
     setMode(newValue);
-    updateFilters('filterOption[mode]', newValue);
-    onRefetch();
+    updateFilters('filter_mode', newValue);
   };
 
   const autocompleteCategoryInput = (params: AutocompleteRenderInputParams) => (
@@ -49,6 +43,10 @@ export const OrdersForm = ({ updateFilters, onRefetch }: OrdersFormProps) => {
   );
 
   const autocompleteModeInput = (params: AutocompleteRenderInputParams) => <Input {...params} label={'Typ'} />;
+
+  useEffect(() => {
+    updateFilters('filter_title', debouncedTitle);
+  }, [debouncedTitle]);
 
   if (!settings) {
     return null;

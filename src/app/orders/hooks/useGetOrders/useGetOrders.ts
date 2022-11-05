@@ -5,7 +5,8 @@ import { GetOrdersArgs, GetOrdersError, GetOrdersResponse } from '@/api/actions/
 import { useInfiniteQuery } from '@/hooks/useInfiniteQuery/useInfiniteQuery';
 
 export const useGetOrders = () => {
-  const { limit, offset, filterOption, sortOption } = useGetOrdersFilters();
+  const { limit, offset, filter_title, filter_category, filter_mode, sort_id, sort_title, sort_mode, sort_category } =
+    useGetOrdersFilters();
 
   return useInfiniteQuery<GetOrdersArgs, GetOrdersResponse, GetOrdersError>(
     [getOrdersQueryKey],
@@ -16,8 +17,17 @@ export const useGetOrders = () => {
       retryDelay: 1000,
       args: {
         limit,
-        filterOption,
-        sortOption,
+        filterOption: {
+          title: filter_title,
+          mode: filter_mode,
+          category: filter_category,
+        },
+        sortOption: {
+          id: sort_id,
+          title: sort_title,
+          mode: sort_mode,
+          category: sort_category,
+        },
       },
       getNextPageParam: ({ count }) => {
         const page = Number(offset) + 1;

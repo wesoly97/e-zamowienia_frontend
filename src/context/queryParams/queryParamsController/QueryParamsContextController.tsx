@@ -8,8 +8,7 @@ import { QueryParamsContext } from '../queryParamsContent/QueryParamsContext';
 export const QueryParamsContextController = ({ children }: QueryParamsContextProps) => {
   const { search, pathname } = useLocation();
   const navigate = useNavigate();
-
-  const [query, setQuery] = useState<Query>(parse(search, { ignoreQueryPrefix: true, plainObjects: true }) as Query);
+  const [query, setQuery] = useState<Query>(parse(search, { ignoreQueryPrefix: true }) as Query);
 
   useEffect(() => {
     const queryUrl = stringify(query, {

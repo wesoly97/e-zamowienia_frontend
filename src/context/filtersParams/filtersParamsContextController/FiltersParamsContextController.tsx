@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+import pick from 'lodash/pick';
 
 import { FiltersParamsContext } from '../filtersParamsContext/FiltersParamsContext';
 import { FiltersParamsContextValue } from '../filtersParamsContext/FiltersParamsContext.types';
@@ -6,7 +7,6 @@ import { FiltersParamsContextValue } from '../filtersParamsContext/FiltersParams
 import { FiltersParamsContextControllerProps } from './FiltersParamsContextController.types';
 
 import { useQueryParams } from '@/context/queryParams/hooks/useQueryParams';
-import { pick } from '@/utils/pick';
 
 export const FiltersParamsContextController = ({ children, filtersKeys }: FiltersParamsContextControllerProps) => {
   const keys = useMemo(() => [...filtersKeys, 'search'], []);
@@ -14,13 +14,13 @@ export const FiltersParamsContextController = ({ children, filtersKeys }: Filter
   const query = pick(queryParams, keys);
 
   const setParam = useCallback(
-    (key: string, value: number | string | string[]) => {
-      const parsedValue = String(value);
-
-      setQuery((prevState) => ({
-        ...prevState,
-        ...(!!key && { [key]: parsedValue }),
-      }));
+    (key: string, value: string) => {
+      setQuery((prevState) => {
+        return {
+          ...prevState,
+          [key]: value,
+        };
+      });
     },
     [setQuery],
   );

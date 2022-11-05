@@ -28,7 +28,7 @@ export const Table = <T,>({
   const limitFilter = Number(limit);
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    setParam('offset', newPage);
+    setParam('offset', String(newPage));
     if (offsetFilter < newPage) {
       onNextPage();
     }
@@ -39,7 +39,7 @@ export const Table = <T,>({
 
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
     setParam('limit', event.target.value);
-    setParam('offset', 0);
+    setParam('offset', '0');
   };
 
   return (
