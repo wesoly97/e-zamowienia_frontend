@@ -1,13 +1,27 @@
 import { Meta, Story } from '@storybook/react';
 import { useState } from 'react';
 import { SelectChangeEvent } from '@mui/material/Select';
+import styled from 'styled-components';
 
 import { SelectProps } from '@/ui/select/Select.types';
 import { Select } from '@/ui/select/Select';
 
+const Container = styled.div`
+  & > div {
+    width: 100%;
+  }
+`;
+
 export default {
   title: 'Select',
   component: Select,
+  decorators: [
+    (Story) => (
+      <Container>
+        <Story />
+      </Container>
+    ),
+  ],
 } as Meta;
 
 const data = ['dog', 'cat', 'parrot', 'pig'];
