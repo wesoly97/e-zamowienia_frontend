@@ -11,6 +11,10 @@ export const QueryParamsContextController = ({ children }: QueryParamsContextPro
   const [query, setQuery] = useState<Query>(parse(search, { ignoreQueryPrefix: true }) as Query);
 
   useEffect(() => {
+    setQuery(parse(search, { ignoreQueryPrefix: true }) as Query);
+  }, [search]);
+
+  useEffect(() => {
     const queryUrl = stringify(query, {
       arrayFormat: 'brackets',
       encode: false,
