@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, ReactNode } from 'react';
 
-export type Query = Record<string, string | string[] | undefined> & { search?: string };
+export type Query = Record<string, string | undefined> & { search?: string };
 
 export type QueryParamsContextState = {
   query: Query;

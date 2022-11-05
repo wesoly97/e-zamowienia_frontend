@@ -17,3 +17,5 @@ hash.env
 *.njsproj
 *.sln
 *.sw?
+.env.development
+.env.production

@@ -49,7 +49,17 @@ export const OrdersContainer = () => {
   return (
     <QueryParamsContextController>
       <FiltersParamsContextController
-        filtersKeys={['offset', 'limit', 'filter_title', 'filter_category', 'filter_mode']}
+        filtersKeys={[
+          'offset',
+          'limit',
+          'filter_title',
+          'filter_category',
+          'filter_mode',
+          'sort_price',
+          'sort_title',
+          'sort_mode',
+          'sort_category',
+        ]}
       >
         <OrdersContainerRaw />
       </FiltersParamsContextController>

@@ -13,7 +13,7 @@ export const useGetOrdersFilters = () => {
       filter_title: query['filter_title'],
       filter_category: query['filter_category'],
       filter_mode: query['filter_mode'],
-      sort_id: query['sort_id'],
+      sort_price: query['sort_price'],
       sort_title: query['sort_title'],
       sort_mode: query['sort_mode'],
       sort_category: query['sort_category'],

@@ -11,7 +11,7 @@ import { useDebounce } from '@/hooks/useDebounce/useDebounce';
 export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   const { settings } = useSettingsContext();
 
-  const [title, setTitle] = useState(filters.filter_title || '');
+  const [title, setTitle] = useState(filters.filter_title);
   const debouncedTitle = useDebounce(title);
   const [category, setCategory] = useState(filters.filter_category || '');
   const [mode, setMode] = useState(filters.filter_mode || '');
@@ -45,7 +45,9 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   const autocompleteModeInput = (params: AutocompleteRenderInputParams) => <Input {...params} label={'Typ'} />;
 
   useEffect(() => {
-    updateFilters('filter_title', debouncedTitle);
+    if (debouncedTitle !== undefined) {
+      updateFilters('filter_title', debouncedTitle);
+    }
   }, [debouncedTitle]);
 
   if (!settings) {
