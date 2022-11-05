@@ -1,18 +1,23 @@
 import { useMemo } from 'react';
 
-import { DefaultOptionArgs, FiltersOptionArgs, SortOptionArgs } from '@/api/actions/orders/orders.types';
+import { UseGetOrdersFiltersProps } from './useGetOrdersFilters.types';
+
 import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
 
 export const useGetOrdersFilters = () => {
   const { query, setParam } = useFiltersParamsContext();
-
   const params = useMemo(() => {
     return {
-      limit: (query['limit'] as DefaultOptionArgs['limit']) || '10',
-      offset: (query['offset'] as DefaultOptionArgs['offset']) || '0',
-      filterOption: (query['filterOption'] as FiltersOptionArgs['filterOption']) || {},
-      sortOption: (query['sortOption'] as SortOptionArgs['sortOption']) || {},
-    };
+      limit: query['limit'] || '10',
+      offset: query['offset'] || '0',
+      filter_title: query['filter_title'],
+      filter_category: query['filter_category'],
+      filter_mode: query['filter_mode'],
+      sort_id: query['sort_id'],
+      sort_title: query['sort_title'],
+      sort_mode: query['sort_mode'],
+      sort_category: query['sort_category'],
+    } as UseGetOrdersFiltersProps;
   }, [query]);
 
   return {

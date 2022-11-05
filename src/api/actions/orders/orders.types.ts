@@ -31,21 +31,26 @@ export type GetOrdersError = InternalServerError;
 
 export type GetOrdersInfiniteQueryFn = InfiniteQueryFn<GetOrdersArgs, GetOrdersResponse>;
 
+export type SortOption = {
+  _id?: 1 | -1;
+  title?: 1 | -1;
+  mode?: 1 | -1;
+  category?: 1 | -1;
+};
+
 export type SortOptionArgs = {
-  sortOption?: {
-    _id?: 1 | -1;
-    title?: 1 | -1;
-    mode?: 1 | -1;
-    category?: 1 | -1;
-  };
+  sortOption: SortOption | null;
+};
+
+export type FilterOption = {
+  ownerId?: string;
+  title?: string;
+  mode?: string;
+  category?: string;
 };
 
 export type FiltersOptionArgs = {
-  filterOption?: {
-    title?: string;
-    mode?: string;
-    category?: string;
-  };
+  filterOption: FilterOption | null;
 };
 
 export type DefaultOptionArgs = {

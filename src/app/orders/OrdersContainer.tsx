@@ -1,4 +1,5 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
@@ -11,7 +12,7 @@ import { FiltersParamsContextController } from '@/context/filtersParams/filtersP
 
 const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset, limit, setParam } = useGetOrdersFilters();
+  const { offset, limit, setParam, ...params } = useGetOrdersFilters();
 
   if (!data?.pages[Number(offset)]) {
     //todo redirect to offset 0
@@ -25,13 +26,13 @@ const OrdersContainerRaw = () => {
     return data.pages[Number(offset)];
   }, [data?.pages, offset]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     refetch();
-  }, [limit]);
+  }, [limit, params]);
 
   return (
     <>
-      <OrdersForm updateFilters={setParam} onRefetch={refetch} />
+      <OrdersForm updateFilters={setParam} filters={params} />
       <Orders
         data={pageData?.orders ?? []}
         count={pageData?.count ?? 0}
@@ -47,7 +48,9 @@ const OrdersContainerRaw = () => {
 export const OrdersContainer = () => {
   return (
     <QueryParamsContextController>
-      <FiltersParamsContextController filtersKeys={['offset', 'limit', 'filterOption', 'sortOption']}>
+      <FiltersParamsContextController
+        filtersKeys={['offset', 'limit', 'filter_title', 'filter_category', 'filter_mode']}
+      >
         <OrdersContainerRaw />
       </FiltersParamsContextController>
     </QueryParamsContextController>
