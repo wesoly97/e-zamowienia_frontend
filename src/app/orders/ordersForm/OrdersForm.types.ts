@@ -1,8 +1,8 @@
-import { UseGetOrdersFiltersProps } from '../hooks/useGetOrdersFilters/useGetOrdersFilters.types';
+import { UseGetOrdersParamsFilters } from '../hooks/useGetOrdersParams/useGetOrdersParams.types';
 
-import { FiltersParamsContextValue } from '@/context/filtersParams/filtersParamsContext/FiltersParamsContext.types';
+import { ParamsContextValue } from '@/context/params/paramsContext/ParamsContext.types';
 
 export type OrdersFormProps = {
-  updateFilters: FiltersParamsContextValue['setFilter'];
-  filters: Omit<UseGetOrdersFiltersProps, 'limit' | 'offset'>;
+  updateFilters: ParamsContextValue['setFilter'];
+  filters: Omit<UseGetOrdersParamsFilters, 'limit' | 'offset'>;
 };

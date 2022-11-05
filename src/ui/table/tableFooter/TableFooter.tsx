@@ -5,17 +5,17 @@ import { TablePaginationActions } from '../tablePaginationActions/TablePaginatio
 
 import { TableFooterProps } from './TableFooter.types';
 
-import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
+import { useParamsContext } from '@/context/params/hooks/useParamsContext';
 
 export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: TableFooterProps) => {
-  const { query, setFilter } = useFiltersParamsContext();
+  const { filterQuery, setFilter } = useParamsContext();
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setFilter('offset', String(newPage));
-    if (Number(query['offset']) < newPage) {
+    if (Number(filterQuery['offset']) < newPage) {
       onNextPage();
     }
-    if (Number(query['offset']) > newPage) {
+    if (Number(filterQuery['offset']) > newPage) {
       onPreviousPage();
     }
   };
@@ -32,8 +32,8 @@ export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: 
           rowsPerPageOptions={[5, 10, 25, 50, 75]}
           colSpan={3}
           count={count}
-          rowsPerPage={Number(query['limit'] || 10)}
-          page={Number(query['offset'] || 0)}
+          rowsPerPage={Number(filterQuery['limit'] || 10)}
+          page={Number(filterQuery['offset'] || 0)}
           showLastButton={hasNextPage}
           SelectProps={{
             inputProps: {

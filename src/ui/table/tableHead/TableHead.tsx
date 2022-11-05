@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { useEffect, useState } from 'react';
@@ -5,26 +6,30 @@ import { useEffect, useState } from 'react';
 import { tableColumnNames } from './TableHead.constans';
 import { getStringifySortOption } from './TableHead.utils';
 
-import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
+import { useParamsContext } from '@/context/params/hooks/useParamsContext';
+import { SortValue } from '@/context/params/paramsContext/ParamsContext.types';
 
 export const TableHead = () => {
-  const { setFilter } = useFiltersParamsContext();
+  const { setSort } = useParamsContext();
 
-  const [orderBy, setOrderBy] = useState('sort_title');
-  const [order, setOrder] = useState<-1 | 1>(-1);
+  const [orderBy, setOrderBy] = useState('title');
+  const [order, setOrder] = useState<SortValue>('-1');
 
-  const onChangeSortOrder = (columnId: string) => (_: React.MouseEvent<unknown>) => {
-    if (order === 1) {
-      setOrder(-1);
-    } else {
-      setOrder(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onChangeSortOrder = (columnId: string) => (_: MouseEvent) => {
+    if (order === '1') {
+      setOrder('-1');
     }
+    if (order === '-1') {
+      setOrder('1');
+    }
+
     setOrderBy(columnId);
   };
 
   useEffect(() => {
-    setFilter(orderBy, String(order));
-  }, [order, orderBy]);
+    setSort(orderBy, order);
+  }, [orderBy, order]);
 
   return (
     <thead>

@@ -1,5 +1,7 @@
-export const getStringifySortOption = (sortOption: -1 | 1) => {
-  if (sortOption === -1) {
+import { SortValue } from '@/context/params/paramsContext/ParamsContext.types';
+
+export const getStringifySortOption = (sortOption: SortValue) => {
+  if (sortOption === '-1') {
     return 'desc';
   }
 
