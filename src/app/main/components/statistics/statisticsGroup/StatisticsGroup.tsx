@@ -15,14 +15,18 @@ export const StatisticsGroup = ({ icon, isLoading, description, number }: Statis
     }
 
     if (!isLoading && number) {
-      return <CountUp start={0} end={number} enableScrollSpy scrollSpyOnce preserveValue />;
+      return (
+        <CountUp start={0} end={number} enableScrollSpy scrollSpyOnce>
+          {({ countUpRef }) => <Count ref={countUpRef} />}
+        </CountUp>
+      );
     }
   }, [isLoading, number]);
 
   return (
     <Stats>
       {cloneElement(icon as ReactElement<unknown, string | JSXElementConstructor<unknown>>)}
-      <Count>{countNumber}</Count>
+      {countNumber}
       <Description>{description}</Description>
     </Stats>
   );
