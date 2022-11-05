@@ -68,6 +68,11 @@ export const Nav = ({ position }: NavProps) => {
         order: 1,
       },
       {
+        action: () => handleRedirectUserVerificationPage(),
+        label: 'Zostań zamawiającym',
+        order: 4,
+      },
+      {
         action: () => logout(null),
         label: 'Wyloguj',
         order: 5,
@@ -85,11 +90,6 @@ export const Nav = ({ position }: NavProps) => {
           action: () => handleRedirectAddOrderPage(),
           label: 'Dodaj ogłoszenie',
           order: 3,
-        },
-        {
-          action: () => handleRedirectUserVerificationPage(),
-          label: 'Zostań zamawiającym',
-          order: 4,
         },
       ];
 

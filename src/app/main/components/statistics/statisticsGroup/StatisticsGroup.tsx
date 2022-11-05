@@ -10,8 +10,12 @@ export const StatisticsGroup = ({ icon, isLoading, description, number }: Statis
       return <StyledCircularProgress />;
     }
 
+    if (number === 0) {
+      return number;
+    }
+
     if (!isLoading && number) {
-      return <CountUp end={number} enableScrollSpy scrollSpyOnce />;
+      return <CountUp start={0} end={number} enableScrollSpy scrollSpyOnce preserveValue />;
     }
   }, [isLoading, number]);
 
