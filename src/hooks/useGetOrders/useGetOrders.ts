@@ -4,7 +4,7 @@ import { getInfiniteOrdersQuery, getOrdersQueryKey } from '@/api/actions/orders/
 import { GetOrdersArgs, GetOrdersError, GetOrdersResponse } from '@/api/actions/orders/orders.types';
 import { useInfiniteQuery } from '@/hooks/useInfiniteQuery/useInfiniteQuery';
 
-export const useGetOrders = () => {
+export const useGetOrders = (userId?: string) => {
   const {
     filters: { limit, offset, filter_title, filter_category, filter_mode },
     sort,
@@ -23,6 +23,7 @@ export const useGetOrders = () => {
           title: filter_title,
           mode: filter_mode,
           category: filter_category,
+          ownerId: userId,
         },
         sortOption: {
           ...sort,
