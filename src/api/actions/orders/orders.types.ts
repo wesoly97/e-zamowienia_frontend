@@ -32,8 +32,8 @@ export type GetOrdersError = InternalServerError;
 export type GetOrdersInfiniteQueryFn = InfiniteQueryFn<GetOrdersArgs, GetOrdersResponse>;
 
 export type SortOption = {
-  _id?: 1 | -1;
   title?: 1 | -1;
+  price?: 1 | -1;
   mode?: 1 | -1;
   category?: 1 | -1;
 };

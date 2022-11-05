@@ -1,11 +1,11 @@
 import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent, useMemo } from 'react';
 
 import { UserMenuProps } from './UserMenu.types';
+import { StyledMenu } from './UserMenu.styles';
 
 export const UserMenu = ({ userPanel }: UserMenuProps) => {
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
@@ -35,8 +35,7 @@ export const UserMenu = ({ userPanel }: UserMenuProps) => {
           <Avatar alt="avatar" />
         </IconButton>
       </Tooltip>
-      <Menu
-        sx={{ mt: '45px' }}
+      <StyledMenu
         anchorEl={anchorElement}
         anchorOrigin={{
           vertical: 'top',
@@ -51,7 +50,7 @@ export const UserMenu = ({ userPanel }: UserMenuProps) => {
         onClose={handleCloseMenu}
       >
         {userMenuActions}
-      </Menu>
+      </StyledMenu>
     </div>
   );
 };

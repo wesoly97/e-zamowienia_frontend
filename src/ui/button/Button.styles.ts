@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import styled, { css } from 'styled-components';
 
 export const baseButtonStyles = css`
@@ -10,7 +10,6 @@ export const baseButtonStyles = css`
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  box-sizing: border-box;
 
   ${({ theme }) => theme.breakpoints.up('sm')} {
     height: 45px;

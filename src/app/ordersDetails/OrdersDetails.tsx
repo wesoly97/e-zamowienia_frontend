@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { Box, Container, ColumnIdentifier, ColumnSpecification, Link } from './OrdersDetails.styles';
 import { OrdersDetailsProps } from './OrdersDetails.types';

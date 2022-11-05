@@ -3,7 +3,7 @@ import { UploadButtonProps } from './UploadButton.types';
 
 export const UploadButton = ({ children, handleClick }: UploadButtonProps) => {
   return (
-    <StyledUploadButton onClick={handleClick}>
+    <StyledUploadButton handleClick={handleClick}>
       {children}
       <Box>
         <Blob />

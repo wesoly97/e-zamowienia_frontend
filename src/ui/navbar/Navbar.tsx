@@ -1,5 +1,5 @@
-import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { NavbarProps } from './Navbar.types';
 import { ActionBox, Container, StyledAppBar, Wrapper } from './Navbar.styles';

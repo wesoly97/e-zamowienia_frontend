@@ -1,12 +1,14 @@
-import { useGetOrdersFilters } from '../useGetOrdersFilters/useGetOrdersFilters';
+import { useGetOrdersParams } from '../useGetOrdersParams/useGetOrdersParams';
 
 import { getInfiniteOrdersQuery, getOrdersQueryKey } from '@/api/actions/orders/orders';
 import { GetOrdersArgs, GetOrdersError, GetOrdersResponse } from '@/api/actions/orders/orders.types';
 import { useInfiniteQuery } from '@/hooks/useInfiniteQuery/useInfiniteQuery';
 
 export const useGetOrders = () => {
-  const { limit, offset, filter_title, filter_category, filter_mode, sort_id, sort_title, sort_mode, sort_category } =
-    useGetOrdersFilters();
+  const {
+    filters: { limit, offset, filter_title, filter_category, filter_mode },
+    sort,
+  } = useGetOrdersParams();
 
   return useInfiniteQuery<GetOrdersArgs, GetOrdersResponse, GetOrdersError>(
     [getOrdersQueryKey],
@@ -23,10 +25,7 @@ export const useGetOrders = () => {
           category: filter_category,
         },
         sortOption: {
-          id: sort_id,
-          title: sort_title,
-          mode: sort_mode,
-          category: sort_category,
+          ...sort,
         },
       },
       getNextPageParam: ({ count }) => {

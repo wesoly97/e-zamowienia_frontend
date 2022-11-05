@@ -4,15 +4,19 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 import { useGetOrders } from './hooks/useGetOrders/useGetOrders';
 import { Orders } from './Orders';
 import { isNumber } from './Orders.utils';
-import { useGetOrdersFilters } from './hooks/useGetOrdersFilters/useGetOrdersFilters';
 import { OrdersForm } from './ordersForm/OrdersForm';
+import { useGetOrdersParams } from './hooks/useGetOrdersParams/useGetOrdersParams';
 
 import { QueryParamsContextController } from '@/context/queryParams/queryParamsController/QueryParamsContextController';
-import { FiltersParamsContextController } from '@/context/filtersParams/filtersParamsContextController/FiltersParamsContextController';
+import { ParamsContextController } from '@/context/params/paramsContextController/ParamsContextController';
 
 const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset, limit, setParam, ...params } = useGetOrdersFilters();
+  const {
+    filters: { limit, offset, ...restFilters },
+    sort,
+    setFilter,
+  } = useGetOrdersParams();
 
   if (!data?.pages[Number(offset)]) {
     //todo redirect to offset 0
@@ -28,11 +32,11 @@ const OrdersContainerRaw = () => {
 
   useDeepCompareEffect(() => {
     refetch();
-  }, [limit, params]);
+  }, [limit, restFilters, sort]);
 
   return (
     <>
-      <OrdersForm updateFilters={setParam} filters={params} />
+      <OrdersForm updateFilters={setFilter} filters={restFilters} />
       <Orders
         data={pageData?.orders ?? []}
         count={pageData?.count ?? 0}
@@ -48,11 +52,12 @@ const OrdersContainerRaw = () => {
 export const OrdersContainer = () => {
   return (
     <QueryParamsContextController>
-      <FiltersParamsContextController
+      <ParamsContextController
         filtersKeys={['offset', 'limit', 'filter_title', 'filter_category', 'filter_mode']}
+        sortKeys={['price', 'title', 'mode', 'category']}
       >
         <OrdersContainerRaw />
-      </FiltersParamsContextController>
+      </ParamsContextController>
     </QueryParamsContextController>
   );
 };
