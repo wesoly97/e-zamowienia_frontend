@@ -15,7 +15,7 @@ import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
 export const UserProfileFormWrapper = () => {
   const { session } = useAuthContext();
 
-  const { data: userDetails } = useGetUserDetails(session?._id || '');
+  const { data: userDetails, isLoading } = useGetUserDetails(session?._id || '');
 
   const form = useForm<UserProfileFormData>({
     defaultValues: userProfileFormInitialData,
@@ -27,7 +27,7 @@ export const UserProfileFormWrapper = () => {
     }
   }, [form, userDetails]);
 
-  const isLoading = !!useIsMutating({ mutationKey: [editUserDataQueryKey] });
+  const isSubmitting = !!useIsMutating({ mutationKey: [editUserDataQueryKey] });
 
   const { mutate } = useUserProfileEffect(session?._id || '', form);
 
@@ -36,5 +36,9 @@ export const UserProfileFormWrapper = () => {
     mutate({ name, surname });
   };
 
-  return <UserProfileForm isSubmitting={isLoading} onSubmit={submit} form={form} userRole={session?.accountType} />;
+  if (!userDetails || isLoading) {
+    return null;
+  }
+
+  return <UserProfileForm isSubmitting={isSubmitting} onSubmit={submit} form={form} userRole={session?.accountType} />;
 };

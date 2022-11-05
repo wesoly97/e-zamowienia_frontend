@@ -17,6 +17,7 @@ import { PasswordRecoveryContainer } from '@/app/passwordRecovery/PasswordRecove
 import { UserProfile } from '@/app/userProfile/UserProfile';
 import { RoleTypes } from '@/api/types/types';
 import { UserVerification } from '@/app/userVerification/UserVerification';
+import { UserOrdersContainer } from '@/app/userOrders/UserOrdersContainer';
 
 //TODO lazy
 export const AppRoutes = () => (
@@ -106,7 +107,7 @@ export const AppRoutes = () => (
           element={
             <AuthenticatedLayout acceptedRoles={[RoleTypes.Orderer]}>
               <Nav position={'static'} />
-              order list
+              <UserOrdersContainer />
               <Footer />
             </AuthenticatedLayout>
           }
