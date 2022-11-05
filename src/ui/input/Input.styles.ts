@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledInput = styled(TextField)`
+export const inputStyles = css`
   & .MuiInputLabel-root {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
 
@@ -110,4 +110,8 @@ export const StyledInput = styled(TextField)`
   & .MuiFormHelperText-root {
     min-height: 20px;
   }
+`;
+
+export const StyledInput = styled(TextField)`
+  ${inputStyles}
 `;
