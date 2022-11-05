@@ -14,7 +14,7 @@ export const Description = styled.span`
   font-weight: 500;
 `;
 
-export const Count = styled.div`
+export const Count = styled.span`
   font-size: 40px;
   line-height: 64px;
   font-weight: 700;
