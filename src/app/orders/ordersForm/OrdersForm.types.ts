@@ -3,6 +3,6 @@ import { UseGetOrdersFiltersProps } from '../hooks/useGetOrdersFilters/useGetOrd
 import { FiltersParamsContextValue } from '@/context/filtersParams/filtersParamsContext/FiltersParamsContext.types';
 
 export type OrdersFormProps = {
-  updateFilters: FiltersParamsContextValue['setParam'];
+  updateFilters: FiltersParamsContextValue['setFilter'];
   filters: Omit<UseGetOrdersFiltersProps, 'limit' | 'offset'>;
 };

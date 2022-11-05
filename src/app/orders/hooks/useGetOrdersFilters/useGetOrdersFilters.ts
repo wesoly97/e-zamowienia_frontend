@@ -5,7 +5,7 @@ import { UseGetOrdersFiltersProps } from './useGetOrdersFilters.types';
 import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
 
 export const useGetOrdersFilters = () => {
-  const { query, setParam } = useFiltersParamsContext();
+  const { query, setFilter } = useFiltersParamsContext();
   const params = useMemo(() => {
     return {
       limit: query['limit'] || '10',
@@ -22,6 +22,6 @@ export const useGetOrdersFilters = () => {
 
   return {
     ...params,
-    setParam,
+    setFilter,
   };
 };

@@ -2,5 +2,5 @@ import { Query } from '@/context/queryParams/queryParamsContent/QueryParamsConte
 
 export type FiltersParamsContextValue = {
   query: Query;
-  setParam: (key: string, value: string) => void;
+  setFilter: (key: string, value: string) => void;
 };

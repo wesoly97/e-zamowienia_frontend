@@ -1,7 +1,5 @@
-import Box from '@mui/material/Box';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from 'react';
 
 import { tableColumnNames } from './TableHead.constans';
@@ -10,23 +8,23 @@ import { getStringifySortOption } from './TableHead.utils';
 import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
 
 export const TableHead = () => {
-  const { setParam } = useFiltersParamsContext();
+  const { setFilter } = useFiltersParamsContext();
 
   const [orderBy, setOrderBy] = useState('sort_title');
   const [order, setOrder] = useState<-1 | 1>(-1);
 
-  const createSortHandler = (property: string) => (_: React.MouseEvent<unknown>) => {
+  const onChangeSortOrder = (columnId: string) => (_: React.MouseEvent<unknown>) => {
     if (order === 1) {
       setOrder(-1);
     } else {
       setOrder(1);
     }
-    setOrderBy(property);
+    setOrderBy(columnId);
   };
 
   useEffect(() => {
-    setParam(orderBy, String(order));
-  }, [orderBy]);
+    setFilter(orderBy, String(order));
+  }, [order, orderBy]);
 
   return (
     <thead>
@@ -36,14 +34,9 @@ export const TableHead = () => {
             <TableSortLabel
               active={orderBy === id}
               direction={orderBy === id ? getStringifySortOption(order) : 'asc'}
-              onClick={createSortHandler(id)}
+              onClick={onChangeSortOrder(id)}
             >
               {title}
-              {orderBy === id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {getStringifySortOption(order) === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </Box>
-              ) : null}
             </TableSortLabel>
           </TableCell>
         ))}

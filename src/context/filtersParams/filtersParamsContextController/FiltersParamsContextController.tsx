@@ -13,7 +13,7 @@ export const FiltersParamsContextController = ({ children, filtersKeys }: Filter
   const { query: queryParams, setQuery } = useQueryParams();
   const query = pick(queryParams, keys);
 
-  const setParam = useCallback(
+  const setFilter = useCallback(
     (key: string, value: string) => {
       setQuery((prevState) => {
         return {
@@ -28,9 +28,9 @@ export const FiltersParamsContextController = ({ children, filtersKeys }: Filter
   const value = useMemo<FiltersParamsContextValue>(
     () => ({
       query,
-      setParam,
+      setFilter,
     }),
-    [query, setParam],
+    [query, setFilter],
   );
 
   return <FiltersParamsContext.Provider value={value}>{children}</FiltersParamsContext.Provider>;

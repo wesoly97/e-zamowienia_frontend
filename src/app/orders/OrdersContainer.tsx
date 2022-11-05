@@ -12,7 +12,7 @@ import { FiltersParamsContextController } from '@/context/filtersParams/filtersP
 
 const OrdersContainerRaw = () => {
   const { data, hasNextPage, fetchNextPage, fetchPreviousPage, isFetching, refetch } = useGetOrders();
-  const { offset, limit, setParam, ...params } = useGetOrdersFilters();
+  const { offset, limit, setFilter, ...params } = useGetOrdersFilters();
 
   if (!data?.pages[Number(offset)]) {
     //todo redirect to offset 0
@@ -32,7 +32,7 @@ const OrdersContainerRaw = () => {
 
   return (
     <>
-      <OrdersForm updateFilters={setParam} filters={params} />
+      <OrdersForm updateFilters={setFilter} filters={params} />
       <Orders
         data={pageData?.orders ?? []}
         count={pageData?.count ?? 0}

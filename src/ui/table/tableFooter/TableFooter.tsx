@@ -8,10 +8,10 @@ import { TableFooterProps } from './TableFooter.types';
 import { useFiltersParamsContext } from '@/context/filtersParams/hooks/useFiltersParamsContext';
 
 export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: TableFooterProps) => {
-  const { query, setParam } = useFiltersParamsContext();
+  const { query, setFilter } = useFiltersParamsContext();
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    setParam('offset', String(newPage));
+    setFilter('offset', String(newPage));
     if (Number(query['offset']) < newPage) {
       onNextPage();
     }
@@ -21,8 +21,8 @@ export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: 
   };
 
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    setParam('limit', event.target.value);
-    setParam('offset', '0');
+    setFilter('limit', event.target.value);
+    setFilter('offset', '0');
   };
 
   return (
