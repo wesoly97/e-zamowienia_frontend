@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
 
 export const Stats = styled.div`
   display: flex;
@@ -33,8 +32,4 @@ export const Count = styled.span`
     font-size: 40px;
     line-height: 64px;
   }
-`;
-
-export const StyledCircularProgress = styled(CircularProgress)`
-  color: ${({ theme }) => theme.colors.WHITE};
 `;

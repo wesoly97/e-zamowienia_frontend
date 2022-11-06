@@ -2,10 +2,8 @@ import TextField from '@mui/material/TextField';
 import styled, { css } from 'styled-components';
 
 export const inputStyles = css`
-  &.MuiFormControl-root {
-    width: 100%;
-    max-width: 360px;
-  }
+  width: 100%;
+  max-width: 360px;
 
   & .MuiInputLabel-root {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};

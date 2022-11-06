@@ -30,3 +30,11 @@ export const StyledEmailSentIcon = styled(EmailSentIcon)`
 export const SentMessage = styled.p`
   font-weight: 600;
 `;
+
+export const Heading = styled.h1`
+  ${({ theme }) => theme.fontType.h3};
+
+  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  text-align: center;
+  font-weight: 700;
+`;

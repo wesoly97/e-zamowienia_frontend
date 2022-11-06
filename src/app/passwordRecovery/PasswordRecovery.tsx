@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 
-import { SentMessage, StyledEmailSentIcon } from './PasswordRecovery.styles';
+import { Heading, SentMessage, StyledEmailSentIcon } from './PasswordRecovery.styles';
 import { isTokenExpired } from './PasswordRecovery.utils';
 import { PasswordRecoveryFormWrapper } from './passwordRecoveryForm/PasswordRecoveryFormWrapper';
 import { PasswordRecoveryResetFormWrapper } from './passwordRecoveryResetForm/PasswordRecoveryResetFormWrapper';
@@ -30,7 +30,7 @@ export const PasswordRecovery = () => {
   if (!isTokenExpired(tokenExpirationDate) && tokenId) {
     return (
       <>
-        <h1>Resetowanie hasła</h1>
+        <Heading>Resetowanie hasła</Heading>
         <PasswordRecoveryResetFormWrapper token={tokenId} />
       </>
     );
@@ -50,7 +50,7 @@ export const PasswordRecovery = () => {
   if (isTokenExpired(tokenExpirationDate) && !tokenId) {
     return (
       <>
-        <h1>Zresetuj hasło</h1>
+        <Heading>Zresetuj hasło</Heading>
         <p>Wpisz adres email swojego konta, a my wyślemy Ci link do resetowania hasła.</p>
         <PasswordRecoveryFormWrapper />
       </>
@@ -59,7 +59,7 @@ export const PasswordRecovery = () => {
 
   return (
     <>
-      <h1>Niepoprawny link</h1>
+      <Heading>Niepoprawny link</Heading>
       <p>
         Token wygasł lub coś poszło nie tak. Za chwilę nastąpi przekierowanie na początek procesu resetowania hasła.
       </p>

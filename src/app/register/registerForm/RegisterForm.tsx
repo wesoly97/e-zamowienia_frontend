@@ -5,6 +5,7 @@ import { RegisterFormProps } from './RegisterForm.types';
 
 import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
+import { PrimaryLoader } from '@/theme/shared';
 
 export const RegisterForm = ({ isSubmitting, onSubmit, form }: RegisterFormProps) => {
   return (
@@ -16,7 +17,7 @@ export const RegisterForm = ({ isSubmitting, onSubmit, form }: RegisterFormProps
         <FormInput id={'password'} name={'password'} type={'password'} label={'Hasło'} />
         <FormInput id={'repeat-password'} name={'repeatPassword'} type={'password'} label={'Powtórz hasło'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? '...' : 'Załóż konto'}
+          {isSubmitting ? <PrimaryLoader size={28} /> : 'Załóż konto'}
         </PrimaryButton>
       </FormProvider>
     </Form>
