@@ -5,10 +5,15 @@ import { UserVerificationFormData } from '../../userVerificationForm/UserVerific
 import { useUserVerification } from './useUserVerification';
 
 import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
+import { useToastContext } from '@/context/toast/hooks/useToastContext';
 
 export const useUserVerificationEffect = (form: UseFormReturn<UserVerificationFormData>) => {
+  const { showToast } = useToastContext();
+
   return useUserVerification({
-    onSuccess: () => {},
+    onSuccess: () => {
+      showToast({ message: 'Prośba o weryfikację użytkownika została wysłana do administratora' });
+    },
     onError: (error) => {
       setFieldsError({
         form,

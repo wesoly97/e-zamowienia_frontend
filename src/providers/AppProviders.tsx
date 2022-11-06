@@ -7,6 +7,7 @@ import { ApiClientContextController } from '@/context/apiClient/apiClientContext
 import { theme } from '@/theme/theme';
 import { AuthContextController } from '@/context/auth/authContextController/AuthContextController';
 import { SettingsContextController } from '@/context/settings/settingsContextController/SettingsContextController';
+import { ToastContextController } from '@/context/toast/toastContextController/ToastContextController';
 
 export const AppProviders = ({ children }: { children?: ReactNode }) => (
   <StyledEngineProvider injectFirst>
@@ -14,7 +15,9 @@ export const AppProviders = ({ children }: { children?: ReactNode }) => (
       <ApiClientContextController>
         <SettingsContextController>
           <AuthContextController>
-            <BrowserRouter>{children}</BrowserRouter>
+            <ToastContextController>
+              <BrowserRouter>{children}</BrowserRouter>
+            </ToastContextController>
           </AuthContextController>
         </SettingsContextController>
       </ApiClientContextController>
