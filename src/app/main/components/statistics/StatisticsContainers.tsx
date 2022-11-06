@@ -7,9 +7,5 @@ export const StatisticsContainer = () => {
     retry: 3,
   });
 
-  return (
-    <>
-      <Statistics data={data} isLoading={isLoading || !data} />
-    </>
-  );
+  return <Statistics data={data} isLoading={isLoading || !data} />;
 };

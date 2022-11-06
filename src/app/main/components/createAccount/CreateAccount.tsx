@@ -1,15 +1,14 @@
-import { Container, HeaderBox, Heading, StyledSurfIcon } from './CreateAccount.styles';
-
-import { PrimaryButton } from '@/ui/button/PrimaryButton';
+import { Container, HeaderBox, Heading, IconBox, StyledSurfIcon } from './CreateAccount.styles';
 
 export const CreateAccount = () => {
   return (
     <Container>
       <HeaderBox>
-        <Heading>UTWÓRZ KONTO ABY W PEŁNI KORZYSTAĆ Z FUNKCJONALNOŚCI APLIKACJI</Heading>
-        <PrimaryButton handleClick={() => {}}>Rejestracja</PrimaryButton>
+        <Heading>Utwórz konto aby w pełni korzystać z funkcjonalności aplikacji</Heading>
       </HeaderBox>
-      <StyledSurfIcon />
+      <IconBox>
+        <StyledSurfIcon />
+      </IconBox>
     </Container>
   );
 };
