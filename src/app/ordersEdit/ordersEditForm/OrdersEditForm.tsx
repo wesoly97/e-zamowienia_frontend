@@ -51,6 +51,7 @@ export const OrdersEditForm = ({
           labelId={'category-label'}
           label={'Kategoria'}
           value={category}
+            // @ts-ignore
           onChange={handleChangeCategory}
         />
         <FormSelect
@@ -60,6 +61,7 @@ export const OrdersEditForm = ({
           labelId={'mode-label'}
           label={'Typ'}
           value={mode}
+            // @ts-ignore
           onChange={handleChangeMode}
         />
         <FormInput id={'title'} name={'title'} label={'Tytuł'} />

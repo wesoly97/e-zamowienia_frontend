@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Toast } from '@/ui/toast/Toast';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
+// @ts-ignore
 import { ToastProps, ToastType } from '@/ui/toast/Toast.types';
 
 export default {
@@ -20,7 +21,11 @@ const Template: Story = ({ ...props }: Partial<ToastProps>) => {
   return (
     <>
       <PrimaryButton handleClick={handleClick}>Show toast</PrimaryButton>
-      <Toast {...props} isOpened={isOpened} setIsOpened={setIsOpened}>
+      <Toast
+      {...props}
+      //@ts-ignore
+      isOpened={isOpened}
+       setIsOpened={setIsOpened}>
         Example toast
       </Toast>
     </>

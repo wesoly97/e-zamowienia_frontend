@@ -34,6 +34,7 @@ const Template: Story<any> = <T,>({ ...props }: SelectProps<T>) => {
     setValue(event.target.value as string);
   };
 
+  // @ts-ignore
   return <Select {...props} onChange={handleChange} value={value} />;
 };
 

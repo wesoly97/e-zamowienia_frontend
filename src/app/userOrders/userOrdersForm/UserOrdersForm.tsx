@@ -69,6 +69,7 @@ export const UserOrdersForm = ({ updateFilters, filters }: UserOrdersFormProps) 
         options={settings.orderCategories}
         renderInput={autocompleteCategoryInput}
         value={category}
+          // @ts-ignore
         onChange={handleChangeCategory}
       />
       <Autocomplete
@@ -76,6 +77,7 @@ export const UserOrdersForm = ({ updateFilters, filters }: UserOrdersFormProps) 
         options={settings.orderModes}
         renderInput={autocompleteModeInput}
         value={mode}
+          // @ts-ignore
         onChange={handleChangeMode}
       />
     </>

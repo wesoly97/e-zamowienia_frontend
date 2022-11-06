@@ -32,10 +32,14 @@ export const Autocomplete = <T,>({
     if (!!selectValue) {
       const optionStringified = String(selectValue);
       const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
+      // @ts-ignore
       matches = match(option[parameter], stateValue, { insideWords: true });
+      // @ts-ignore
       parts = parse(option[parameter], matches);
     } else {
+      // @ts-ignore
       matches = match(option, stateValue, { insideWords: true });
+      // @ts-ignore
       parts = parse(option, matches);
     }
 
@@ -52,6 +56,9 @@ export const Autocomplete = <T,>({
     );
   };
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <StyledAutocomplete
       id={id}
@@ -61,7 +68,9 @@ export const Autocomplete = <T,>({
           return option;
         }
 
+        // @ts-ignore
         if (typeof option[selectValue] === 'string') {
+          // @ts-ignore
           return option[selectValue];
         }
 
@@ -72,6 +81,7 @@ export const Autocomplete = <T,>({
           return option === value;
         }
 
+        // @ts-ignore
         return option[selectValue] === value[selectValue];
       }}
       value={value}
@@ -83,6 +93,7 @@ export const Autocomplete = <T,>({
       groupBy={groupBy}
       getOptionDisabled={getOptionDisabled}
       renderInput={renderInput}
+      // @ts-ignore
       renderOption={(props, option, { inputValue: stateValue }) => renderOption({ props, option, stateValue })}
       clearOnEscape={false}
       clearOnBlur={false}

@@ -54,11 +54,13 @@ const Template: Story<any> = <Book,>({ ...props }: AutocompleteProps<Book>) => {
       <Autocomplete
         {...props}
         id={'asd'}
+          // @ts-ignore
         options={books}
         renderInput={renderInput}
         selectValue={'title'}
         value={value}
         onChange={(_, newValue) => {
+          // @ts-ignore
           setValue(newValue);
         }}
       />
