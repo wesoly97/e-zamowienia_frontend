@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
+`;
 
-  & .MuiFormControl-root {
-    width: 100%;
-  }
+export const StyledCircularProgress = styled(CircularProgress)`
+  color: ${({ theme }) => theme.colors.WHITE};
 `;
