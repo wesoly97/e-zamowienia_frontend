@@ -1,10 +1,10 @@
 import { FormProvider } from 'react-hook-form';
 
-import { Form } from './LoginForm.styles';
+import { Form, StyledCircularProgress } from './LoginForm.styles';
 import { LoginFormProps } from './LoginForm.types';
 
-import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
+import { FormInput } from '@/ui/formInput/FormInput';
 
 export const LoginForm = ({ isSubmitting, onSubmit, form }: LoginFormProps) => {
   return (
@@ -13,7 +13,7 @@ export const LoginForm = ({ isSubmitting, onSubmit, form }: LoginFormProps) => {
         <FormInput id={'email'} name={'email'} type={'email'} label={'Email'} />
         <FormInput id={'password'} name={'password'} type={'password'} label={'Hasło'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? '...' : 'Logowanie'}
+          {isSubmitting ? <StyledCircularProgress /> : 'Zaloguj'}
         </PrimaryButton>
       </FormProvider>
     </Form>

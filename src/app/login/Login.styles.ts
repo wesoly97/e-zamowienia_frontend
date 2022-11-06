@@ -10,13 +10,19 @@ export const Container = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  display: flex;
+  display: none;
+  flex: 1 0 0%;
   align-items: center;
+  justify-content: center;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    display: flex;
+  }
 `;
 
 export const StyledLoginIcon = styled(LoginIcon)`
-  width: 664px;
-  height: 400px;
+  width: 80%;
+  height: auto;
 `;
 
 export const FormWrapper = styled.div`
@@ -24,13 +30,13 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  flex: 1 0 0%;
   background-color: ${({ theme }) => theme.colors.GREY};
 `;
 
 export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 200px;
 `;
 
 export const FormBox = styled.div`
@@ -39,10 +45,11 @@ export const FormBox = styled.div`
 `;
 
 export const Header = styled.h1`
+  ${({ theme }) => theme.fontType.h3};
+
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   text-align: center;
-
-  ${({ theme }) => theme.fontType.h4};
+  font-weight: 700;
 `;
 
 export const RegisterPrompt = styled.div`
@@ -50,7 +57,7 @@ export const RegisterPrompt = styled.div`
   justify-content: flex-end;
   flex-wrap: wrap;
   text-align: right;
-  padding-top: 20px;
+  padding-top: 32px;
   font-weight: 700;
   font-size: 16px;
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
