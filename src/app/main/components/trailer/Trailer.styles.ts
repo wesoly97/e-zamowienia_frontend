@@ -30,11 +30,13 @@ export const Heading = styled.h2`
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  padding: 0 20px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     ${({ theme }) => theme.fontType.h3};
 
     font-weight: 700;
+    padding: 0;
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {

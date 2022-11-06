@@ -5,7 +5,11 @@ import { containerStyles } from '@/theme/shared';
 
 export const GlobalBottomPadding = createGlobalStyle`
   #root{
-    padding-bottom: 400px;
+    padding-bottom: 600px;
+
+    ${({ theme }) => theme.breakpoints.up('sm')} {
+      padding-bottom: 400px;
+    }
   }
 `;
 
@@ -14,11 +18,15 @@ export const Container = styled.footer`
   position: absolute;
   bottom: 0;
   width: 100vw;
-  height: 400px;
+  height: 600px;
   justify-content: flex-start;
   flex-direction: column;
   background: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   color: ${({ theme }) => theme.colors.WHITE};
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    height: 400px;
+  }
 `;
 
 export const Content = styled.div`
@@ -39,16 +47,38 @@ export const StyledLogo = styled(Logo)`
 
 export const Menu = styled.div`
   display: flex;
-  gap: 80px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    gap: 20px;
+  }
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    gap: 80px;
+  }
 `;
 
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    width: 33.33%;
+  }
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    width: auto;
+  }
 `;
 
 export const ColumnHeader = styled.h3`
-  ${({ theme }) => theme.fontType.h3};
+  ${({ theme }) => theme.fontType.h4};
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    ${({ theme }) => theme.fontType.h3};
+  }
 `;
 
 export const Item = styled.p``;
