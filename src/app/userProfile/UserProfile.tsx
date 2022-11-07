@@ -1,18 +1,18 @@
-import { DetailsColumn, PasswordColumn, Container, Wrapper } from './UserProfile.styles';
+import { DetailsColumn, PasswordColumn, Container, Wrapper, Heading, SubHeading } from './UserProfile.styles';
 import { UserProfileChangePasswordFormWrapper } from './userProfileChangePasswordForm/UserProfileChangePasswordFormWrapper';
 import { UserProfileFormWrapper } from './userProfileForm/UserProfileFormWrapper';
 
 export const UserProfile = () => {
   return (
     <Container>
-      <h1>Edycja danych</h1>
+      <Heading>Edycja danych</Heading>
       <Wrapper>
         <DetailsColumn>
-          <h2>Dane użytkownika</h2>
+          <SubHeading>Dane użytkownika</SubHeading>
           <UserProfileFormWrapper />
         </DetailsColumn>
         <PasswordColumn>
-          <h2>Zmiana hasła</h2>
+          <SubHeading>Zmiana hasła</SubHeading>
           <UserProfileChangePasswordFormWrapper />
         </PasswordColumn>
       </Wrapper>
