@@ -6,6 +6,22 @@ export const Container = styled.div`
   ${containerStyles}
 `;
 
+export const Heading = styled.h1`
+  ${({ theme }) => theme.fontType.h3};
+
+  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  text-align: left;
+  font-weight: 700;
+`;
+
+export const SubHeading = styled.h2`
+  ${({ theme }) => theme.fontType.h4};
+
+  color: ${({ theme }) => theme.colors.BLACK};
+  text-align: left;
+  font-weight: 700;
+`;
+
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
