@@ -47,4 +47,9 @@ export const PasswordColumn = styled.div`
   background: ${({ theme }) => theme.colors.WHITE};
   padding: 40px 48px;
   height: fit-content;
+  margin-top: 40px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    margin-top: 0px;
+  }
 `;
