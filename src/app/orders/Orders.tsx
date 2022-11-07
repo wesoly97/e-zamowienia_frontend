@@ -20,7 +20,7 @@ export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, i
     //TODO loader
   }
 
-    return (
+  return (
     <Container>
       <Table
         rows={data}
@@ -32,15 +32,7 @@ export const Orders = ({ data, count, hasNextPage, onNextPage, onPreviousPage, i
         onRowClick={(_, item) => {
           navigate(AppLinks.OrderDetails.replace(AppRoute.OrderId, item._id));
         }}
-          // @ts-ignore
-        renderRow={({ title, price, category, mode }: Order) => (
-          <>
-            <TableCell>{title}</TableCell>
-            <TableCell>{price}</TableCell>
-            <TableCell>{category}</TableCell>
-            <TableCell>{mode}</TableCell>
-          </>
-        )}
+        renderRow={({ title, price, category, mode }: Order) => Object.values({ title, price, category, mode })}
       />
     </Container>
   );

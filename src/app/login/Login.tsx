@@ -3,7 +3,7 @@ import {
   IconWrapper,
   FormWrapper,
   FormContainer,
-  Header,
+  Heading,
   StyledLoginIcon,
   StyledWaveIcon,
   FormBox,
@@ -23,7 +23,7 @@ export const Login = () => {
       <FormWrapper>
         <FormContainer>
           <FormBox>
-            <Header>Zaloguj się</Header>
+            <Heading>Zaloguj się</Heading>
             <LoginFormWrapper />
             <RegisterPrompt>
               <span>Nie możesz się zalogować?</span>
