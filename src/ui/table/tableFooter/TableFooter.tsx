@@ -1,9 +1,9 @@
 import { ChangeEvent, MouseEvent } from 'react';
-import TablePagination from '@mui/material/TablePagination';
 
 import { TablePaginationActions } from '../tablePaginationActions/TablePaginationActions';
 
 import { TableFooterProps } from './TableFooter.types';
+import { StyledTablePagination } from './TableFooter.styles';
 
 import { useParamsContext } from '@/context/params/hooks/useParamsContext';
 
@@ -28,7 +28,7 @@ export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: 
   return (
     <tfoot>
       <tr>
-        <TablePagination
+        <StyledTablePagination
           rowsPerPageOptions={[5, 10, 25, 50, 75]}
           colSpan={3}
           count={count}
