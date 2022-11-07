@@ -20,7 +20,7 @@ export const Toast = ({ isOpen, setIsOpen, type, children, duration, anchorOrigi
       onClose={handleClose}
       anchorOrigin={anchorOrigin || { vertical: 'top', horizontal: 'center' }}
     >
-      <StyledAlert onClose={handleClose} severity={type || 'success'}>
+      <StyledAlert onClose={handleClose} variant={'filled'} severity={type || 'success'}>
         {children}
       </StyledAlert>
     </Snackbar>
