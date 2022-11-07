@@ -3,6 +3,7 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { Orders } from './Orders';
 import { OrdersForm } from './ordersForm/OrdersForm';
+import { Container } from './Orders.styles';
 
 import { useGetOrders } from '@/hooks/useGetOrders/useGetOrders';
 import { useGetOrdersParams } from '@/hooks/useGetOrdersParams/useGetOrdersParams';
@@ -32,7 +33,7 @@ export const OrdersContainerRaw = () => {
   }, [limit, restFilters, sort]);
 
   return (
-    <>
+    <Container>
       <OrdersForm updateFilters={setFilter} filters={restFilters} />
       <Orders
         data={pageData?.orders ?? []}
@@ -42,6 +43,6 @@ export const OrdersContainerRaw = () => {
         onPreviousPage={fetchPreviousPage}
         isLoading={isFetching}
       />
-    </>
+    </Container>
   );
 };

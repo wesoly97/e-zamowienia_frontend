@@ -38,7 +38,12 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput id={'procedure-identifier'} name={'procedureIdentifier'} label={'Identyfikator'} />
+        <FormInput
+          id={'procedure-identifier'}
+          name={'procedureIdentifier'}
+          label={'Identyfikator'}
+          InputLabelProps={{ shrink: true }}
+        />
         <FormSelect
           id={'category'}
           name={'category'}
@@ -59,7 +64,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
             // @ts-ignore
           onChange={handleChangeMode}
         />
-        <FormInput id={'title'} name={'title'} label={'Tytuł'} />
+        <FormInput id={'title'} name={'title'} label={'Tytuł'} InputLabelProps={{ shrink: true }} />
         <FormInput
           id={'price'}
           name={'price'}
@@ -71,7 +76,14 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
             maxLength: 10,
           }}
         />
-        <FormInput id={'description'} name={'description'} label={'Opis'} multiline rows={8} />
+        <FormInput
+          id={'description'}
+          name={'description'}
+          label={'Opis'}
+          multiline
+          rows={8}
+          InputLabelProps={{ shrink: true }}
+        />
         <FormInput
           id={'expiration-date'}
           name={'expirationDate'}

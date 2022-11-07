@@ -1,11 +1,13 @@
-import { Container } from '../orders/Orders.styles';
-
+import { Container, Wrapper, Heading } from './OrdersAdd.styles';
 import { OrdersAddFormWrapper } from './ordersAddForm/OrdersAddFormWrapper';
 
 export const OrdersAdd = () => {
   return (
     <Container>
-      <OrdersAddFormWrapper />
+      <Wrapper>
+        <Heading>Dodaj zamówienie</Heading>
+        <OrdersAddFormWrapper />
+      </Wrapper>
     </Container>
   );
 };

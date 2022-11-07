@@ -1,7 +1,6 @@
 import EditIcon from '@mui/icons-material/Edit';
 
 import { UserOrdersProps } from './UserOrders.types';
-import { Container } from './UserOrders.styles';
 
 import { Table } from '@/ui/table/Table';
 import { Order } from '@/api/actions/orders/orders.types';
@@ -21,7 +20,7 @@ export const UserOrders = ({ data, count, hasNextPage, onNextPage, onPreviousPag
   }
 
   return (
-    <Container>
+    <>
       <Table
         rows={data}
         count={count}
@@ -43,6 +42,6 @@ export const UserOrders = ({ data, count, hasNextPage, onNextPage, onPreviousPag
           },
         ]}
       />
-    </Container>
+    </>
   );
 };

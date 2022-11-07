@@ -5,10 +5,10 @@ import { containerStyles } from '@/theme/shared';
 
 export const GlobalBottomPadding = createGlobalStyle`
   #root{
-    padding-bottom: 600px;
+    padding-bottom: 640px;
 
     ${({ theme }) => theme.breakpoints.up('sm')} {
-      padding-bottom: 400px;
+      padding-bottom: 440px;
     }
   }
 `;
