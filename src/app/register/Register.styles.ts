@@ -32,7 +32,7 @@ export const FormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.GREY};
 `;
 
-export const Header = styled.h1`
+export const Heading = styled.h1`
   ${({ theme }) => theme.fontType.h3};
 
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
@@ -40,7 +40,7 @@ export const Header = styled.h1`
   font-weight: 700;
 `;
 
-export const SubHeader = styled.h2`
+export const SubHeading = styled.h2`
   ${({ theme }) => theme.fontType.h4};
 
   color: ${({ theme }) => theme.colors.BLACK};

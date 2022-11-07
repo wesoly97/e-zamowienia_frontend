@@ -44,7 +44,7 @@ export const FormBox = styled.div`
   max-width: 400px;
 `;
 
-export const Header = styled.h1`
+export const Heading = styled.h1`
   ${({ theme }) => theme.fontType.h3};
 
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
