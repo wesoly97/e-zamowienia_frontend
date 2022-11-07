@@ -61,6 +61,11 @@ export const RegisterPrompt = styled.div`
   font-weight: 700;
   font-size: 16px;
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  justify-content: center;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    justify-content: right;
+  }
 `;
 
 export const StyledLink = styled(Link)`
