@@ -10,9 +10,10 @@ export const Form = styled.form`
 `;
 
 export const StyledFormInput = styled(FormInput)`
-  width: 300px;
+  width: 100%;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
+    max-width: none;
     width: 400px;
   }
 `;

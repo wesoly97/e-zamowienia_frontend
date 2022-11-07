@@ -5,8 +5,4 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 32px;
-
-  & .MuiFormControl-root {
-    width: 100%;
-  }
 `;

@@ -13,6 +13,7 @@ export const StyledDrawer = styled(Drawer)`
   & .MuiDrawer-paper {
     background-color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
     width: 300px;
+    max-height: 100vh;
 
     & > svg {
       margin: 0 20px;

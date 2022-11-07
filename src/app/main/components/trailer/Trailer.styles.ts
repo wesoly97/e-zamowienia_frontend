@@ -4,24 +4,53 @@ import { ReactComponent as SurfIcon } from '@/assets/icons/main/surf.svg';
 import WaveIcon from '@/assets/icons/main/wave.svg';
 
 export const Container = styled.section`
-  position: relative;
+  display: flex;
   background: url(${WaveIcon}) left bottom no-repeat, ${({ theme }) => theme.colors.WHITE};
-  background-size: cover;
+  background-size: 100%;
+  min-height: 200px;
+`;
+
+export const HeaderBox = styled.div`
+  flex: 1 0 50%;
+`;
+
+export const IconBox = styled.div`
+  display: none;
+  flex: 1 0 50%;
+
+  ${({ theme }) => theme.breakpoints.up(600)} {
+    display: block;
+  }
 `;
 
 export const Heading = styled.h2`
-  position: relative;
-  top: 120px;
-  left: 50%;
-  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  ${({ theme }) => theme.fontType.h4};
 
-  ${({ theme }) => theme.fontType.h2};
+  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 20px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    ${({ theme }) => theme.fontType.h3};
+
+    font-weight: 700;
+    padding: 0;
+  }
+
+  ${({ theme }) => theme.breakpoints.up('lg')} {
+    ${({ theme }) => theme.fontType.h2};
+  }
+
+  ${({ theme }) => theme.breakpoints.up(600)} {
+    padding-right: 40px;
+    text-align: left;
+  }
 `;
 
 export const StyledSurfIcon = styled(SurfIcon)`
-  position: relative;
-  top: 0;
-  left: 50px;
-  width: 500px;
-  height: 500px;
+  width: 70%;
+  max-width: 580px;
+  height: auto;
 `;

@@ -2,6 +2,9 @@ import TextField from '@mui/material/TextField';
 import styled, { css } from 'styled-components';
 
 export const inputStyles = css`
+  width: 100%;
+  max-width: 360px;
+
   & .MuiInputLabel-root {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
 
@@ -25,6 +28,7 @@ export const inputStyles = css`
 
   & .MuiInputBase-root {
     color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};
+    background-color: ${({ theme }) => theme.colors.WHITE};
 
     &:before {
       border-color: ${({ theme }) => theme.colors.LIGHT_BLUE[100]};

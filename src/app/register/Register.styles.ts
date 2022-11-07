@@ -8,13 +8,19 @@ export const Container = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  display: flex;
+  display: none;
+  flex: 1 0 0%;
   align-items: center;
+  justify-content: center;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    display: flex;
+  }
 `;
 
 export const StyledRegisterIcon = styled(RegisterIcon)`
-  width: 664px;
-  height: 400px;
+  width: 80%;
+  height: auto;
 `;
 
 export const FormWrapper = styled.div`
@@ -22,19 +28,22 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  flex: 1 0 0%;
   background-color: ${({ theme }) => theme.colors.GREY};
 `;
 
 export const Header = styled.h1`
+  ${({ theme }) => theme.fontType.h3};
+
   color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   text-align: center;
-
-  ${({ theme }) => theme.fontType.h4};
+  font-weight: 700;
 `;
 
 export const SubHeader = styled.h2`
-  color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
-  text-align: center;
-
   ${({ theme }) => theme.fontType.h4};
+
+  color: ${({ theme }) => theme.colors.BLACK};
+  text-align: center;
+  font-weight: 700;
 `;

@@ -1,4 +1,5 @@
-import { css } from 'styled-components';
+import CircularProgress from '@mui/material/CircularProgress';
+import styled, { css } from 'styled-components';
 
 export const containerStyles = css`
   padding-right: 15px;
@@ -21,4 +22,8 @@ export const containerStyles = css`
   ${({ theme }) => theme.breakpoints.up('xl')} {
     width: 1320px;
   }
+`;
+
+export const PrimaryLoader = styled(CircularProgress)`
+  color: ${({ theme }) => theme.colors.WHITE};
 `;
