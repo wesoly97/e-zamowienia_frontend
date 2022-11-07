@@ -1,4 +1,4 @@
-import { cloneElement, JSXElementConstructor, ReactElement, useMemo } from 'react';
+import { cloneElement, useMemo } from 'react';
 import CountUp from 'react-countup';
 
 import { Description, Stats, Count } from './StatisticsGroup.styles';
@@ -27,7 +27,7 @@ export const StatisticsGroup = ({ icon, isLoading, description, number }: Statis
 
   return (
     <Stats>
-      {cloneElement(icon as ReactElement<unknown, string | JSXElementConstructor<unknown>>)}
+      {cloneElement(icon)}
       {countNumber}
       <Description>{description}</Description>
     </Stats>

@@ -1,21 +1,21 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, useMemo } from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { useEffect, useState } from 'react';
 
 import { tableColumnNames } from './TableHead.constans';
 import { getStringifySortOption } from './TableHead.utils';
+import { TableHeadProps } from './TableHead.types';
 
 import { useParamsContext } from '@/context/params/hooks/useParamsContext';
 import { SortValue } from '@/context/params/paramsContext/ParamsContext.types';
 
-export const TableHead = () => {
+export const TableHead = <T,>({ actions }: TableHeadProps<T>) => {
   const { setSort } = useParamsContext();
 
   const [orderBy, setOrderBy] = useState('title');
   const [order, setOrder] = useState<SortValue>('-1');
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onChangeSortOrder = (columnId: string) => (_: MouseEvent) => {
     if (order === '1') {
       setOrder('-1');
@@ -27,6 +27,26 @@ export const TableHead = () => {
     setOrderBy(columnId);
   };
 
+  const tableHeaders = useMemo(
+    () =>
+      tableColumnNames.map(({ id, title }) => (
+        <TableCell key={id} sortDirection={orderBy === id ? getStringifySortOption(order) : false}>
+          <TableSortLabel
+            active={orderBy === id}
+            direction={orderBy === id ? getStringifySortOption(order) : 'asc'}
+            onClick={onChangeSortOrder(id)}
+          >
+            {title}
+          </TableSortLabel>
+        </TableCell>
+      )),
+    [order, orderBy],
+  );
+
+  const actionHeaders = useMemo(() => {
+    return actions?.map((_, id) => <TableCell key={id}></TableCell>);
+  }, [actions]);
+
   useEffect(() => {
     setSort(orderBy, order);
   }, [orderBy, order]);
@@ -34,17 +54,8 @@ export const TableHead = () => {
   return (
     <thead>
       <tr>
-        {tableColumnNames.map(({ id, title }) => (
-          <TableCell key={id} sortDirection={orderBy === id ? getStringifySortOption(order) : false}>
-            <TableSortLabel
-              active={orderBy === id}
-              direction={orderBy === id ? getStringifySortOption(order) : 'asc'}
-              onClick={onChangeSortOrder(id)}
-            >
-              {title}
-            </TableSortLabel>
-          </TableCell>
-        ))}
+        {tableHeaders}
+        {actionHeaders}
       </tr>
     </thead>
   );

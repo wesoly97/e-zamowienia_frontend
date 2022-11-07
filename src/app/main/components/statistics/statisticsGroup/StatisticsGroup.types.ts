@@ -1,5 +1,7 @@
+import { ReactElement } from 'react';
+
 export type StatisticsGroupProps = {
-  icon: unknown;
+  icon: ReactElement;
   isLoading: boolean;
   description: string;
   number?: number;

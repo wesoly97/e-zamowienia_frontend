@@ -1,4 +1,4 @@
-import { TableCell } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { UserOrdersProps } from './UserOrders.types';
 import { Container } from './UserOrders.styles';
@@ -32,14 +32,16 @@ export const UserOrders = ({ data, count, hasNextPage, onNextPage, onPreviousPag
         onRowClick={(_, item) => {
           navigate(AppLinks.OrderDetails.replace(AppRoute.OrderId, item._id));
         }}
-        renderRow={({ title, price, category, mode }: Order) => (
-          <>
-            <TableCell>{title}</TableCell>
-            <TableCell>{price}</TableCell>
-            <TableCell>{category}</TableCell>
-            <TableCell>{mode}</TableCell>
-          </>
-        )}
+        renderRow={({ title, price, category, mode }: Order) => Object.values({ title, price, category, mode })}
+        actions={[
+          {
+            icon: <EditIcon />,
+            tooltip: 'Edytuj zamówienie',
+            onActionClick: (_, item) => {
+              navigate(AppLinks.OrderEdit.replace(AppRoute.OrderId, item._id));
+            },
+          },
+        ]}
       />
     </Container>
   );

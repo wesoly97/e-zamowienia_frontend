@@ -16,12 +16,19 @@ export const Table = <T,>({
   onPreviousPage,
   hasNextPage,
   onRowClick,
+  actions,
 }: TableProps<T>) => {
   return (
     <TableContainer component={Paper}>
       <MuiTable aria-label="orders table">
-        <TableHead />
-        <TableBody rows={rows} keyExtractor={keyExtractor} renderRow={renderRow} onRowClick={onRowClick} />
+        <TableHead actions={actions} />
+        <TableBody
+          rows={rows}
+          keyExtractor={keyExtractor}
+          renderRow={renderRow}
+          onRowClick={onRowClick}
+          actions={actions}
+        />
         <TableFooter count={count} onNextPage={onNextPage} onPreviousPage={onPreviousPage} hasNextPage={hasNextPage} />
       </MuiTable>
     </TableContainer>
