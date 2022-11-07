@@ -2,6 +2,7 @@ import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { AutocompleteRenderInputParams } from '@mui/material/Autocomplete';
 
 import { OrdersFormProps } from './OrdersForm.types';
+import { Container } from './OrdersForm.styles';
 
 import { useSettingsContext } from '@/context/settings/hooks/useSettingsContext';
 import { Autocomplete } from '@/ui/autocomplete/Autocomplete';
@@ -55,7 +56,7 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   }
 
   return (
-    <>
+    <Container>
       <Input
         id={'title'}
         variant={'outlined'}
@@ -78,6 +79,6 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
         value={mode}
         onChange={handleChangeMode}
       />
-    </>
+    </Container>
   );
 };
