@@ -1,6 +1,14 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { Box, Container, ColumnIdentifier, ColumnSpecification, Link } from './OrdersDetails.styles';
+import {
+  Box,
+  Heading,
+  SubHeading,
+  Container,
+  ColumnIdentifier,
+  ColumnSpecification,
+  Link,
+} from './OrdersDetails.styles';
 import { OrdersDetailsProps } from './OrdersDetails.types';
 
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
@@ -16,9 +24,9 @@ export const OrdersDetails = ({ data }: OrdersDetailsProps) => {
     if (isAuthenticated) {
       return (
         <>
-          <h3>Telefon zamawiającego</h3>
+          <SubHeading>Telefon zamawiającego</SubHeading>
           <p>{data.phoneNumber}</p>
-          <h3>Adres email zamawiającego</h3>
+          <SubHeading>Adres email zamawiającego</SubHeading>
           <p>{data.email}</p>
         </>
       );
@@ -28,20 +36,22 @@ export const OrdersDetails = ({ data }: OrdersDetailsProps) => {
   const getSpecifications = () => {
     return (
       <>
-        <h3>Identyfikator</h3>
+        <SubHeading>Identyfikator</SubHeading>
         <p>{data.procedureIdentifier}</p>
-        <h3>Data publikacji</h3>
+        <SubHeading>Data publikacji</SubHeading>
         <p>{formatDate(data.dateOfPublication, { isWithTime: true })}</p>
-        <h3>Termin składania</h3>
+        <SubHeading>Termin składania</SubHeading>
         <p>{formatDate(data.expirationDate, { isWithTime: true })}</p>
-        <h3>Kategoria</h3>
+        <SubHeading>Kategoria</SubHeading>
         <p>{data.category}</p>
-        <h3>Typ</h3>
+        <SubHeading>Typ</SubHeading>
         <p>{data.mode}</p>
-        <h3>Kwota</h3>
+        <SubHeading>Kwota</SubHeading>
         <p>{formatPrice(data.price, { currency: 'PLN' })}</p>
-        <h3>Nazwa zamawiającego</h3>
+        <SubHeading>Zamawiający</SubHeading>
         <p>{data.customerName}</p>
+        <SubHeading>Państwo zamawiającego</SubHeading>
+        <p>{data.country}</p>
         {getOrdererDetails()}
       </>
     );
@@ -49,15 +59,15 @@ export const OrdersDetails = ({ data }: OrdersDetailsProps) => {
 
   return (
     <Container>
-      <h2>Szczegóły postępowania</h2>
+      <Heading>Szczegóły postępowania</Heading>
       <Box>
         <ColumnIdentifier>
-          <h3>Tytuł</h3>
+          <SubHeading>Tytuł</SubHeading>
           <p>{data.title}</p>
-          <h3>Opis</h3>
+          <SubHeading>Opis</SubHeading>
           <p>{data.description}</p>
           {isMobile && getSpecifications()}
-          <h3>Załączniki</h3>
+          <SubHeading>Załączniki</SubHeading>
           <div>
             {data.files.map(({ key, fileName, url }) => {
               return (
