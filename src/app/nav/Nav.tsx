@@ -10,9 +10,11 @@ import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { isUserRegular, isUserVerified } from '@/utils/accountTypes';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
+  const { t } = useLocaleContext();
 
   const { isUnauthenticated, session } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
@@ -53,7 +55,7 @@ export const Nav = ({ position }: NavProps) => {
     if (isUnauthenticated) {
       return (
         <>
-          <PrimaryButton handleClick={handleRedirectLoginPage}>Logowanie</PrimaryButton>
+          <PrimaryButton handleClick={handleRedirectLoginPage}>{t('title.asd')}</PrimaryButton>
           <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
         </>
       );
