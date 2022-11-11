@@ -1,5 +1,6 @@
 import { List } from '@mui/material';
 import styled from 'styled-components';
+import IconButton from '@mui/material/IconButton';
 
 import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
 
@@ -41,5 +42,30 @@ export const StyledLogo = styled(Logo)`
     & path {
       fill: ${({ theme }) => theme.colors.DARK_BLUE[100]};
     }
+  }
+`;
+
+export const Languages = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid ${({ theme }) => theme.colors.WHITE};
+  padding-top: 8px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    border: none;
+    padding: none;
+    margin-right: 20px;
+  }
+`;
+
+export const LanguageButton = styled(IconButton)`
+  font-size: 16px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.WHITE};
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    color: ${({ theme }) => theme.colors.DARK_BLUE[100]};
   }
 `;

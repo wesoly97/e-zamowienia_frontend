@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 
 import pl from './data/pl.json';
 import en from './data/en.json';
-import { defaultLocale } from './i18n.utils';
+import { getDefaultLocale } from './i18n.utils';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -14,6 +14,6 @@ i18n.use(initReactI18next).init({
       translation: en,
     },
   },
-  lng: defaultLocale,
-  fallbackLng: defaultLocale,
+  lng: getDefaultLocale(),
+  fallbackLng: getDefaultLocale(),
 });

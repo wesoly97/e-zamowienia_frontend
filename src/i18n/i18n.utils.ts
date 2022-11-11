@@ -1,13 +1,17 @@
 import Cookie from 'js-cookie';
 
 import { localeCookie } from './i18n.constans';
-import { AppLocale, CookieLocale } from './i18n.types';
+import { isAppLocale } from './i18n.typeguards';
+import { AppLocale } from './i18n.types';
 
-export const getAppLocaleByCookie: Record<CookieLocale, AppLocale> = {
-  [CookieLocale.Pl]: AppLocale.Pl,
-  [CookieLocale.En]: AppLocale.En,
+export const getDefaultLocale = () => {
+  if (isAppLocale(Cookie.get(localeCookie.name) as AppLocale)) {
+    return Cookie.get(localeCookie.name) as AppLocale;
+  }
+
+  if (import.meta.env.VITE_DEFAULT_LOCALE) {
+    return import.meta.env.VITE_DEFAULT_LOCALE as AppLocale;
+  }
+
+  return AppLocale.Pl;
 };
-
-export const defaultLocale: AppLocale =
-  getAppLocaleByCookie[Cookie.get(localeCookie.name) as CookieLocale] ??
-  (import.meta.env.VITE_DEFAULT_LOCALE || AppLocale.Pl);

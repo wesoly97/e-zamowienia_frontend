@@ -6,9 +6,4 @@ export enum AppLocale {
   En = 'en',
 }
 
-export enum CookieLocale {
-  Pl = 'pl_PL',
-  En = 'en_GB',
-}
-
 export type TranslationFunction = UseTranslationResponse<Namespace>['t'];
