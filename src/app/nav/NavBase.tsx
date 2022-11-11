@@ -9,6 +9,7 @@ import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 export const NavBase = ({
   position,
   buttons,
+  languages,
   userPanel,
   handleRedirectMainPage,
   handleRedirectOrdersPage,
@@ -16,7 +17,7 @@ export const NavBase = ({
   const { t } = useLocaleContext();
 
   return (
-    <Navbar position={position} buttons={buttons} userPanel={userPanel}>
+    <Navbar position={position} buttons={buttons} languages={languages} userPanel={userPanel}>
       <StyledLogo onClick={handleRedirectMainPage} />
       <StyledList>
         <StyledListItem>

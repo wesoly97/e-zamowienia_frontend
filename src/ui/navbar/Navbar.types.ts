@@ -9,6 +9,7 @@ export type UserPanelProps = {
 
 type ChildrenProps = {
   buttons: ReactNode;
+  languages: ReactNode;
   userPanel: UserPanelProps[];
 };
 

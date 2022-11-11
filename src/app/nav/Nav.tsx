@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { useLogoutEffect } from './hooks/useLogout/useLogoutEffect';
 import { NavBase } from './NavBase';
 import { NavProps } from './Nav.types';
+import { LanguageButton, Languages } from './Nav.styles';
 
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
@@ -11,13 +12,14 @@ import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { isUserRegular, isUserVerified } from '@/utils/accountTypes';
 import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+import { AppLocale } from '@/i18n/i18n.types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
 
   const { isUnauthenticated, session } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
-  const { t } = useLocaleContext();
+  const { t, changeLocale } = useLocaleContext();
 
   const handleRedirectUserProfilePage = () => {
     navigate(AppLinks.UserProfile);
@@ -61,6 +63,16 @@ export const Nav = ({ position }: NavProps) => {
       );
     }
   }, [isUnauthenticated, navigate, t]);
+
+  const languages = useMemo(() => {
+    return (
+      <Languages>
+        <LanguageButton onClick={() => changeLocale(AppLocale.Pl)}>PL</LanguageButton>
+        <span>|</span>
+        <LanguageButton onClick={() => changeLocale(AppLocale.En)}>EN</LanguageButton>
+      </Languages>
+    );
+  }, []);
 
   const userPanel = useMemo(() => {
     let naviagationItems = [
@@ -115,6 +127,7 @@ export const Nav = ({ position }: NavProps) => {
       position={position}
       userPanel={userPanel}
       buttons={buttons}
+      languages={languages}
       handleRedirectMainPage={handleRedirectMainPage}
       handleRedirectOrdersPage={handleRedirectOrdersPage}
     />
