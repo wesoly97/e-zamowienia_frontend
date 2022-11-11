@@ -26,6 +26,7 @@ export const Drawer = ({
 
   return (
     <StyledDrawer
+      id={'mobile-menu'}
       open={isOpened}
       anchor={'left'}
       onClose={onToggle}

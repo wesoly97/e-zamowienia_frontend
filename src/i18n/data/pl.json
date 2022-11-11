@@ -112,16 +112,18 @@
                "company":"Firma",
                "nip":"NIP"
             },
-            "submit":"Zatwierdź"
+            "submit":"Zatwierdź",
+            "toast":"Dane zostały pomyślnie zaktualizowane"
          },
          "changePassword":{
             "title":"Zmiana hasła",
             "inputs":{
-               "currentPassword":"Stare hasło",
+               "currentPassword":"Bieżące hasło",
                "password":"Nowe hasło",
                "repeatPassword":"Potwierdź nowe hasło"
             },
-            "submit":"Zatwierdź"
+            "submit":"Zatwierdź",
+            "toast":"Hasło zostało pomyślnie zaktualizowane"
          }
       }
    },
@@ -149,7 +151,8 @@
          "description":"Opis",
          "expirationDate":"Termin składania"
       },
-      "submit":"Wyślij prośbę"
+      "submit":"Wyślij prośbę",
+      "toast":"Prośba o edycję danych została wysłana do administratora"
    },
    "orderDescription":{
       "title":"Szczegóły postępowania",
@@ -203,7 +206,8 @@
          "company":"Firma",
          "nip":"NIP"
       },
-      "submit":"Wyślij prośbę"
+      "submit":"Wyślij prośbę",
+      "toast":"Prośba o weryfikację została wysłana do administratora"
    },
    "dropzone":{
       "title":"Upuść pliki tutaj lub",

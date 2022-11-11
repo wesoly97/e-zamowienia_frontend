@@ -9,7 +9,8 @@
     "lint": "eslint \"./src/**/*.{ts,tsx}\" && echo \"lint success\"",
     "lint:fix": "eslint --fix \"./src/**/*.{ts,tsx}\" && echo \"lint success\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@mui/icons-material": "^5.8.4",
@@ -22,6 +23,7 @@
     "@types/autosuggest-highlight": "^3.2.0",
     "autosuggest-highlight": "^3.3.4",
     "axios": "^0.27.2",
+    "cypress": "^11.0.1",
     "date-fns": "^2.29.3",
     "i18next": "^22.0.4",
     "js-cookie": "^3.0.1",

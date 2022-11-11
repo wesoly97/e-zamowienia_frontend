@@ -23,7 +23,7 @@ export const Navbar = ({ children, buttons, languages, enableColorOnDark, positi
 
   if (isDesktop) {
     return (
-      <StyledAppBar id={'mobile-menu'} position={position} enableColorOnDark={enableColorOnDark}>
+      <StyledAppBar id={'menu'} position={position} enableColorOnDark={enableColorOnDark}>
         <Wrapper>
           <Container>
             {children}
