@@ -1,0 +1,31 @@
+{
+  "orderModes": [
+      "Przetarg nieograniczony",
+      "Przetarg ograniczony",
+      "Negocjacje z ogłoszeniem",
+      "Dialog konkurencyjny",
+      "Partnerstwo innowacyjne",
+      "Negocjacje bez ogłoszenia",
+      "Zamówienie z wolnej ręki"
+  ],
+  "orderCategories": [
+      "Usługi i roboty budowlane",
+      "Dostawy",
+      "Konkursy",
+      "Usługi społeczne i inne szczególne usługi"
+  ],
+  "maxFileSize": 20971520,
+  "fileTypes": {
+      "application/pdf": [],
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [],
+      "application/vnd.ms-excel": [],
+      "application/msword": [],
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [],
+      "application/gzip": [],
+      "application/zip": [],
+      "application/x-7z-compressed": [],
+      "application/vnd.oasis.opendocument.text": [],
+      "text/plain": [],
+      "application/vnd.oasis.opendocument.spreadsheet": []
+  }
+}

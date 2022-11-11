@@ -112,7 +112,8 @@
               "company":"Company",
               "nip":"NIP"
            },
-           "submit":"Submit"
+           "submit":"Submit",
+            "toast":"Data has been successfully updated"
         },
         "changePassword":{
            "title":"Password change",
@@ -121,7 +122,8 @@
               "password":"New password",
               "repeatPassword":"Repeat new password"
            },
-           "submit":"Submit"
+           "submit":"Submit",
+           "toast":"Password has been successfully updated"
         }
      }
   },
@@ -149,7 +151,8 @@
         "description":"Description",
         "expirationDate":"Submission deadline"
      },
-     "submit":"Send request"
+     "submit":"Send request",
+     "toast":"The request to edit the data was sent to the administrator"
   },
   "orderDescription":{
      "title":"Details of proceeding",
@@ -203,7 +206,8 @@
         "company":"Company",
         "nip":"NIP"
      },
-     "submit":"Send request"
+     "submit":"Send request",
+     "toast":"A request for verification has been sent to the administrator"
   },
   "dropzone":{
      "title":"Drop files here or",

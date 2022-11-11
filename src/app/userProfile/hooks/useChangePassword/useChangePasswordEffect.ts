@@ -6,13 +6,15 @@ import { useChangePassword } from './useChangePassword';
 
 import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 import { useToastContext } from '@/context/toast/hooks/useToastContext';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const useChangePasswordEffect = (form: UseFormReturn<UserProfileChangePasswordFormData>) => {
   const { showToast } = useToastContext();
+  const { t } = useLocaleContext();
 
   return useChangePassword({
     onSuccess: () => {
-      showToast({ message: 'Pomyślnie zaktualizowano hasło' });
+      showToast({ message: t('profile.forms.changePassword.toast') });
     },
     onError: (error) => {
       setFieldsError({

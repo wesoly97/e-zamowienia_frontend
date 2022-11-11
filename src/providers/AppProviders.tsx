@@ -12,10 +12,10 @@ import { LocaleContextController } from '@/context/locale/localeContextControlle
 import '@/i18n';
 
 export const AppProviders = ({ children }: { children?: ReactNode }) => (
-  <LocaleContextController>
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <ApiClientContextController>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
+      <ApiClientContextController>
+        <LocaleContextController>
           <SettingsContextController>
             <AuthContextController>
               <ToastContextController>
@@ -23,8 +23,8 @@ export const AppProviders = ({ children }: { children?: ReactNode }) => (
               </ToastContextController>
             </AuthContextController>
           </SettingsContextController>
-        </ApiClientContextController>
-      </ThemeProvider>
-    </StyledEngineProvider>
-  </LocaleContextController>
+        </LocaleContextController>
+      </ApiClientContextController>
+    </ThemeProvider>
+  </StyledEngineProvider>
 );
