@@ -8,7 +8,7 @@
            "profile":"Profile",
            "myOrders":"My orders",
            "addOrder":"Add order",
-           "verification":"Become an orderer",
+           "verification":"Become orderer",
            "logout":"Logout"
         }
      },
