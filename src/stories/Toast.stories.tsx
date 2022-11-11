@@ -3,19 +3,18 @@ import { useState } from 'react';
 
 import { Toast } from '@/ui/toast/Toast';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
-// @ts-ignore
-import { ToastProps, ToastType } from '@/ui/toast/Toast.types';
+import { ToastProps } from '@/ui/toast/Toast.types';
 
 export default {
   title: 'Toast',
   component: Toast,
 } as Meta;
 
-const Template: Story = ({ ...props }: Partial<ToastProps>) => {
-  const [isOpened, setIsOpened] = useState(false);
+const Template: Story<Partial<ToastProps>> = ({ ...props }: Partial<ToastProps>) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpened(true);
+    setIsOpen(true);
   };
 
   return (
@@ -37,15 +36,15 @@ Default.args = {};
 
 export const Info = Template.bind({});
 Info.args = {
-  type: ToastType.Info,
+  type: 'info',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  type: ToastType.Warning,
+  type: 'warning',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  type: ToastType.Error,
+  type: 'error',
 };

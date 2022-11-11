@@ -7,6 +7,7 @@ export type DrawerProps = {
   isOpened: boolean;
   children: ReactNode;
   buttons: ReactNode;
+  languages: ReactNode;
   userPanel: UserPanelProps[];
   isAuthenticated: boolean;
 };

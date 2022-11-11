@@ -52,7 +52,7 @@ export const Heading = styled.h1`
   font-weight: 700;
 `;
 
-export const RegisterPrompt = styled.div`
+export const Prompt = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;

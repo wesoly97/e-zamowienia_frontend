@@ -6,13 +6,15 @@ import { useUserVerification } from './useUserVerification';
 
 import { setFieldsError } from '@/utils/form/setFieldsError/setFieldsError';
 import { useToastContext } from '@/context/toast/hooks/useToastContext';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const useUserVerificationEffect = (form: UseFormReturn<UserVerificationFormData>) => {
   const { showToast } = useToastContext();
+  const { t } = useLocaleContext();
 
   return useUserVerification({
     onSuccess: () => {
-      showToast({ message: 'Prośba o weryfikację użytkownika została wysłana do administratora' });
+      showToast({ message: t('userVerification.toast') });
     },
     onError: (error) => {
       setFieldsError({

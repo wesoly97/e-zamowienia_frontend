@@ -9,11 +9,13 @@ import { PasswordRecoveryResetFormWrapper } from './passwordRecoveryResetForm/Pa
 import { usePasswordRecoveryContext } from '@/context/passwordRecovery/hooks/usePasswordRecoveryContext';
 import { AppLinks } from '@/routing/AppRoutes.types';
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const PasswordRecovery = () => {
+  const navigate = useNavigate();
   const { tokenExpirationDate } = usePasswordRecoveryContext();
   const { tokenId } = useParams<{ tokenId: string }>();
-  const navigate = useNavigate();
+  const { t } = useLocaleContext();
 
   useEffect(() => {
     if (isTokenExpired(tokenExpirationDate) && tokenId) {
@@ -30,7 +32,7 @@ export const PasswordRecovery = () => {
   if (!isTokenExpired(tokenExpirationDate) && tokenId) {
     return (
       <>
-        <Heading>Resetowanie hasła</Heading>
+        <Heading>{t('passwordRecovery.status.passwordSubmission')}</Heading>
         <PasswordRecoveryResetFormWrapper token={tokenId} />
       </>
     );
@@ -40,9 +42,7 @@ export const PasswordRecovery = () => {
     return (
       <>
         <StyledEmailSentIcon />
-        <SentMessage>
-          Link został wysłany na podany email. Jeśli nie pojawi się on w ciągu kilku minut, sprawdź folder spamu.
-        </SentMessage>
+        <SentMessage>{t('passwordRecovery.status.emailSent')}</SentMessage>
       </>
     );
   }
@@ -50,8 +50,8 @@ export const PasswordRecovery = () => {
   if (isTokenExpired(tokenExpirationDate) && !tokenId) {
     return (
       <>
-        <Heading>Zresetuj hasło</Heading>
-        <p>Wpisz adres email swojego konta, a my wyślemy Ci link do resetowania hasła.</p>
+        <Heading>{t('passwordRecovery.status.emailSubmission.title')}</Heading>
+        <p>{t('passwordRecovery.status.emailSubmission.subtitle')}</p>
         <PasswordRecoveryFormWrapper />
       </>
     );
@@ -59,10 +59,8 @@ export const PasswordRecovery = () => {
 
   return (
     <>
-      <Heading>Niepoprawny link</Heading>
-      <p>
-        Token wygasł lub coś poszło nie tak. Za chwilę nastąpi przekierowanie na początek procesu resetowania hasła.
-      </p>
+      <Heading>{t('passwordRecovery.status.error.title')}</Heading>
+      <p>{t('passwordRecovery.status.error.subtitle')}</p>
     </>
   );
 };

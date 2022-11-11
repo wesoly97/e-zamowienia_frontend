@@ -3,7 +3,15 @@ import { useMemo } from 'react';
 import { StyledDrawer, Container, ButtonBox, StyledPrimaryButton } from './Drawer.styles';
 import { DrawerProps } from './Drawer.types';
 
-export const Drawer = ({ onToggle, isOpened, children, buttons, userPanel, isAuthenticated }: DrawerProps) => {
+export const Drawer = ({
+  onToggle,
+  isOpened,
+  children,
+  buttons,
+  languages,
+  userPanel,
+  isAuthenticated,
+}: DrawerProps) => {
   const userMenuActions = useMemo(() => {
     if (isAuthenticated) {
       return userPanel.map(({ label, action }, index) => {
@@ -18,6 +26,7 @@ export const Drawer = ({ onToggle, isOpened, children, buttons, userPanel, isAut
 
   return (
     <StyledDrawer
+      id={'mobile-menu'}
       open={isOpened}
       anchor={'left'}
       onClose={onToggle}
@@ -30,6 +39,7 @@ export const Drawer = ({ onToggle, isOpened, children, buttons, userPanel, isAut
         <ButtonBox>
           {userMenuActions}
           {buttons}
+          {languages}
         </ButtonBox>
       </Container>
     </StyledDrawer>

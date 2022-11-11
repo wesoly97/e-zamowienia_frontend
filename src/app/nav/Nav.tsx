@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { useLogoutEffect } from './hooks/useLogout/useLogoutEffect';
 import { NavBase } from './NavBase';
 import { NavProps } from './Nav.types';
+import { LanguageButton, Languages } from './Nav.styles';
 
 import { useNavigate } from '@/hooks/useNavigate/useNavigate';
 import { useAuthContext } from '@/context/auth/hooks/useAuthContext';
@@ -10,12 +11,15 @@ import { AppLinks, AppRoute } from '@/routing/AppRoutes.types';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { SecondaryButton } from '@/ui/button/SecondaryButton';
 import { isUserRegular, isUserVerified } from '@/utils/accountTypes';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+import { AppLocale } from '@/i18n/i18n.types';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
 
   const { isUnauthenticated, session } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
+  const { t, changeLocale } = useLocaleContext();
 
   const handleRedirectUserProfilePage = () => {
     navigate(AppLinks.UserProfile);
@@ -53,23 +57,33 @@ export const Nav = ({ position }: NavProps) => {
     if (isUnauthenticated) {
       return (
         <>
-          <PrimaryButton handleClick={handleRedirectLoginPage}>Logowanie</PrimaryButton>
-          <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
+          <PrimaryButton handleClick={handleRedirectLoginPage}>{t('navbar.buttons.login')}</PrimaryButton>
+          <SecondaryButton handleClick={handleRedirectRegisterPage}>{t('navbar.buttons.register')}</SecondaryButton>
         </>
       );
     }
-  }, [isUnauthenticated, navigate]);
+  }, [isUnauthenticated, navigate, t]);
+
+  const languages = useMemo(() => {
+    return (
+      <Languages>
+        <LanguageButton onClick={() => changeLocale(AppLocale.Pl)}>PL</LanguageButton>
+        <span>|</span>
+        <LanguageButton onClick={() => changeLocale(AppLocale.En)}>EN</LanguageButton>
+      </Languages>
+    );
+  }, []);
 
   const userPanel = useMemo(() => {
     let naviagationItems = [
       {
         action: () => handleRedirectUserProfilePage(),
-        label: 'Profil',
+        label: t('navbar.buttons.userMenu.profile'),
         order: 1,
       },
       {
         action: () => logout(null),
-        label: 'Wyloguj',
+        label: t('navbar.buttons.userMenu.logout'),
         order: 5,
       },
     ];
@@ -80,7 +94,7 @@ export const Nav = ({ position }: NavProps) => {
         ...[
           {
             action: () => handleRedirectUserVerificationPage(),
-            label: 'Zostań zamawiającym',
+            label: t('navbar.buttons.userMenu.verification'),
             order: 4,
           },
         ],
@@ -93,12 +107,12 @@ export const Nav = ({ position }: NavProps) => {
         ...[
           {
             action: () => handleRedirectOrdersUserListPage(),
-            label: 'Moje ogłoszenia',
+            label: t('navbar.buttons.userMenu.myOrders'),
             order: 2,
           },
           {
             action: () => handleRedirectAddOrderPage(),
-            label: 'Dodaj ogłoszenie',
+            label: t('navbar.buttons.userMenu.addOrder'),
             order: 3,
           },
         ],
@@ -106,7 +120,6 @@ export const Nav = ({ position }: NavProps) => {
     }
 
     return naviagationItems.sort((prev, next) => prev.order - next.order);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   return (
@@ -114,6 +127,7 @@ export const Nav = ({ position }: NavProps) => {
       position={position}
       userPanel={userPanel}
       buttons={buttons}
+      languages={languages}
       handleRedirectMainPage={handleRedirectMainPage}
       handleRedirectOrdersPage={handleRedirectOrdersPage}
     />

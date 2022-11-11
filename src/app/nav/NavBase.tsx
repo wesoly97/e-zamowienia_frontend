@@ -4,21 +4,25 @@ import { StyledList, StyledListItem, StyledLogo } from './Nav.styles';
 import { NavBaseProps } from './Nav.types';
 
 import { Navbar } from '@/ui/navbar/Navbar';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const NavBase = ({
   position,
   buttons,
+  languages,
   userPanel,
   handleRedirectMainPage,
   handleRedirectOrdersPage,
 }: NavBaseProps) => {
+  const { t } = useLocaleContext();
+
   return (
-    <Navbar position={position} buttons={buttons} userPanel={userPanel}>
+    <Navbar position={position} buttons={buttons} languages={languages} userPanel={userPanel}>
       <StyledLogo onClick={handleRedirectMainPage} />
       <StyledList>
         <StyledListItem>
           <ListItemButton onClick={handleRedirectOrdersPage}>
-            <span>Zamówienia</span>
+            <span>{t('navbar.buttons.orders')}</span>
           </ListItemButton>
         </StyledListItem>
       </StyledList>

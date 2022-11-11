@@ -12,8 +12,8 @@ export const StatisticsGroup = ({ icon, isLoading, description, number }: Statis
       return <PrimaryLoader />;
     }
 
-    if (number === 0) {
-      return number;
+    if (number === 0 || !number) {
+      return 0;
     }
 
     if (!isLoading && number) {

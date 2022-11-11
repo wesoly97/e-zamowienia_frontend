@@ -42,7 +42,7 @@ const Template: Story<any> = <Book,>({ ...props }: AutocompleteProps<Book>) => {
   const renderInput = (params: AutocompleteRenderInputParams) => (
     <Input
       {...params}
-      label="Example"
+      label={'Example'}
       inputProps={{
         ...params.inputProps,
       }}

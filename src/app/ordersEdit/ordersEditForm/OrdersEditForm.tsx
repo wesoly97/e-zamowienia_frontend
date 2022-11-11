@@ -10,6 +10,8 @@ import { FormDropzone } from '@/ui/formDropzone/FormDropzone';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { FormSelect } from '@/ui/formSelect/FormSelect';
 import { useSettingsContext } from '@/context/settings/hooks/useSettingsContext';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+import { PrimaryLoader } from '@/theme/shared';
 
 export const OrdersEditForm = ({
   isSubmitting,
@@ -19,6 +21,7 @@ export const OrdersEditForm = ({
   initialFiles,
 }: OrdersEditFormProps) => {
   const { settings } = useSettingsContext();
+  const { t } = useLocaleContext();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     return /^\d+\.?\d{0,2}$/.test(event.target.value);
@@ -43,13 +46,17 @@ export const OrdersEditForm = ({
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput id={'procedure-identifier'} name={'procedureIdentifier'} label={'Identyfikator'} />
+        <FormInput
+          id={'procedure-identifier'}
+          name={'procedureIdentifier'}
+          label={t('orderEdit.inputs.procedureIdentifier')}
+        />
         <FormSelect
           id={'category'}
           name={'category'}
           data={settings.orderCategories}
           labelId={'category-label'}
-          label={'Kategoria'}
+          label={t('orderEdit.inputs.category')}
           value={category}
             // @ts-ignore
           onChange={handleChangeCategory}
@@ -59,16 +66,16 @@ export const OrdersEditForm = ({
           name={'mode'}
           data={settings.orderModes}
           labelId={'mode-label'}
-          label={'Typ'}
+          label={t('orderEdit.inputs.mode')}
           value={mode}
             // @ts-ignore
           onChange={handleChangeMode}
         />
-        <FormInput id={'title'} name={'title'} label={'Tytuł'} />
+        <FormInput id={'title'} name={'title'} label={t('orderEdit.inputs.title')} />
         <FormInput
           id={'price'}
           name={'price'}
-          label={'Kwota'}
+          label={t('orderEdit.inputs.price')}
           handleChange={handleChange}
           inputProps={{
             min: 0,
@@ -76,11 +83,17 @@ export const OrdersEditForm = ({
             maxLength: 10,
           }}
         />
-        <FormInput id={'description'} name={'description'} label={'Opis'} multiline rows={8} />
+        <FormInput
+          id={'description'}
+          name={'description'}
+          label={t('orderEdit.inputs.description')}
+          multiline
+          rows={8}
+        />
         <FormInput
           id={'expiration-date'}
           name={'expirationDate'}
-          label={'Termin składania'}
+          label={t('orderEdit.inputs.expirationDate')}
           type={'date'}
           inputProps={{
             min: minExpirationDate,
@@ -89,7 +102,7 @@ export const OrdersEditForm = ({
         />
         <FormDropzone name={'files'} initialFiles={initialFiles} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? 'Wysyłanie' : 'Wyślij prośbę'}
+          {isSubmitting ? <PrimaryLoader size={28} /> : t('orderEdit.submit')}
         </PrimaryButton>
       </FormProvider>
     </Form>

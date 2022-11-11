@@ -3,6 +3,8 @@ import MuiSelect from '@mui/material/Select';
 
 import { SelectBaseProps } from './SelectBase.types';
 
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+
 export const SelectBase = <T,>({
   data,
   labelId,
@@ -15,6 +17,8 @@ export const SelectBase = <T,>({
   classes,
   className,
 }: SelectBaseProps<T>) => {
+  const { t } = useLocaleContext();
+
   return (
     <MuiSelect
       labelId={labelId}
@@ -28,7 +32,7 @@ export const SelectBase = <T,>({
       classes={classes}
       className={className}
     >
-      {defaultOption && <MenuItem value={''}>Wszystko</MenuItem>}
+      {defaultOption && <MenuItem value={''}>{t('select.options.all')}</MenuItem>}
       {data.map((item, index) => (
         <MenuItem key={index} value={item as unknown as string}>
           {item as unknown as string}

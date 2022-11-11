@@ -8,9 +8,11 @@ import { useSettingsContext } from '@/context/settings/hooks/useSettingsContext'
 import { Autocomplete } from '@/ui/autocomplete/Autocomplete';
 import { Input } from '@/ui/input/Input';
 import { useDebounce } from '@/hooks/useDebounce/useDebounce';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   const { settings } = useSettingsContext();
+  const { t } = useLocaleContext();
 
   const [title, setTitle] = useState(filters.filter_title);
   const debouncedTitle = useDebounce(title);
@@ -40,10 +42,12 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
   };
 
   const autocompleteCategoryInput = (params: AutocompleteRenderInputParams) => (
-    <Input {...params} label={'Kategoria'} />
+    <Input {...params} label={t('orders.inputs.category')} />
   );
 
-  const autocompleteModeInput = (params: AutocompleteRenderInputParams) => <Input {...params} label={'Typ'} />;
+  const autocompleteModeInput = (params: AutocompleteRenderInputParams) => (
+    <Input {...params} label={t('orders.inputs.mode')} />
+  );
 
   useEffect(() => {
     if (debouncedTitle !== undefined) {
@@ -61,7 +65,7 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
         id={'title'}
         variant={'outlined'}
         value={title}
-        label={'Tytuł'}
+        label={t('orders.inputs.title')}
         type={'text'}
         onChange={handleChangeTitle}
       />

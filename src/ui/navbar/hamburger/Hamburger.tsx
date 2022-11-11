@@ -1,23 +1,22 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
 
 import { List } from '../Navbar.styles';
 
+import { StyledIconButton } from './Hamburger.styles';
 import { HamburgerProps } from './Hamburger.types';
 
 export const Hamburger = ({ handleMenuToggle }: HamburgerProps) => {
   return (
     <List>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        color="inherit"
+      <StyledIconButton
+        size={'large'}
+        aria-label={'dropdown menu'}
+        aria-controls={'mobile-menu'}
+        aria-haspopup={'menu'}
         onClick={handleMenuToggle}
       >
         <MenuIcon />
-      </IconButton>
+      </StyledIconButton>
     </List>
   );
 };

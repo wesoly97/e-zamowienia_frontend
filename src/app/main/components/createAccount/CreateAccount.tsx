@@ -1,10 +1,14 @@
 import { Container, HeaderBox, Heading, IconBox, StyledSurfIcon } from './CreateAccount.styles';
 
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+
 export const CreateAccount = () => {
+  const { t } = useLocaleContext();
+
   return (
     <Container>
       <HeaderBox>
-        <Heading>Utwórz konto aby w pełni korzystać z funkcjonalności aplikacji</Heading>
+        <Heading>{t('main.register')}</Heading>
       </HeaderBox>
       <IconBox>
         <StyledSurfIcon />

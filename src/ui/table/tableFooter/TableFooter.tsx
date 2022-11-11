@@ -6,9 +6,11 @@ import { TableFooterProps } from './TableFooter.types';
 import { StyledTablePagination } from './TableFooter.styles';
 
 import { useParamsContext } from '@/context/params/hooks/useParamsContext';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: TableFooterProps) => {
   const { filterQuery, setFilter } = useParamsContext();
+  const { t } = useLocaleContext();
 
   const handleChangePage = (_: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setFilter('offset', String(newPage));
@@ -41,9 +43,9 @@ export const TableFooter = ({ count, onNextPage, onPreviousPage, hasNextPage }: 
             },
             native: true,
           }}
-          labelRowsPerPage={'Wierszy na stronę:'}
+          labelRowsPerPage={t('table.footer.rowsPerPage')}
           labelDisplayedRows={({ from, to, count }) => {
-            return `${from}–${to}(${to - from + 1}) z ${count}`;
+            return `${from}–${to}(${to - from + 1}) ${t('table.footer.rowsCounterSeparator')} ${count}`;
           }}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
