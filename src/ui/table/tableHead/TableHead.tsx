@@ -3,14 +3,13 @@ import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { useEffect, useState } from 'react';
 
-import { tableColumnNames } from './TableHead.constans';
 import { getStringifySortOption } from './TableHead.utils';
 import { TableHeadProps } from './TableHead.types';
 
 import { useParamsContext } from '@/context/params/hooks/useParamsContext';
 import { SortValue } from '@/context/params/paramsContext/ParamsContext.types';
 
-export const TableHead = <T,>({ actions }: TableHeadProps<T>) => {
+export const TableHead = <T,>({ headers, actions }: TableHeadProps<T>) => {
   const { setSort } = useParamsContext();
 
   const [orderBy, setOrderBy] = useState('title');
@@ -29,7 +28,7 @@ export const TableHead = <T,>({ actions }: TableHeadProps<T>) => {
 
   const tableHeaders = useMemo(
     () =>
-      tableColumnNames.map(({ id, title }) => (
+      headers.map(({ id, title }) => (
         <TableCell key={id} sortDirection={orderBy === id ? getStringifySortOption(order) : false}>
           <TableSortLabel
             active={orderBy === id}

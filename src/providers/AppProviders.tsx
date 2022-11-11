@@ -8,19 +8,23 @@ import { theme } from '@/theme/theme';
 import { AuthContextController } from '@/context/auth/authContextController/AuthContextController';
 import { SettingsContextController } from '@/context/settings/settingsContextController/SettingsContextController';
 import { ToastContextController } from '@/context/toast/toastContextController/ToastContextController';
+import { LocaleContextController } from '@/context/locale/localeContextController/LocaleContextController';
+import '@/i18n';
 
 export const AppProviders = ({ children }: { children?: ReactNode }) => (
-  <StyledEngineProvider injectFirst>
-    <ThemeProvider theme={theme}>
-      <ApiClientContextController>
-        <SettingsContextController>
-          <AuthContextController>
-            <ToastContextController>
-              <BrowserRouter>{children}</BrowserRouter>
-            </ToastContextController>
-          </AuthContextController>
-        </SettingsContextController>
-      </ApiClientContextController>
-    </ThemeProvider>
-  </StyledEngineProvider>
+  <LocaleContextController>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <ApiClientContextController>
+          <SettingsContextController>
+            <AuthContextController>
+              <ToastContextController>
+                <BrowserRouter>{children}</BrowserRouter>
+              </ToastContextController>
+            </AuthContextController>
+          </SettingsContextController>
+        </ApiClientContextController>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  </LocaleContextController>
 );

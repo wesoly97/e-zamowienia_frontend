@@ -8,16 +8,30 @@ import { FormInput } from '@/ui/formInput/FormInput';
 import { PrimaryButton } from '@/ui/button/PrimaryButton';
 import { isUserVerified } from '@/utils/accountTypes';
 import { FormPhoneInput } from '@/ui/formPhoneInput/FormPhoneInput';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+import { PrimaryLoader } from '@/theme/shared';
 
 export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: UserProfileFormProps) => {
+  const { t } = useLocaleContext();
+
   const verifiedUserFields = useMemo(() => {
     if (isUserVerified(userRole))
       return (
         <>
-          <FormPhoneInput id={'phone-number'} name={'phoneNumber'} label={'Numer telefonu'} disabled />
-          <FormInput id={'country'} name={'country'} label={'Kraj'} disabled />
-          <FormInput id={'company-name'} name={'companyName'} label={'Firma'} disabled />
-          <FormInput id={'nip'} name={'nip'} label={'NIP'} disabled />
+          <FormPhoneInput
+            id={'phone-number'}
+            name={'phoneNumber'}
+            label={t('profile.forms.userDetails.inputs.phone')}
+            disabled
+          />
+          <FormInput id={'country'} name={'country'} label={t('profile.forms.userDetails.inputs.country')} disabled />
+          <FormInput
+            id={'company-name'}
+            name={'companyName'}
+            label={t('profile.forms.userDetails.inputs.company')}
+            disabled
+          />
+          <FormInput id={'nip'} name={'nip'} label={t('profile.forms.userDetails.inputs.nip')} disabled />
         </>
       );
   }, [userRole]);
@@ -25,12 +39,18 @@ export const UserProfileForm = ({ isSubmitting, onSubmit, form, userRole }: User
   return (
     <Form onSubmit={form.handleSubmit(onSubmit)}>
       <FormProvider {...form}>
-        <FormInput id={'name'} name={'name'} label={'Imię'} />
-        <FormInput id={'surname'} name={'surname'} label={'Nazwisko'} />
-        <FormInput id={'email'} name={'email'} type={'email'} label={'Email'} disabled />
+        <FormInput id={'name'} name={'name'} label={t('profile.forms.userDetails.inputs.name')} />
+        <FormInput id={'surname'} name={'surname'} label={t('profile.forms.userDetails.inputs.surname')} />
+        <FormInput
+          id={'email'}
+          name={'email'}
+          type={'email'}
+          label={t('profile.forms.userDetails.inputs.email')}
+          disabled
+        />
         {verifiedUserFields}
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? 'Zapisywanie' : 'Zatwierdź'}
+          {isSubmitting ? <PrimaryLoader size={28} /> : t('profile.forms.userDetails.submit')}
         </PrimaryButton>
       </FormProvider>
     </Form>

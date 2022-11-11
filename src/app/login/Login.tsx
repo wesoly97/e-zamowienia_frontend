@@ -7,14 +7,17 @@ import {
   StyledLoginIcon,
   StyledWaveIcon,
   FormBox,
-  RegisterPrompt,
+  Prompt,
   StyledLink,
 } from './Login.styles';
 import { LoginFormWrapper } from './loginForm/LoginFormWrapper';
 
 import { AppLinks } from '@/routing/AppRoutes.types';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const Login = () => {
+  const { t } = useLocaleContext();
+
   return (
     <Container>
       <IconWrapper>
@@ -23,12 +26,12 @@ export const Login = () => {
       <FormWrapper>
         <FormContainer>
           <FormBox>
-            <Heading>Zaloguj się</Heading>
+            <Heading>{t('login.title')}</Heading>
             <LoginFormWrapper />
-            <RegisterPrompt>
-              <span>Nie możesz się zalogować?</span>
-              <StyledLink to={AppLinks.PasswordRecovery}>&nbsp;Zresetuj hasło</StyledLink>
-            </RegisterPrompt>
+            <Prompt>
+              <span>{t('login.prompt.part1')}</span>
+              <StyledLink to={AppLinks.PasswordRecovery}>&nbsp;{t('login.prompt.part2')}</StyledLink>
+            </Prompt>
           </FormBox>
         </FormContainer>
       </FormWrapper>

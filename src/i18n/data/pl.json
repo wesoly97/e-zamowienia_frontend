@@ -1,0 +1,225 @@
+{
+   "navbar":{
+      "buttons":{
+         "login":"Logowanie",
+         "register":"Rejestracja",
+         "orders":"Zamówienia",
+         "userMenu":{
+            "profile":"Profil",
+            "myOrders":"Moje ogłoszenia",
+            "addOrder":"Dodaj ogłoszenie",
+            "verification":"Zostań zamawiającym",
+            "logout":"Wyloguj"
+         }
+      },
+      "userMenu":{
+         "tooltip":"Menu użytkownika"
+      }
+   },
+   "main":{
+      "title":"Nowa generacja zamówień publicznych",
+      "trailer":"Bez ograniczeń, bez limitów dostęp do dużej bazy zamówień publicznych",
+      "statistics":{
+         "contractors":"Wykonawców",
+         "orderers":"Zamawiających",
+         "orders":"Dodanych zamówień"
+      },
+      "register":"Utwórz konto aby w pełni korzystać z funkcjonalności aplikacji"
+   },
+   "footer":{
+      "headers":{
+         "content":"Zawartość",
+         "utilities":"Narzędzia",
+         "help":"Pomoc"
+      },
+      "links":{
+         "authors":"Autorzy",
+         "api":"API",
+         "faq":"FAQ",
+         "contact":"Kontakt"
+      }
+   },
+   "login":{
+      "title":"Zaloguj się",
+      "inputs":{
+         "email":"Email",
+         "password":"Hasło"
+      },
+      "button":"Zaloguj",
+      "prompt":{
+         "part1":"Nie możesz się zalogować?",
+         "part2":"Zresetuj hasło"
+      }
+   },
+   "register":{
+      "title":"Załóż konto",
+      "subtitle":"To proste i bezpieczne",
+      "inputs":{
+         "name":"Imię",
+         "surname":"Nazwisko",
+         "email":"Email",
+         "password":"Hasło",
+         "repeatPassword":"Powtórz hasło"
+      },
+      "submit":"Załóż konto"
+   },
+   "orders":{
+      "inputs":{
+         "title":"Tytuł",
+         "category":"Kategoria",
+         "mode":"Typ"
+      },
+      "table":{
+         "headers":{
+            "title":"Tytuł",
+            "price":"Cena",
+            "category":"Kategoria",
+            "mode":"Typ"
+         }
+      }
+   },
+   "userOrders":{
+      "table":{
+         "headers":{
+            "title":"Tytuł",
+            "price":"Cena",
+            "category":"Kategoria",
+            "mode":"Typ"
+         },
+         "actions":{
+            "edit":{
+               "tooltip":"Edytuj zamówienie"
+            }
+         }
+      },
+      "inputs":{
+         "category":"Kategoria",
+         "mode":"Typ",
+         "title":"Tytuł"
+      }
+   },
+   "profile":{
+      "title":"Edycja profilu",
+      "forms":{
+         "userDetails":{
+            "title":"Dane użytkownika",
+            "inputs":{
+               "name":"Imię",
+               "surname":"Nazwisko",
+               "email":"Email",
+               "phone":"Numer telefonu",
+               "country":"Kraj",
+               "company":"Firma",
+               "nip":"NIP"
+            },
+            "submit":"Zatwierdź"
+         },
+         "changePassword":{
+            "title":"Zmiana hasła",
+            "inputs":{
+               "currentPassword":"Stare hasło",
+               "password":"Nowe hasło",
+               "repeatPassword":"Potwierdź nowe hasło"
+            },
+            "submit":"Zatwierdź"
+         }
+      }
+   },
+   "orderAdd":{
+      "title":"Dodaj zamówienie",
+      "inputs":{
+         "procedureIdentifier":"Identyfikator",
+         "category":"Kategoria",
+         "mode":"Typ",
+         "title":"Tytuł",
+         "price":"Kwota",
+         "description":"Opis",
+         "expirationDate":"Termin składania"
+      },
+      "submit":"Dodaj"
+   },
+   "orderEdit":{
+      "title":"Edytuj zamówienie",
+      "inputs":{
+         "procedureIdentifier":"Identyfikator",
+         "category":"Kategoria",
+         "mode":"Typ",
+         "title":"Tytuł",
+         "price":"Kwota",
+         "description":"Opis",
+         "expirationDate":"Termin składania"
+      },
+      "submit":"Wyślij prośbę"
+   },
+   "orderDescription":{
+      "title":"Szczegóły postępowania",
+      "sections":{
+         "title":"Tytuł",
+         "description":"Opis",
+         "attachments":"Załączniki",
+         "procedureIdentifier":"Identyfikator",
+         "dateOfPublication":"Data publikacji",
+         "expirationDate":"Termin składania",
+         "category":"Kategoria",
+         "mode":"Typ",
+         "price":"Cena",
+         "customer":"Zamawiający",
+         "country":"Państwo zamawiającego",
+         "phone":"Telefon zamawiającego",
+         "email":"Adres email zamawiającego"
+      }
+   },
+   "passwordRecovery":{
+      "status":{
+         "emailSubmission":{
+            "title":"Zresetuj hasło",
+            "subtitle":"Wpisz adres email swojego konta, a my wyślemy Ci link do resetowania hasła."
+         },
+         "emailSent":"Link został wysłany na podany email. Jeśli nie pojawi się on w ciągu kilku minut, sprawdź folder spamu.",
+         "error":{
+            "title":"Niepoprawny link",
+            "subtitle":"Token wygasł lub coś poszło nie tak. Za chwilę nastąpi przekierowanie na początek procesu resetowania hasła."
+         },
+         "passwordSubmission":"Resetowanie hasła"
+      },
+      "emailSubmissionForm":{
+         "inputs":{
+            "email":"Email"
+         },
+         "submit":"Wyślij email"
+      },
+      "passwordSubmissionForm":{
+         "inputs":{
+            "password":"Nowe hasło",
+            "repeatPassword":"Powtórz hasło"
+         },
+         "submit":"Potwierdź"
+      }
+   },
+   "userVerification":{
+      "inputs":{
+         "phone":"Numer telefonu",
+         "country":"Kraj",
+         "company":"Firma",
+         "nip":"NIP"
+      },
+      "submit":"Wyślij prośbę"
+   },
+   "dropzone":{
+      "title":"Upuść pliki tutaj lub",
+      "button":"Wybierz pliki",
+      "description":"(Akceptowane formaty: *.pdf, *.xlsx, *.xls, *.doc, *.docx, *.gz, *.zip, *.7z, *.odt, *.ods, *.txt)",
+      "plug":"Upuść pliki tutaj"
+   },
+   "select":{
+      "options":{
+         "all":"Wszystko"
+      }
+   },
+   "table":{
+      "footer":{
+         "rowsPerPage":"Wierszy na stronę:",
+         "rowsCounterSeparator":"z"
+      }
+   }
+}

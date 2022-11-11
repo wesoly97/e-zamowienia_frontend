@@ -1,13 +1,16 @@
 import IconButton from '@mui/material/IconButton';
-import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent, useMemo } from 'react';
 
 import { UserMenuProps } from './UserMenu.types';
-import { StyledMenu } from './UserMenu.styles';
+import { StyledAvatar, StyledMenu } from './UserMenu.styles';
+
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const UserMenu = ({ userPanel }: UserMenuProps) => {
+  const { t } = useLocaleContext();
+
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
 
   const handleOpenMenu = (event: MouseEvent<HTMLElement>) => {
@@ -21,7 +24,7 @@ export const UserMenu = ({ userPanel }: UserMenuProps) => {
   const userMenuActions = useMemo(() => {
     return userPanel.map(({ label, action }, index) => {
       return (
-        <MenuItem key={index} onClick={action}>
+        <MenuItem key={index} role={'tabpanel'} onClick={action}>
           {label}
         </MenuItem>
       );
@@ -30,12 +33,18 @@ export const UserMenu = ({ userPanel }: UserMenuProps) => {
 
   return (
     <div>
-      <Tooltip title="Menu użytkownika">
-        <IconButton onClick={handleOpenMenu}>
-          <Avatar alt="avatar" />
+      <Tooltip title={t('navbar.userMenu.tooltip')}>
+        <IconButton
+          aria-label={'dropdown user menu'}
+          aria-controls={'user-menu'}
+          aria-haspopup={'menu'}
+          onClick={handleOpenMenu}
+        >
+          <StyledAvatar alt={'avatar'} />
         </IconButton>
       </Tooltip>
       <StyledMenu
+        id={'user-menu'}
         anchorEl={anchorElement}
         anchorOrigin={{
           vertical: 'top',

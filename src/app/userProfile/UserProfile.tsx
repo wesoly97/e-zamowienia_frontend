@@ -2,17 +2,21 @@ import { DetailsColumn, PasswordColumn, Container, Wrapper, Heading, SubHeading 
 import { UserProfileChangePasswordFormWrapper } from './userProfileChangePasswordForm/UserProfileChangePasswordFormWrapper';
 import { UserProfileFormWrapper } from './userProfileForm/UserProfileFormWrapper';
 
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+
 export const UserProfile = () => {
+  const { t } = useLocaleContext();
+
   return (
     <Container>
-      <Heading>Edycja danych</Heading>
+      <Heading>{t('profile.title')}</Heading>
       <Wrapper>
         <DetailsColumn>
-          <SubHeading>Dane użytkownika</SubHeading>
+          <SubHeading>{t('profile.forms.userDetails.title')}</SubHeading>
           <UserProfileFormWrapper />
         </DetailsColumn>
         <PasswordColumn>
-          <SubHeading>Zmiana hasła</SubHeading>
+          <SubHeading>{t('profile.forms.changePassword.title')}</SubHeading>
           <UserProfileChangePasswordFormWrapper />
         </PasswordColumn>
       </Wrapper>

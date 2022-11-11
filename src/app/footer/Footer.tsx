@@ -10,7 +10,11 @@ import {
   GlobalBottomPadding,
 } from './Footer.styles';
 
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+
 export const Footer = () => {
+  const { t } = useLocaleContext();
+
   return (
     <>
       <GlobalBottomPadding />
@@ -19,17 +23,17 @@ export const Footer = () => {
           <StyledLogo />
           <Menu>
             <Column>
-              <ColumnHeader>Zawartość</ColumnHeader>
-              <Item>Autorzy</Item>
+              <ColumnHeader>{t('footer.headers.content')}</ColumnHeader>
+              <Item>{t('footer.links.authors')}</Item>
             </Column>
             <Column>
-              <ColumnHeader>Narzędzia</ColumnHeader>
-              <Item>API</Item>
+              <ColumnHeader>{t('footer.headers.utilities')}</ColumnHeader>
+              <Item>{t('footer.links.api')}</Item>
             </Column>
             <Column>
-              <ColumnHeader>Pomoc</ColumnHeader>
-              <Item>FAQ</Item>
-              <Item>Kontakt</Item>
+              <ColumnHeader>{t('footer.headers.help')}</ColumnHeader>
+              <Item>{t('footer.links.faq')}</Item>
+              <Item>{t('footer.links.contact')}</Item>
             </Column>
           </Menu>
         </Content>

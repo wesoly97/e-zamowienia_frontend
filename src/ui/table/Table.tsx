@@ -9,6 +9,7 @@ import { TableHead } from './tableHead/TableHead';
 
 export const Table = <T,>({
   rows,
+  headers,
   count,
   keyExtractor,
   renderRow,
@@ -20,8 +21,8 @@ export const Table = <T,>({
 }: TableProps<T>) => {
   return (
     <TableContainer component={Paper}>
-      <MuiTable aria-label="orders table">
-        <TableHead actions={actions} />
+      <MuiTable aria-label={'table'}>
+        <TableHead headers={headers} actions={actions} />
         <TableBody
           rows={rows}
           keyExtractor={keyExtractor}

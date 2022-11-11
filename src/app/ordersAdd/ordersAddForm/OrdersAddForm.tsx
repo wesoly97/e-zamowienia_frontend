@@ -11,9 +11,12 @@ import { FormDropzone } from '@/ui/formDropzone/FormDropzone';
 import { parseDateToString } from '@/utils/date/parseDateToString';
 import { FormSelect } from '@/ui/formSelect/FormSelect';
 import { useSettingsContext } from '@/context/settings/hooks/useSettingsContext';
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+import { PrimaryLoader } from '@/theme/shared';
 
 export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormProps) => {
   const { settings } = useSettingsContext();
+  const { t } = useLocaleContext();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     return /^\d+\.?\d{0,2}$/.test(event.target.value);
@@ -41,7 +44,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
         <FormInput
           id={'procedure-identifier'}
           name={'procedureIdentifier'}
-          label={'Identyfikator'}
+          label={t('orderAdd.inputs.procedureIdentifier')}
           InputLabelProps={{ shrink: true }}
         />
         <FormSelect
@@ -49,7 +52,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           name={'category'}
           data={settings.orderCategories}
           labelId={'category-label'}
-          label={'Kategoria'}
+          label={t('orderAdd.inputs.category')}
           value={category}
           onChange={handleChangeCategory}
         />
@@ -58,15 +61,15 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           name={'mode'}
           data={settings.orderModes}
           labelId={'mode-label'}
-          label={'Typ'}
+          label={t('orderAdd.inputs.mode')}
           value={mode}
           onChange={handleChangeMode}
         />
-        <FormInput id={'title'} name={'title'} label={'Tytuł'} InputLabelProps={{ shrink: true }} />
+        <FormInput id={'title'} name={'title'} label={t('orderAdd.inputs.title')} InputLabelProps={{ shrink: true }} />
         <FormInput
           id={'price'}
           name={'price'}
-          label={'Kwota'}
+          label={t('orderAdd.inputs.price')}
           handleChange={handleChange}
           inputProps={{
             min: 0,
@@ -77,7 +80,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
         <FormInput
           id={'description'}
           name={'description'}
-          label={'Opis'}
+          label={t('orderAdd.inputs.description')}
           multiline
           rows={8}
           InputLabelProps={{ shrink: true }}
@@ -85,7 +88,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
         <FormInput
           id={'expiration-date'}
           name={'expirationDate'}
-          label={'Termin składania'}
+          label={t('orderAdd.inputs.expirationDate')}
           type={'date'}
           inputProps={{
             min: parseDateToString(),
@@ -94,7 +97,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
         />
         <FormDropzone name={'files'} />
         <PrimaryButton type={'submit'} disabled={isSubmitting}>
-          {isSubmitting ? 'Dodawanie' : 'Dodaj'}
+          {isSubmitting ? <PrimaryLoader size={28} /> : t('orderAdd.submit')}
         </PrimaryButton>
       </FormProvider>
     </Form>
