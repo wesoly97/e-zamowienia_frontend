@@ -54,8 +54,8 @@ export const Languages = styled.div`
   padding-top: 8px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
-    border: none;
-    padding: none;
+    border-top: none;
+    padding-top: inherit;
     margin-right: 20px;
   }
 `;
