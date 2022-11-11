@@ -9,6 +9,7 @@ import { AuthContextController } from '@/context/auth/authContextController/Auth
 import { SettingsContextController } from '@/context/settings/settingsContextController/SettingsContextController';
 import { ToastContextController } from '@/context/toast/toastContextController/ToastContextController';
 import { LocaleContextController } from '@/context/locale/localeContextController/LocaleContextController';
+import '@/i18n';
 
 export const AppProviders = ({ children }: { children?: ReactNode }) => (
   <LocaleContextController>

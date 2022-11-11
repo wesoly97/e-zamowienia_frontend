@@ -1,6 +1,8 @@
 import { StyledPhoneInput } from './PhoneInput.styles';
 import { PhoneInputProps } from './PhoneInput.types';
 
+import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
+
 export const PhoneInput = ({
   label,
   id,
@@ -12,13 +14,15 @@ export const PhoneInput = ({
   disabled,
   ...props
 }: PhoneInputProps) => {
+  const { locale } = useLocaleContext();
+
   return (
     <StyledPhoneInput
       value={value}
       onChange={onChange}
-      defaultCountry="PL"
+      defaultCountry={'PL'}
       preferredCountries={['PL', 'DE', 'GB', 'US']}
-      langOfCountryName="pl"
+      langOfCountryName={locale}
       focusOnSelectCountry
       label={label}
       id={id}

@@ -14,10 +14,10 @@ import { useLocaleContext } from '@/context/locale/hooks/useLocaleContext';
 
 export const Nav = ({ position }: NavProps) => {
   const navigate = useNavigate();
-  const { t } = useLocaleContext();
 
   const { isUnauthenticated, session } = useAuthContext();
   const { mutate: logout } = useLogoutEffect();
+  const { t } = useLocaleContext();
 
   const handleRedirectUserProfilePage = () => {
     navigate(AppLinks.UserProfile);
@@ -55,23 +55,23 @@ export const Nav = ({ position }: NavProps) => {
     if (isUnauthenticated) {
       return (
         <>
-          <PrimaryButton handleClick={handleRedirectLoginPage}>{t('title.asd')}</PrimaryButton>
-          <SecondaryButton handleClick={handleRedirectRegisterPage}>Rejestracja</SecondaryButton>
+          <PrimaryButton handleClick={handleRedirectLoginPage}>{t('navbar.buttons.login')}</PrimaryButton>
+          <SecondaryButton handleClick={handleRedirectRegisterPage}>{t('navbar.buttons.register')}</SecondaryButton>
         </>
       );
     }
-  }, [isUnauthenticated, navigate]);
+  }, [isUnauthenticated, navigate, t]);
 
   const userPanel = useMemo(() => {
     let naviagationItems = [
       {
         action: () => handleRedirectUserProfilePage(),
-        label: 'Profil',
+        label: t('navbar.buttons.userMenu.profile'),
         order: 1,
       },
       {
         action: () => logout(null),
-        label: 'Wyloguj',
+        label: t('navbar.buttons.userMenu.logout'),
         order: 5,
       },
     ];
@@ -82,7 +82,7 @@ export const Nav = ({ position }: NavProps) => {
         ...[
           {
             action: () => handleRedirectUserVerificationPage(),
-            label: 'Zostań zamawiającym',
+            label: t('navbar.buttons.userMenu.verification'),
             order: 4,
           },
         ],
@@ -95,12 +95,12 @@ export const Nav = ({ position }: NavProps) => {
         ...[
           {
             action: () => handleRedirectOrdersUserListPage(),
-            label: 'Moje ogłoszenia',
+            label: t('navbar.buttons.userMenu.myOrders'),
             order: 2,
           },
           {
             action: () => handleRedirectAddOrderPage(),
-            label: 'Dodaj ogłoszenie',
+            label: t('navbar.buttons.userMenu.addOrder'),
             order: 3,
           },
         ],
@@ -108,7 +108,6 @@ export const Nav = ({ position }: NavProps) => {
     }
 
     return naviagationItems.sort((prev, next) => prev.order - next.order);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   return (

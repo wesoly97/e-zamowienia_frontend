@@ -1,7 +1,225 @@
 {
-  "title.asd": "Profile",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "navbar":{
+     "buttons":{
+        "login":"Log in",
+        "register":"Sign up",
+        "orders":"Orders",
+        "userMenu":{
+           "profile":"Profile",
+           "myOrders":"My orders",
+           "addOrder":"Add order",
+           "verification":"Become an orderer",
+           "logout":"Logout"
+        }
+     },
+     "userMenu":{
+        "tooltip":"User menu"
+     }
+  },
+  "main":{
+     "title":"New generation of public procurement",
+     "trailer":"Limitless, unlimited access to a large database of public contracts",
+     "statistics":{
+        "contractors":"Contractors",
+        "orderers":"Orderers",
+        "orders":"Added orders"
+     },
+     "register":"Create an account to take full advantage of the application's functionality"
+  },
+  "footer":{
+     "headers":{
+        "content":"Content",
+        "utilities":"Utilities",
+        "help":"Help"
+     },
+     "links":{
+        "authors":"Authors",
+        "api":"API",
+        "faq":"FAQ",
+        "contact":"Contact"
+     }
+  },
+  "login":{
+     "title":"Log in",
+     "inputs":{
+        "email":"Email",
+        "password":"Password"
+     },
+     "button":"Login",
+     "prompt":{
+        "part1":"Unable to log in?",
+        "part2":"Reset your password"
+     }
+  },
+  "register":{
+     "title":"Create account",
+     "subtitle":"It's easy and safe",
+     "inputs":{
+        "name":"Name",
+        "surname":"Surname",
+        "email":"Email",
+        "password":"Password",
+        "repeatPassword":"Repeat password"
+     },
+     "submit":"Register"
+  },
+  "orders":{
+     "inputs":{
+        "title":"Title",
+        "category":"Category",
+        "mode":"Mode"
+     },
+     "table":{
+        "headers":{
+           "title":"Title",
+           "price":"Amount",
+           "category":"Category",
+           "mode":"Mode"
+        }
+     }
+  },
+  "userOrders":{
+     "table":{
+        "headers":{
+           "title":"Title",
+           "price":"Amount",
+           "category":"Category",
+           "mode":"Mode"
+        },
+        "actions":{
+           "edit":{
+              "tooltip":"Edit order"
+           }
+        }
+     },
+     "inputs":{
+        "category":"Category",
+        "mode":"Mode",
+        "title":"Title"
+     }
+  },
+  "profile":{
+     "title":"Edit profile",
+     "forms":{
+        "userDetails":{
+           "title":"User details",
+           "inputs":{
+              "name":"Name",
+              "surname":"Surname",
+              "email":"Email",
+              "phone":"Phone number",
+              "country":"Country",
+              "company":"Company",
+              "nip":"NIP"
+           },
+           "submit":"Submit"
+        },
+        "changePassword":{
+           "title":"Password change",
+           "inputs":{
+              "currentPassword":"Old password",
+              "password":"New password",
+              "repeatPassword":"Repeat new password"
+           },
+           "submit":"Submit"
+        }
+     }
+  },
+  "orderAdd":{
+     "title":"Add order",
+     "inputs":{
+        "procedureIdentifier":"Identifier",
+        "category":"Category",
+        "mode":"Mode",
+        "title":"Title",
+        "price":"Amount",
+        "description":"Description",
+        "expirationDate":"Submission deadline"
+     },
+     "submit":"Add"
+  },
+  "orderEdit":{
+     "title":"Edit order",
+     "inputs":{
+        "procedureIdentifier":"Identifier",
+        "category":"Category",
+        "mode":"Mode",
+        "title":"Title",
+        "price":"Amount",
+        "description":"Description",
+        "expirationDate":"Submission deadline"
+     },
+     "submit":"Send request"
+  },
+  "orderDescription":{
+     "title":"Details of proceeding",
+     "sections":{
+        "title":"Title",
+        "description":"Description",
+        "attachments":"Attachments",
+        "procedureIdentifier":"Identifier",
+        "dateOfPublication":"Publication date",
+        "expirationDate":"Submission deadline",
+        "category":"Category",
+        "mode":"Mode",
+        "price":"Amount",
+        "customer":"Orderer",
+        "country":"Orderer's country",
+        "phone":"Orderer's phone number",
+        "email":"Orderer's email"
+     }
+  },
+  "passwordRecovery":{
+     "status":{
+        "emailSubmission":{
+           "title":"Recover your password",
+           "subtitle":"Enter the email address of your account and we will send you a link to reset your password."
+        },
+        "emailSent":"The link was sent to the email you provided. If it does not appear within a few minutes, check your spam folder.",
+        "error":{
+           "title":"Invalid link",
+           "subtitle":"The token has expired or something has gone wrong. In a moment you will be redirected to the beginning of the password reset process."
+        },
+        "passwordSubmission":"Password reset"
+     },
+     "emailSubmissionForm":{
+        "inputs":{
+           "email":"Email"
+        },
+        "submit":"Send email"
+     },
+     "passwordSubmissionForm":{
+        "inputs":{
+           "password":"New password",
+           "repeatPassword":"Repeat password"
+        },
+        "submit":"Submit"
+     }
+  },
+  "userVerification":{
+     "inputs":{
+        "phone":"Phone number",
+        "country":"Country",
+        "company":"Company",
+        "nip":"NIP"
+     },
+     "submit":"Send request"
+  },
+  "dropzone":{
+     "title":"Drop files here or",
+     "button":"Choose files",
+     "description":"(Accepted formats: *.pdf, *.xlsx, *.xls, *.doc, *.docx, *.gz, *.zip, *.7z, *.odt, *.ods, *.txt)",
+     "plug":"Drop files here"
+  },
+  "select":{
+     "options":{
+        "all":"All"
+     }
+  },
+  "table":{
+     "footer":{
+        "rowsPerPage":"Rows per page:",
+        "rowsCounterSeparator":"of"
+     }
   }
 }

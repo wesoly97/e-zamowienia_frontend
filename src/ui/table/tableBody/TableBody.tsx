@@ -1,5 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import TableCell from '@mui/material/TableCell';
+import Tooltip from '@mui/material/Tooltip';
 import { useCallback } from 'react';
 
 import { StyledTableCell, StyledTableRow } from './TableBody.styles';
@@ -21,9 +22,11 @@ export const TableBody = <T,>({ rows, keyExtractor, renderRow, onRowClick, actio
       if (actions) {
         return actions.map(({ icon, tooltip, onActionClick }, id) => (
           <TableCell key={id}>
-            <IconButton aria-label={tooltip} onClick={(_) => onActionClick(_, row)}>
-              {icon}
-            </IconButton>
+            <Tooltip title={tooltip}>
+              <IconButton aria-label={tooltip} onClick={(_) => onActionClick(_, row)}>
+                {icon}
+              </IconButton>
+            </Tooltip>
           </TableCell>
         ));
       }

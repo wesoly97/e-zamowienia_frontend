@@ -6,8 +6,14 @@ export type TableActions<T> = {
   onActionClick: (event: MouseEvent, row: T) => void;
 };
 
+export type TableColumnName = {
+  id: string;
+  title: string;
+};
+
 export type TableProps<T> = {
   rows: T[];
+  headers: TableColumnName[];
   count: number;
   keyExtractor: (row: T) => string;
   renderRow: (row: T) => (string | number)[];
