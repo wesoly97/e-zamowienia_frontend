@@ -24,7 +24,7 @@ const Template: Story<Partial<ToastProps>> = ({ ...props }: Partial<ToastProps>)
       {...props}
       //@ts-ignore
       isOpened={isOpened}
-       setIsOpened={setIsOpened}>
+       setIsOpened={setIsOpen}>
         Example toast
       </Toast>
     </>
