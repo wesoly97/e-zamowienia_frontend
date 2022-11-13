@@ -46,7 +46,7 @@ describe('user profile view', () => {
       });
   });
 
-  it.only('check password change form validation', () => {
+  it('check password change form validation', () => {
     cy.contains('h2', 'Zmiana hasła')
       .siblings('form')
       .within(() => {

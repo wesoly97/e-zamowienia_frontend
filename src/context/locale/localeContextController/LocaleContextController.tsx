@@ -22,7 +22,7 @@ export const LocaleContextController = ({ children }: LocaleContextControllerPro
 
   const changeLocale = (locale: AppLocale) => {
     changeLanguage(locale, () => {
-      Cookie.set(localeCookie.name, locale);
+      Cookie.set(localeCookie.name, locale, { sameSite: 'none', secure: true });
       queryClient.invalidateQueries([getSettingsQueryKey]);
     });
   };
