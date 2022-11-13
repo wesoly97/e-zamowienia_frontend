@@ -1,6 +1,6 @@
 import { useIsMutating } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useEffect, useMemo } from 'react';
 
 import { useEditOrdersEffect } from '../hooks/useEditOrders/useEditOrdersEffect';
