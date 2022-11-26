@@ -34,7 +34,7 @@ const Template: Story<any> = <T,>({ ...props }: SelectProps<T>) => {
     setValue(event.target.value as string);
   };
 
-  return <Select {...props} onChange={handleChange} value={value} />;
+  return <Select {...props} onChange={() => handleChange} value={value} />;
 };
 
 export const Default = Template.bind({});

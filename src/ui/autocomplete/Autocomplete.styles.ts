@@ -5,7 +5,7 @@ export const StyledAutocomplete = styled(Autocomplete)`
   ${'.MuiTextField-root'} {
     width: 100%;
   }
-`;
+` as typeof Autocomplete;
 
 export const Option = styled.span<{ $isHighlighted: boolean }>`
   ${({ $isHighlighted }) =>

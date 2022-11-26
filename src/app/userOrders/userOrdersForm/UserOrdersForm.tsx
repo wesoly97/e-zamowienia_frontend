@@ -24,19 +24,11 @@ export const UserOrdersForm = ({ updateFilters, filters }: UserOrdersFormProps) 
   };
 
   const handleChangeCategory = (_: SyntheticEvent<Element, Event>, newValue: string) => {
-    if (newValue === null) {
-      newValue = '';
-    }
-
     setCategory(newValue);
     updateFilters('filter_category', newValue);
   };
 
   const handleChangeMode = (_: SyntheticEvent<Element, Event>, newValue: string) => {
-    if (newValue === null) {
-      newValue = '';
-    }
-
     setMode(newValue);
     updateFilters('filter_mode', newValue);
   };
