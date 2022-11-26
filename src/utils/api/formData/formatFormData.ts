@@ -4,8 +4,8 @@ export const formatFormData = <TData>(data: TData) => {
   const formData = new FormData();
 
   Object.entries(data as ArrayLike<unknown>).map(([key, value]) => {
-    if (isFileArray(value)) {
-      return value.map((file) => {
+    if (isFileArray(value as File[])) {
+      return (value as File[]).map((file) => {
         formData.append(key, file);
       });
     }

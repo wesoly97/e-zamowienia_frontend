@@ -1,5 +1,5 @@
-export const isFileArray = (field: unknown): field is File[] => {
-  return Array.isArray(field as File[]) && !!(field as File[]).length && !!(field as File[])[0].size;
+export const isFileArray = (field: File[]): field is File[] => {
+  return Array.isArray(field) && !!field.length && !!field[0].size;
 };
 
 export const isFormData = (data: unknown): data is FormData => {
