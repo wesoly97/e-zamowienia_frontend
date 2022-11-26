@@ -74,14 +74,14 @@ export const OrdersForm = ({ updateFilters, filters }: OrdersFormProps) => {
         options={settings.orderCategories}
         renderInput={autocompleteCategoryInput}
         value={category}
-        onChange={handleChangeCategory}
+        onChange={() => handleChangeCategory}
       />
       <Autocomplete
         id={'mode'}
         options={settings.orderModes}
         renderInput={autocompleteModeInput}
         value={mode}
-        onChange={handleChangeMode}
+        onChange={() => handleChangeMode}
       />
     </Container>
   );

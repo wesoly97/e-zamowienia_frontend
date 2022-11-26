@@ -26,18 +26,16 @@ export const Autocomplete = <T,>({
     option: T;
     stateValue: string;
   }) => {
-    let matches = undefined;
-    let parts = undefined;
+    let optionText = option;
 
     if (!!selectValue) {
       const optionStringified = String(selectValue);
       const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
-      matches = match(option[parameter], stateValue, { insideWords: true });
-      parts = parse(option[parameter], matches);
-    } else {
-      matches = match(option, stateValue, { insideWords: true });
-      parts = parse(option, matches);
+      optionText = option[parameter];
     }
+
+    const matches = match(optionText, stateValue, { insideWords: true });
+    const parts = parse(optionText, matches);
 
     return (
       <li {...props}>

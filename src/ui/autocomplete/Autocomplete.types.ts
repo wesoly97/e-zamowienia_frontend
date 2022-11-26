@@ -1,6 +1,6 @@
 import { AutocompleteProps as MuiAutocompleteProps } from '@mui/material';
 
 export type AutocompleteProps<T> = {
-  selectValue?: T;
+  selectValue?: keyof T;
   options: T[];
-} & MuiAutocompleteProps<unknown, false, undefined, true>;
+} & MuiAutocompleteProps<T, false, undefined, true>;
