@@ -52,7 +52,7 @@ const Template: Story<any> = ({ ...props }: AutocompleteProps<Book>) => {
   return (
     <Autocomplete
       {...props}
-      id={'asd'}
+      id={'example-id'}
       options={books}
       renderInput={renderInput}
       selectValue={'title'}

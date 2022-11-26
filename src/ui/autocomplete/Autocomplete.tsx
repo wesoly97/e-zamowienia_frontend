@@ -1,6 +1,8 @@
 import { HTMLAttributes, useState } from 'react';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
+import isEqual from 'lodash/isEqual';
+import isObject from 'lodash/isObject';
 
 import { StyledAutocomplete, Option } from './Autocomplete.styles';
 import { AutocompleteProps } from './Autocomplete.types';
@@ -26,12 +28,12 @@ export const Autocomplete = <T,>({
     option: T;
     stateValue: string;
   }) => {
-    let optionText = option;
+    let optionText = option as string;
 
     if (!!selectValue) {
       const optionStringified = String(selectValue);
       const parameter = optionStringified.substring(optionStringified.indexOf('.') + 1, optionStringified.length);
-      optionText = option[parameter];
+      optionText = option[parameter as keyof T] as string;
     }
 
     const matches = match(optionText, stateValue, { insideWords: true });
@@ -55,25 +57,21 @@ export const Autocomplete = <T,>({
       id={id}
       options={options}
       getOptionLabel={(option) => {
-        if (typeof option === 'string' || typeof option === 'number') {
-          return option;
+        if (!!selectValue && isObject(option)) {
+          return option[selectValue] as string;
         }
 
-        if (typeof option[selectValue] === 'string') {
-          return option[selectValue];
-        }
-
-        return '';
+        return option as string;
       }}
-      isOptionEqualToValue={(option, value) => {
-        if (typeof option === 'string' || typeof option === 'number') {
-          return option === value;
-        }
-
-        return option[selectValue] === value[selectValue];
-      }}
+      isOptionEqualToValue={(option, value) => isEqual(option, value)}
       value={value}
-      onChange={onChange}
+      onChange={(event, value, reason, details) => {
+        if (value === null && typeof value === 'string') {
+          value = '';
+        }
+
+        onChange(event, value as NonNullable<T>, reason, details);
+      }}
       inputValue={inputValue}
       onInputChange={(_, newValue) => {
         setInputValue(newValue);
@@ -82,7 +80,6 @@ export const Autocomplete = <T,>({
       getOptionDisabled={getOptionDisabled}
       renderInput={renderInput}
       renderOption={(props, option, { inputValue: stateValue }) => renderOption({ props, option, stateValue })}
-      clearOnEscape={false}
       clearOnBlur={false}
       openOnFocus
       freeSolo
