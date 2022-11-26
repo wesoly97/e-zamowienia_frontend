@@ -54,7 +54,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           labelId={'category-label'}
           label={t('orderAdd.inputs.category')}
           value={category}
-          onChange={handleChangeCategory}
+          onChange={() => handleChangeCategory}
         />
         <FormSelect
           id={'mode'}
@@ -63,7 +63,7 @@ export const OrdersAddForm = ({ isSubmitting, onSubmit, form }: OrdersAddFormPro
           labelId={'mode-label'}
           label={t('orderAdd.inputs.mode')}
           value={mode}
-          onChange={handleChangeMode}
+          onChange={() => handleChangeMode}
         />
         <FormInput id={'title'} name={'title'} label={t('orderAdd.inputs.title')} InputLabelProps={{ shrink: true }} />
         <FormInput

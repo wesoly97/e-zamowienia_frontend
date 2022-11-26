@@ -3,14 +3,14 @@ import { isFileArray } from './formatFormData.typeguards';
 export const formatFormData = <TData>(data: TData) => {
   const formData = new FormData();
 
-  Object.entries(data).map(([key, value]) => {
+  Object.entries(data as ArrayLike<unknown>).map(([key, value]) => {
     if (isFileArray(value)) {
-      value.map((file) => {
+      return value.map((file) => {
         formData.append(key, file);
       });
-    } else {
-      formData.append(key, value);
     }
+
+    formData.append(key, value as string);
   });
 
   return formData;
