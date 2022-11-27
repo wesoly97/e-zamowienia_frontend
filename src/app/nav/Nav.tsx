@@ -77,7 +77,7 @@ export const Nav = ({ position }: NavProps) => {
   const userPanel = useMemo(() => {
     let naviagationItems = [
       {
-        action: () => handleRedirectUserProfilePage(),
+        action: handleRedirectUserProfilePage,
         label: t('navbar.buttons.userMenu.profile'),
         order: 1,
       },
@@ -93,7 +93,7 @@ export const Nav = ({ position }: NavProps) => {
         ...naviagationItems,
         ...[
           {
-            action: () => handleRedirectUserVerificationPage(),
+            action: handleRedirectUserVerificationPage,
             label: t('navbar.buttons.userMenu.verification'),
             order: 4,
           },
@@ -106,12 +106,12 @@ export const Nav = ({ position }: NavProps) => {
         ...naviagationItems,
         ...[
           {
-            action: () => handleRedirectOrdersUserListPage(),
+            action: handleRedirectOrdersUserListPage,
             label: t('navbar.buttons.userMenu.myOrders'),
             order: 2,
           },
           {
-            action: () => handleRedirectAddOrderPage(),
+            action: handleRedirectAddOrderPage,
             label: t('navbar.buttons.userMenu.addOrder'),
             order: 3,
           },

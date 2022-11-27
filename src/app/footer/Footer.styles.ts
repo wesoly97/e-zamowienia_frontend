@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
 import { containerStyles } from '@/theme/shared';
 
 export const GlobalBottomPadding = createGlobalStyle`
-  #root{
+  #root > div {
     padding-bottom: 640px;
 
     ${({ theme }) => theme.breakpoints.up('sm')} {
