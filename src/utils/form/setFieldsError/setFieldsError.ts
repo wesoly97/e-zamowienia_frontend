@@ -41,14 +41,10 @@ export const setFieldsError = <
       return;
     }
 
-    form.clearErrors();
-
     iterateOverErrors(errors, (key, value) => form.setError(key as Path<TFormData>, { message: value }));
 
     return;
   }
-
-  form.clearErrors();
 
   form.setError(fieldToPick as Path<TFormData>, error as ErrorMessage);
 };
